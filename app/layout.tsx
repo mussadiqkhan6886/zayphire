@@ -7,6 +7,7 @@ import { Outfit } from "next/font/google";
 import { Roboto } from "next/font/google";
 
 import "./globals.css";
+import Footer from "@/components/userComponents/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
         className={` ${montserrat.className} antialiased`}
       >
         {children}
+        <Footer />
       </body>
     </html>
   );
