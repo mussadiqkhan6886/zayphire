@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { Inter_Tight } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({
