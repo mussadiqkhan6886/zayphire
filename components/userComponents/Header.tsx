@@ -27,7 +27,7 @@ const Header = ({color, size} : Props) => {
       </div>
       <div className='flex gap-4 md:gap-12'>
         <FaSearch onClick={() => setShowSearch(true)} className='cursor-pointer' />
-        {showSearch && <Search />}
+        {showSearch && <Search setShowSearch={setShowSearch} />}
         <FaUser className='cursor-pointer hidden md:block' />
         <FaShoppingCart className='cursor-pointer' />
         <Cart />
