@@ -11,7 +11,7 @@ const SideBar = ({setViewSideBar}: {setViewSideBar: React.Dispatch<React.SetStat
   const [menu, setMenu] = useState("men")
 
   return (
-    <div className='absolute text-black border-r border-black bg-white left-0 top-0 h-screen w-[320px] sm:w-[370px] md:w-[450px]  py-5 px-14 md:px-24'>
+    <aside className='absolute text-black border-r border-black bg-white left-0 top-0 h-screen w-[320px] sm:w-[370px] md:w-[450px]  py-5 px-14 md:px-24'>
       <div className='flex flex-col  justify-between h-[25%] md:h-[30%]'>
         <div>
           <FaTimes onClick={() => setViewSideBar(false)} className='absolute top-7 text-gray-500 left-8 md:left-16 cursor-pointer' />
@@ -24,7 +24,7 @@ const SideBar = ({setViewSideBar}: {setViewSideBar: React.Dispatch<React.SetStat
         </div>
       </div>
       <hr className='absolute w-full left-0 mt-3 opacity-30' />
-      <div className='h-[70%] pt-10'>
+      <nav className='h-[70%] pt-10'>
         <ul className='leading-8'>
           <li className='mb-10'><Link href={`/collection/${menu}-new`}>New In</Link></li>
           <li className='mb-10'><Link href={`/collection/${menu}-sale`}>Sale</Link></li>
@@ -36,8 +36,8 @@ const SideBar = ({setViewSideBar}: {setViewSideBar: React.Dispatch<React.SetStat
           <li className='mb-10'><Link href={`/collection/${menu}-accessories`}>Accessories</Link></li>
           <li><Link href={`/track-order`}>Track Order</Link></li>
         </ul>
-      </div>
-    </div>
+      </nav>
+    </aside>
   )
 }
 

@@ -14,6 +14,7 @@ interface Props {color: string, size: string}
 const Header = ({color, size} : Props) => {
 
   const [viewSidebar, setViewSidebar] = useState<boolean>(false)
+  const [showSearch, setShowSearch] = useState<boolean>(false)
 
   return (
     <header className={`px-5 md:px-8 py-7 flex justify-between w-full fixed z-10 top-0 ${color === "black" ? "text-black" : "text-white"}`}>
@@ -25,8 +26,8 @@ const Header = ({color, size} : Props) => {
         </Link>
       </div>
       <div className='flex gap-4 md:gap-12'>
-        <FaSearch className='cursor-pointer' />
-        <Search />
+        <FaSearch onClick={() => setShowSearch(true)} className='cursor-pointer' />
+        {showSearch && <Search />}
         <FaUser className='cursor-pointer hidden md:block' />
         <FaShoppingCart className='cursor-pointer' />
         <Cart />
