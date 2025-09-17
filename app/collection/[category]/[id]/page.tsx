@@ -1,3 +1,4 @@
+import Footer from '@/components/userComponents/Footer'
 import Header from '@/components/userComponents/HeaderMain'
 import MayLike from '@/components/userComponents/MayLike'
 import Image from 'next/image'

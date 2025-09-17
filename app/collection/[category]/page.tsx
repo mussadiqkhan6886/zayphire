@@ -1,4 +1,5 @@
 import FilterationHeader from '@/components/userComponents/FilterationHeader'
+import Footer from '@/components/userComponents/Footer'
 import Header from '@/components/userComponents/HeaderMain'
 import Image from 'next/image'
 import Link from 'next/link'

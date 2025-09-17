@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Footer from "@/components/userComponents/Footer";
 import { interTight } from "@/lib/fonts/font";
 import { ViewProvider } from "@/context/ViewContext";
+import ClientFooterWrapper from "@/components/userComponents/ClientFooterWrapper";
 
 export const metadata: Metadata = {
   title: {
@@ -94,7 +95,7 @@ export default function RootLayout({
       >
         <ViewProvider>
           {children}
-        <Footer />
+          <ClientFooterWrapper />
         </ViewProvider>
       </body>
     </html>

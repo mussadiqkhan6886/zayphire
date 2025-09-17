@@ -29,6 +29,7 @@ const Home = () => {
             <Kids />
             <Categories cat='KIDS' />
           </SwiperSlide>
+       
         </Swiper>
       </main>
     </div>  

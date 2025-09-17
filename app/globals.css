@@ -9,4 +9,25 @@ html{
 .swiper-button-prev {
   color: white !important;   /* change arrow color */
   font-weight: thin;
+  height: 10px;
+  width: 10px;
 }
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 10px; /* arrow icon size */
+}
+/* Thin black scrollbar */
+::-webkit-scrollbar {
+  width: 2px;              /* 👈 scrollbar thickness */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;  /* 👈 track behind scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;  /* 👈 scrollbar color */
+  border-radius: 9999px;    /* 👈 makes it rounded */
+}
+
