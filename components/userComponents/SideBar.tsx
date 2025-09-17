@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link';
 import React, { useState } from 'react'
-import { FaTimes, FaGreaterThan } from 'react-icons/fa'
+import { FaTimes } from 'react-icons/fa'
 import Dropdown from './ExpandNav';
 
 
@@ -39,7 +39,8 @@ const SideBar = ({setViewSideBar}: {setViewSideBar: React.Dispatch<React.SetStat
             </>
           )}
           
-        </ul> 
+        </ul>
+        <Link className='block md:hidden absolute right-5 bottom-5' href={"/account"}>Account</Link>
       </nav>
     </aside>
   )
