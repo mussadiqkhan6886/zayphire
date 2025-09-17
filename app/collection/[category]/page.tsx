@@ -28,7 +28,6 @@ const Category = async ({params}: {params: Promise<{category: string}>}) => {
 
   return (
     <>
-    <Header />
       <main className='pt-32'>
         <FilterationHeader breadcrums={category} />
         <section className='grid grid-cols-2 mt-10 md:grid-cols-3 lg:grid-cols-4 w-full'>

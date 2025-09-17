@@ -7,7 +7,6 @@ import React from 'react'
 const Product = () => {
   return (
     <>
-     <Header />
      <main className='flex flex-col pt-25'>
       <section className='flex flex-col md:flex-row gap-10'>
         <div>

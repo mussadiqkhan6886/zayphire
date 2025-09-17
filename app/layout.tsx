@@ -4,6 +4,7 @@ import Footer from "@/components/userComponents/Footer";
 import { interTight } from "@/lib/fonts/font";
 import { ViewProvider } from "@/context/Context";
 import ClientFooterWrapper from "@/components/userComponents/ClientFooterWrapper";
+import HeaderWrapper from "@/components/userComponents/HeaderWrapper";
 
 export const metadata: Metadata = {
   title: {
@@ -94,6 +95,7 @@ export default function RootLayout({
         className={` ${interTight.className} antialiased`}
       >
         <ViewProvider>
+          <HeaderWrapper />
           {children}
           <ClientFooterWrapper />
         </ViewProvider>
