@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 ;import "./globals.css";
-import Footer from "@/components/userComponents/Footer";
 import { interTight } from "@/lib/fonts/font";
 import { ViewProvider } from "@/context/Context";
 import ClientFooterWrapper from "@/components/userComponents/ClientFooterWrapper";
