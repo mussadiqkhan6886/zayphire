@@ -16,7 +16,7 @@ const Dropdown = ({menu}: {menu: string}) => {
       >
         <span>Clothing</span>
         <FaChevronDown
-          className={`transition-transform duration-300 ${open ? "rotate-180" : "rotate-0"}`}
+          className={`transition-transform duration-300 text-sm text-gray-700 ${open ? "rotate-180" : "rotate-0"}`}
         />
       </button>
 

@@ -27,14 +27,19 @@ const SideBar = ({setViewSideBar}: {setViewSideBar: React.Dispatch<React.SetStat
       <hr className='absolute w-full left-0 mt-3 opacity-30' />
       <nav className='h-[70%] pt-10'>
         <ul className='leading-8'>
-          <li className='mb-10'><Link href={`/collection/${menu}-new`}>New In</Link></li>
-          <li className='mb-10'><Link href={`/collection/${menu}-sale`}>Sale</Link></li>
-          <li className='flex justify-between  items-center w-full'>
-            <Dropdown menu={menu} />
-          </li>
-          <li><Link href={`/collection/${menu}-fragrance`}>Fragrances</Link></li>
-          <li className='mb-10'><Link href={`/collection/${menu}-accessories`}>Accessories</Link></li>
-          <li><Link href={`/track-order`}>Track Order</Link></li>
+          {menu !== "men" ? <h2 className='text-4xl text-center font-semibold'>COMING SOON</h2> : (
+            <>
+            <li className='mb-10'><Link href={`/collection/${menu}-new`}>New In</Link></li>
+            <li className='mb-10'><Link href={`/collection/${menu}-sale`}>Sale</Link></li>
+            <li className='flex justify-between  items-center w-full'>
+              <Dropdown menu={menu} />
+            </li>
+            <li><Link href={`/collection/${menu}-fragrance`}>Fragrances</Link></li>
+            <li className='mb-10'><Link href={`/collection/${menu}-accessories`}>Accessories</Link></li>
+            <li><Link href={`/track-order`}>Track Order</Link></li>
+            </>
+          )}
+          
         </ul>
       </nav>
     </aside>
