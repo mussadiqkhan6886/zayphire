@@ -15,6 +15,7 @@ const Header = () => {
 
   const [viewSidebar, setViewSidebar] = useState<boolean>(false)
   const [showSearch, setShowSearch] = useState<boolean>(false)
+  const [cart, setCart] = useState<boolean>(false)
   const {view} = useView()
 
   return (
@@ -29,9 +30,9 @@ const Header = () => {
       <div className='flex gap-4 md:gap-12'>
         <FaSearch onClick={() => setShowSearch(true)} className='cursor-pointer' />
         {showSearch && <Search setShowSearch={setShowSearch} />}
-        <FaUser className='cursor-pointer hidden md:block' />
-        <FaShoppingCart className='cursor-pointer' />
-        <Cart />
+        <Link href="/account"> <FaUser className='cursor-pointer hidden md:block' /></Link>
+        <FaShoppingCart onClick={() => setCart(true)} className='cursor-pointer' />
+        {cart && <Cart setCart={setCart} />}
       </div>
     </header>
   )

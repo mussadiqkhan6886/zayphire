@@ -14,7 +14,7 @@ const Dropdown = ({menu}: {menu: string}) => {
         onClick={() => setOpen(!open)}
         className="flex justify-between items-center w-full cursor-pointer"
       >
-        <span>Clothing</span>
+        <span className="text-sm">CLOTHING</span>
         <FaChevronDown
           className={`transition-transform duration-300 text-sm text-gray-700 ${open ? "rotate-180" : "rotate-0"}`}
         />
@@ -22,9 +22,9 @@ const Dropdown = ({menu}: {menu: string}) => {
 
       {/* Dropdown links */}
       {open && (
-        <div className="my-2 ml-4 flex flex-col gap-2">
-          <Link href={`/collection/${menu}-fabric`}>Fabrics</Link>
-          <Link href={`/collection/${menu}-tshirt`}>T-Shirts</Link>
+        <div className="my-2 text-sm ml-4 flex flex-col gap-1">
+          <Link href={`/collection/${menu}-fabric`}>FABRICS</Link>
+          <Link href={``}>T-SHIRTS <span className="text-red-700">coming soon</span></Link>
         </div>
       )}
     </div>
