@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 ;import "./globals.css";
 import Footer from "@/components/userComponents/Footer";
 import { interTight } from "@/lib/fonts/font";
-import Header from "@/components/userComponents/Header";
+import { ViewProvider } from "@/context/ViewContext";
 
 export const metadata: Metadata = {
   title: {
@@ -92,8 +92,10 @@ export default function RootLayout({
       <body
         className={` ${interTight.className} antialiased`}
       >
-        {children}
+        <ViewProvider>
+          {children}
         <Footer />
+        </ViewProvider>
       </body>
     </html>
   );

@@ -1,9 +1,16 @@
+'use client';
+
+import useView from '@/hooks/useView';
 import { instrumentSerif } from '@/lib/fonts/font'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import {motion} from "framer-motion"
 
 const Footer = () => {
+
+  const {setView} = useView()
+
   return (
     <footer className='md:h-screen h-full'>
       <div className='bg-white h-full md:h-[60%] grid place-content-center'>
@@ -32,12 +39,12 @@ const Footer = () => {
             <p className='text-sm'>&copy; Copyright Reserved by Zayphire 2025</p>
           </div>
         </div>
-          <div className='flex items-center justify-center text-right'>
+          <motion.div onViewportEnter={() => setView(true)} onViewportLeave={() => setView(false)} className='flex items-center justify-center text-right'>
             <ul className='leading-8'>
               <li><Link href={"about-us"}>About Us</Link></li>
               <li><Link href={"contact"}>Contact Us</Link></li>
             </ul>
-          </div>
+          </motion.div>
       </div>
       
     </footer>

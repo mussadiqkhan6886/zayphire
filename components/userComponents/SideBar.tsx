@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import React, { useState } from 'react'
 import { FaTimes, FaGreaterThan } from 'react-icons/fa'
+import Dropdown from './ExpandNav';
 
 
 const SideBar = ({setViewSideBar}: {setViewSideBar: React.Dispatch<React.SetStateAction<boolean>>}) => {
@@ -29,8 +30,7 @@ const SideBar = ({setViewSideBar}: {setViewSideBar: React.Dispatch<React.SetStat
           <li className='mb-10'><Link href={`/collection/${menu}-new`}>New In</Link></li>
           <li className='mb-10'><Link href={`/collection/${menu}-sale`}>Sale</Link></li>
           <li className='flex justify-between  items-center w-full'>
-            <p>Clothing</p>
-            <FaGreaterThan className='rotate-[90deg] opacity-50 font-thin' />
+            <Dropdown menu={menu} />
           </li>
           <li><Link href={`/collection/${menu}-fragrance`}>Fragrances</Link></li>
           <li className='mb-10'><Link href={`/collection/${menu}-accessories`}>Accessories</Link></li>

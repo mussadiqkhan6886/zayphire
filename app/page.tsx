@@ -7,7 +7,7 @@ import React from 'react'
 const Home = () => {
   return (
     <div>
-      <Header color={"white"} size={"big"} />
+      <Header/>
       <main>
         <div className='h-screen sticky top-0'>
           <Men />

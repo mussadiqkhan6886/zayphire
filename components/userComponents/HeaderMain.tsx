@@ -8,22 +8,20 @@ import {FiMenu} from "react-icons/fi"
 import {FaSearch, FaUser, FaShoppingCart} from "react-icons/fa"
 import Search from './Search'
 import Cart from './Cart'
-import useView from '@/hooks/useView';
 
 
 const Header = () => {
 
   const [viewSidebar, setViewSidebar] = useState<boolean>(false)
   const [showSearch, setShowSearch] = useState<boolean>(false)
-  const {view} = useView()
 
   return (
-    <header className={`px-5 md:px-8 py-7 flex justify-between w-full fixed z-10 top-0 ${view ? "text-black" : "text-white"}`}>
+    <header className={`px-5 md:px-8 py-7 flex justify-between w-full fixed z-10 top-0 text-black`}>
       <div className='flex gap-10'>
         <FiMenu className='text-xl md:text-lg  cursor-pointer'  onClick={() => setViewSidebar(true)} />
         {viewSidebar &&  <SideBar setViewSideBar={setViewSidebar} />}
         <Link href="/">
-        <Image src={`${view  ? "/zayphireBlack.png" : "/zayphireGray.png"}`} alt="zayphire image logo main hero" width={200} className='w-[120px] md:w-full' height={100} />
+        <Image src={"/zayphireBlack.png"} alt="zayphire image logo main hero" width={150} className='w-[120px] md:w-full' height={100} />
         </Link>
       </div>
       <div className='flex gap-4 md:gap-12'>

@@ -9,7 +9,7 @@ type ViewContextType = {
 
 export const ViewContext = createContext<ViewContextType| undefined>(undefined)
 
-export function viewProvider({children}: {children: React.ReactNode}){
+export function ViewProvider({children}: {children: React.ReactNode}){
     const [view, setView] = useState<boolean>(false)
 
     return (
