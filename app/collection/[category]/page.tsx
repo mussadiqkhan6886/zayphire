@@ -1,209 +1,34 @@
+import Card from '@/components/userComponents/Card'
 import FilterationHeader from '@/components/userComponents/FilterationHeader'
-import Footer from '@/components/userComponents/Footer'
 import Header from '@/components/userComponents/HeaderMain'
-import Image from 'next/image'
-import Link from 'next/link'
+
 import React from 'react'
 
 const Category = async ({params}: {params: Promise<{category: string}>}) => {
-
+  
+  const category = (await params).category
   const data = [
-    {}
-    
+    {img: "/main (1).jpg", id:"11313", price: 5999, color: 4, gender: "men", quantity: 1, category: "men-fabric", description: " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab corporis recusandae voluptatibus voluptate, laboriosam quibusdam excepturi adipisci corrupti enim similique modi accusamus consectetur sit placeat necessitatibus. Ex exercitationem aspernatur tempora.", name: "New Fabric"},
+    {img: "/main (2).jpg", id:"11313", price: 5999, color: 4, gender: "men", quantity: 1, category: "men-fabric", description: " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab corporis recusandae voluptatibus voluptate, laboriosam quibusdam excepturi adipisci corrupti enim similique modi accusamus consectetur sit placeat necessitatibus. Ex exercitationem aspernatur tempora.", name: "New Fabric"},
+    {img: "/main (3).jpg", id:"11313", price: 5999, color: 4, gender: "men", quantity: 1, category: "men-fabric", description: " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab corporis recusandae voluptatibus voluptate, laboriosam quibusdam excepturi adipisci corrupti enim similique modi accusamus consectetur sit placeat necessitatibus. Ex exercitationem aspernatur tempora.", name: "New Fabric"},
+    {img: "/main (1).jpg", id:"11313", price: 5999, color: 4, gender: "men", quantity: 1, category: "men-fabric", description: " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab corporis recusandae voluptatibus voluptate, laboriosam quibusdam excepturi adipisci corrupti enim similique modi accusamus consectetur sit placeat necessitatibus. Ex exercitationem aspernatur tempora.", name: "New Fabric"},
+    {img: "/main (3).jpg", id:"11313", price: 5999, color: 4, gender: "men", quantity: 1, category: "men-fragrance", description: " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab corporis recusandae voluptatibus voluptate, laboriosam quibusdam excepturi adipisci corrupti enim similique modi accusamus consectetur sit placeat necessitatibus. Ex exercitationem aspernatur tempora.", name: "New Fabric"},
+    {img: "/main (1).jpg", id:"11313", price: 5999, color: 4, gender: "men", quantity: 1, category: "men-fragrance", description: " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab corporis recusandae voluptatibus voluptate, laboriosam quibusdam excepturi adipisci corrupti enim similique modi accusamus consectetur sit placeat necessitatibus. Ex exercitationem aspernatur tempora.", name: "New Fabric"},
+    {img: "/main (2).jpg", id:"11313", price: 5999, color: 4, gender: "men", quantity: 1, category: "men-fragrance", description: " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab corporis recusandae voluptatibus voluptate, laboriosam quibusdam excepturi adipisci corrupti enim similique modi accusamus consectetur sit placeat necessitatibus. Ex exercitationem aspernatur tempora.", name: "New Fabric"},
+    {img: "/main (3).jpg", id:"11313", price: 5999, color: 4, gender: "men", quantity: 1, category: "men-fragrance", description: " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab corporis recusandae voluptatibus voluptate, laboriosam quibusdam excepturi adipisci corrupti enim similique modi accusamus consectetur sit placeat necessitatibus. Ex exercitationem aspernatur tempora.", name: "New Fabric"},
   ]
 
-  const category = (await params).category
-  const id = "sdasd212r1fd"
   return (
     <>
     <Header />
       <main className='pt-32'>
         <FilterationHeader breadcrums={category} />
         <section className='grid grid-cols-2 mt-10 md:grid-cols-3 lg:grid-cols-4 w-full'>
-          <div className='border border-black flex flex-col'>
-            <Link href={`/collection/${category}/${id}`} className='h-full'>
-              <Image src="/main (1).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </Link>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (2).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (3).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (1).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-         
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (1).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (2).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (3).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (1).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-         
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (1).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (2).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (3).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-          <div className='border border-black flex flex-col'>
-            <div className='h-full'>
-              <Image src="/main (1).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
-            <div className='p-3 py-4 border-t border-black'>
-              <div className='leading-2'>
-                <h4>NEW FABRIC</h4>
-                <div className='text-gray-400  text-sm mb-2'>
-                  <span className='border-r border-gray-400 pr-2 mr-2'>4 colors</span>
-                  <span>Men </span>
-                </div>
-              </div>
-              <p>PKR 5990</p>
-            </div>
-          </div>
-         
+          {data.filter(item => item.category === category).map((item, i) => (
+            <Card key={i} {...item} />       
+          ))}
         </section>
+       
       </main>
     </>
     

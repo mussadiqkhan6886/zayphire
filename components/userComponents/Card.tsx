@@ -1,10 +1,34 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
-const Card = () => {
+interface Props {
+  img: string
+  price: number
+  color: number
+  gender: string
+  category: string
+  id: string
+  name: string
+}
+
+const Card = ({img, price, color, gender, category, id, name}: Props) => {
   return (
-    <div>
-      
-    </div>
+    <div className='border border-black flex flex-col'>
+      <Link href={`/collection/${category}/${id}`} className='h-full'>
+        <Image src={img} alt="change" width={200} height={300} className='w-full h-full' />
+      </Link>
+      <div className='p-3 py-4 border-t border-black'>
+        <div className='leading-2'>
+          <h4>{name}</h4>
+          <div className='text-gray-400  text-sm mb-2'>
+            <span className='border-r border-gray-400 pr-2 mr-2'>{color} colors</span>
+            <span>{gender} </span>
+          </div>
+        </div>
+        <p>PKR {price}</p>
+      </div>
+    </div>  
   )
 }
 

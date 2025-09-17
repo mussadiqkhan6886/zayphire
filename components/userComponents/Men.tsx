@@ -17,9 +17,11 @@ const Men = () => {
         mousewheel // scroll with mousewheel
         keyboard={{ enabled: true }} // 👈 enable keyboard navigation
         className="h-screen w-full"
+        style={{scrollBehavior: "smooth"}}
       >
         <SwiperSlide>
           <Image
+          id="main"
             className="w-full h-screen object-cover"
             width={1000}
             height={1000}
@@ -29,6 +31,7 @@ const Men = () => {
         </SwiperSlide>
         <SwiperSlide>
           <Image
+          id="fragrances"
             className="w-full h-screen object-cover"
             width={1000}
             height={1000}
@@ -38,6 +41,7 @@ const Men = () => {
         </SwiperSlide>
         <SwiperSlide>
           <Image
+          id="fabrics"
             className="w-full h-screen object-cover"
             width={1000}
             height={1000}

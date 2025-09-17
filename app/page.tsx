@@ -19,15 +19,13 @@ const Home = () => {
         <Swiper modules={[Navigation]} navigation={true} slidesPerView={1} pagination={{clickable:true}}>
           <SwiperSlide>
             <Men />
-            <Categories cat='MEN' />
+            <Categories />
           </SwiperSlide>
           <SwiperSlide>
             <Women />
-            <Categories cat='WOMEN' />
           </SwiperSlide>
           <SwiperSlide>
             <Kids />
-            <Categories cat='KIDS' />
           </SwiperSlide>
        
         </Swiper>
