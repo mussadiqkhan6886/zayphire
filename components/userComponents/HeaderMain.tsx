@@ -28,7 +28,7 @@ const Header = () => {
       <div className='flex gap-4 md:gap-12'>
         <FaSearch onClick={() => setShowSearch(true)} className='cursor-pointer' />
         {showSearch && <Search setShowSearch={setShowSearch} />}
-        <FaUser className='cursor-pointer hidden md:block' />
+        <Link href={"/account"}><FaUser className='cursor-pointer hidden md:block' /></Link>
         <FaShoppingCart onClick={() => setCart(true)} className='cursor-pointer' />
         {cart && <Cart setCart={setCart} />}
       </div>

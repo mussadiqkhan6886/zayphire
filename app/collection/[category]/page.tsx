@@ -1,6 +1,7 @@
 import FilterationHeader from '@/components/userComponents/FilterationHeader'
 import Header from '@/components/userComponents/HeaderMain'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const Category = async ({params}: {params: Promise<{category: string}>}) => {
@@ -11,7 +12,7 @@ const Category = async ({params}: {params: Promise<{category: string}>}) => {
   ]
 
   const category = (await params).category
-
+  const id = "sdasd212r1fd"
   return (
     <>
     <Header />
@@ -19,9 +20,9 @@ const Category = async ({params}: {params: Promise<{category: string}>}) => {
         <FilterationHeader breadcrums={category} />
         <section className='grid grid-cols-2 mt-10 md:grid-cols-3 lg:grid-cols-4 w-full'>
           <div className='border border-black flex flex-col'>
-            <div className='h-full'>
+            <Link href={`/collection/${category}/${id}`} className='h-full'>
               <Image src="/main (1).jpg" alt="change" width={200} height={300} className='w-full h-full' />
-            </div>
+            </Link>
             <div className='p-3 py-4 border-t border-black'>
               <div className='leading-2'>
                 <h4>NEW FABRIC</h4>
