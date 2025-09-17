@@ -10,9 +10,11 @@ interface Props {
   category: string
   id: string
   name: string
+  sale?: boolean
+  newPrice?: number
 }
 
-const Card = ({img, price, color, gender, category, id, name}: Props) => {
+const Card = ({img, price, color, gender, category, id, name, sale, newPrice}: Props) => {
   return (
     <div className='border border-black flex flex-col'>
       <Link href={`/collection/${category}/${id}`} className='h-full'>
@@ -26,7 +28,7 @@ const Card = ({img, price, color, gender, category, id, name}: Props) => {
             <span>{gender} </span>
           </div>
         </div>
-        <p>PKR {price}</p>
+        <div className='flex gap-2'>PKR {sale ? <p className='font-semibold'>{newPrice} <span className='text-gray-500 font-thin line-through'>{price}</span></p>: price}</div>
       </div>
     </div>  
   )

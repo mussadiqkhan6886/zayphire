@@ -1,6 +1,6 @@
 'use client';
 
-import { ViewContext } from "@/context/ViewContext"
+import { ViewContext } from "@/context/Context"
 import { useContext } from "react"
 
 const useView = () => {
