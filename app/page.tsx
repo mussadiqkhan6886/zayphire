@@ -9,14 +9,14 @@ import React from 'react'
 import {Swiper, SwiperSlide} from "swiper/react"
 import "swiper/css"
 import "swiper/css/navigation"
-import "swiper/css/pagination"
+import { Navigation } from "swiper/modules";
 
 const Home = () => {
   return (
     <div>
       <Header/>
       <main className='h-screen'>
-        <Swiper navigation slidesPerView={1} pagination={{clickable:true}}>
+        <Swiper modules={[Navigation]} navigation={true} slidesPerView={1} pagination={{clickable:true}}>
           <SwiperSlide>
             <Men />
             <Categories cat='MEN' />
