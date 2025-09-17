@@ -1,25 +1,37 @@
+'use client';
+
+import Categories from '@/components/userComponents/Categories'
 import Header from '@/components/userComponents/Header'
 import Kids from '@/components/userComponents/Kids'
 import Men from '@/components/userComponents/Men'
 import Women from '@/components/userComponents/Women'
 import React from 'react'
+import {Swiper, SwiperSlide} from "swiper/react"
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
 
 const Home = () => {
   return (
     <div>
       <Header/>
-      <main>
-        <div className='h-screen sticky top-0'>
-          <Men />
-        </div>
-        <div className='h-screen sticky top-0'>
-          <Women />
-        </div>
-        <div className='h-screen sticky top-0'>
-          <Kids />
-        </div>
+      <main className='h-screen'>
+        <Swiper navigation slidesPerView={1} pagination={{clickable:true}}>
+          <SwiperSlide>
+            <Men />
+            <Categories cat='MEN' />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Women />
+            <Categories cat='WOMEN' />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Kids />
+            <Categories cat='KIDS' />
+          </SwiperSlide>
+        </Swiper>
       </main>
-    </div>
+    </div>  
   )
 }
 
