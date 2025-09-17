@@ -4,7 +4,7 @@ import { useState } from "react"
 import { FaChevronDown } from "react-icons/fa"
 import Link from "next/link"
 
-const Dropdown = ({menu}: {menu: string}) => {
+const Dropdown = ({menu, setViewSideBar}: {menu: string, setViewSideBar: React.Dispatch<React.SetStateAction<boolean>>}) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -23,8 +23,8 @@ const Dropdown = ({menu}: {menu: string}) => {
       {/* Dropdown links */}
       {open && (
         <div className="my-2 text-sm ml-4 flex flex-col gap-1">
-          <Link href={`/collection/${menu}-fabric`}>FABRICS</Link>
-          <Link href={``}>T-SHIRTS <span className="text-red-700">coming soon</span></Link>
+          <Link onClick={() => setViewSideBar(false)} href={`/collection/${menu}-fabric`}>FABRICS</Link>
+          <Link onClick={() => setViewSideBar(false)} href={``}>T-SHIRTS <span className="text-red-700">coming soon</span></Link>
         </div>
       )}
     </div>

@@ -19,9 +19,9 @@ const SideBar = ({setViewSideBar}: {setViewSideBar: React.Dispatch<React.SetStat
           <Image src={"/zayphireBlack.png"} alt='zayphire logo menu' width={150} height={100} />
         </div>
         <div className='flex justify-between w-full'>
-          <h3 className={` ${menu === "men" ? "text-black" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("men")}>MEN</h3>
-          <h3 className={` ${menu === "women" ? "text-black" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("women")}>WOMEN</h3>
-          <h3 className={` ${menu === "kids" ? "text-black" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("kids")}>KIDS</h3>
+          <h3 className={` ${menu === "men" ? "text-black font-semibold" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("men")}>MEN</h3>
+          <h3 className={` ${menu === "women" ? "text-black font-semibold" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("women")}>WOMEN</h3>
+          <h3 className={` ${menu === "kids" ? "text-black font-semibold" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("kids")}>KIDS</h3>
         </div>
       </div>
       <hr className='absolute w-full left-0 mt-3 opacity-30' />
@@ -29,13 +29,13 @@ const SideBar = ({setViewSideBar}: {setViewSideBar: React.Dispatch<React.SetStat
         <ul className='leading-10'>
           {menu !== "men" ? <h2 className='text-4xl text-center font-semibold'>COMING SOON</h2> : (
             <>
-            <li className='mb-10 text-sm'><Link href={`/collection/${menu}-new`}>NEW IN</Link></li>
-            <li className='mb-10 text-sm'><Link href={`/collection/${menu}-sale`}>SALE</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='mb-10 text-sm'><Link href={`/collection/${menu}-new`}>NEW IN</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='mb-10 text-sm'><Link href={`/collection/${menu}-sale`}>SALE</Link></li>
             <li className='flex justify-between my-2 items-center w-full'>
-              <Dropdown menu={menu} />
+              <Dropdown menu={menu} setViewSideBar={setViewSideBar} />
             </li>
-            <li className='text-sm my-2 mb-15'><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li>
-            <li className='text-sm'><Link href={`/track-order`}>TRACK YOUR ORDER</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='text-sm my-2 mb-15'><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='text-sm'><Link href={`/track-order`}>TRACK YOUR ORDER</Link></li>
             </>
           )}
           
