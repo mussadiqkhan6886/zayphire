@@ -8,30 +8,30 @@ const page = () => {
   return (
     <main className='text-sm md:text-base px-9 md:px-25 pt-26'>
       <h1 className={`${instrumentSerif.className} text-center text-3xl font-bold`}>Details About Zayphire</h1>
-        <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-10 md:gap-15 mt-10 mb-20'>
+        <section className='grid border-b border-dashed border-black pb-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-10 md:gap-15 mt-10 mb-10'>
             <Link href={"#about"} className='border border-black p-10 px-5 sm:px-9 lg:px-6   flex items-center justify-center flex-col gap-3'>
-                <h2 className='text-lg '>About us</h2>
-                <FaPeopleCarry />
+                <h2>About us</h2>
+                <FaPeopleCarry className="text-4xl" />
             </Link>
             <Link href={"#exchangeAndReturns"} className='border border-black p-10 px-5 sm:px-9 lg:px-6  flex items-center justify-center flex-col gap-3'>
-                <h2 className='text-lg '>Exchange & Returns</h2>
-                <FaExchangeAlt />
+                <h2>Exchange & Returns</h2>
+                <FaExchangeAlt className="text-4xl" />
             </Link>
             <Link href={"#terms"} className='border border-black p-10 px-5 sm:px-9 lg:px-6  flex items-center justify-center flex-col gap-3'>
-                <h2 className='text-lg '>Terms & Conditions</h2>
-                <FaPenAlt />
+                <h2>Terms & Conditions</h2>
+                <FaPenAlt className="text-4xl" />
             </Link>
             <Link href={"#FAQ"} className='border border-black p-10 px-5 sm:px-9 lg:px-6  flex items-center justify-center flex-col gap-3'>
-                <h2 className='text-lg '>FAQ</h2>
-                <FaQuestion />
+                <h2>FAQ</h2>
+                <FaQuestion className="text-4xl" />
             </Link>
             <Link href={"#shippingAndDeliveries"} className='border border-black p-10 px-5 sm:px-9 lg:px-6  flex items-center justify-center flex-col gap-3'>
-                <h2 className='text-lg '>Shipping & Deliveries</h2>
-                <FaShippingFast />
+                <h2>Shipping & Deliveries</h2>
+                <FaShippingFast className="text-4xl" />
             </Link>
             <Link href={"#contact"} className='border border-black p-10 px-5 sm:px-9 lg:px-6  flex items-center justify-center flex-col gap-3'>
                 <h2 className='text-lg '>Contact us</h2>
-                <FaPhone />
+                <FaPhone className="text-4xl" />
             </Link>
         </section>
       <section className="my-5" id="about">
