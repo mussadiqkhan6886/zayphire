@@ -6,6 +6,8 @@ type Props = {
     id: Promise<{id:string}>
 }
 
+await connectDB()
+
 export const GET = async (req: {req: NextRequest}, params: Props) => {
     const id = (await params).id
 
