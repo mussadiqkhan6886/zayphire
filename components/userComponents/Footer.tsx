@@ -28,10 +28,10 @@ const Footer = () => {
         <div className="flex justify-between gap-10 items-center w-full lg:w-[60%] md:w-[70%] sm:flex-row flex-col-reverse">
           <div>
             <ul className='leading-8'>
-              <li><Link href="/faq">FAQ's</Link></li>
+              <li><Link href="/details/#FAQ">FAQ's</Link></li>
               <li><Link href={"signup"}>Signup/Login</Link></li>
-              <li><Link href={"shipping-and-deliveries"}>Shipping & Deliveries</Link></li>
-              <li><Link href={"exchange-and-returns"}>Exchange & Returns</Link></li>
+              <li><Link href={"/details/#shippingAndDeliveries"}>Shipping & Deliveries</Link></li>
+              <li><Link href={"/details/#exchangeAndReturns"}>Exchange & Returns</Link></li>
             </ul>
           </div>
           <div className='flex md:items-center justify-between h-full flex-col items-end'>
@@ -41,8 +41,8 @@ const Footer = () => {
         </div>
           <motion.div onViewportEnter={() => setView(true)} onViewportLeave={() => setView(false)} className='flex items-center justify-center text-right'>
             <ul className='leading-8'>
-              <li><Link href={"about-us"}>About Us</Link></li>
-              <li><Link href={"contact"}>Contact Us</Link></li>
+              <li><Link href={"/details/#about"}>About Us</Link></li>
+              <li><Link href={"/details/#contact"}>Contact Us</Link></li>
             </ul>
           </motion.div>
       </div>
