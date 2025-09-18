@@ -3,8 +3,8 @@
 import Image from "next/image";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel, Keyboard } from "swiper/modules";
-
+import { Mousewheel, Keyboard, Pagination } from "swiper/modules";
+import "swiper/css/pagination"
 import "swiper/css";
 import Footer from "./Footer";
 
@@ -13,8 +13,9 @@ const Men = () => {
     <div className="h-screen w-full">
       <Swiper
         direction="vertical" // 👈 Vertical swiper
-        modules={[Mousewheel, Keyboard]} // add Keyboard
+        modules={[Mousewheel, Keyboard, Pagination]} // add Keyboard
         mousewheel // scroll with mousewheel
+        pagination
         keyboard={{ enabled: true }} // 👈 enable keyboard navigation
         className="h-screen w-full"
         style={{scrollBehavior: "smooth"}}
