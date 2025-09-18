@@ -43,7 +43,7 @@ const ContactUs = () => {
         autoComplete="off"
         type="text"
         name="user_name"
-        className="w-full border border-gray-300 outline-none rounded-md px-3 py-2 focus:outline-none focus:ring-2 "
+        className="w-full border border-gray-300 outline-none rounded-md px-3 py-2 "
         required
       />
 
@@ -52,13 +52,13 @@ const ContactUs = () => {
         autoComplete="off"
         type="email"
         name="user_email"
-        className="w-full border border-gray-300 outline-none rounded-md px-3 py-2 focus:outline-none focus:ring-2 "
+        className="w-full border border-gray-300 outline-none rounded-md px-3 py-2 "
         required
       />
       <label className="block text-gray-700 font-medium mb-1">Message</label>
       <textarea
         name="message"
-        className="w-full border border-gray-300 outline-none rounded-md px-3 py-2 focus:outline-none focus:ring-2 "
+        className="w-full border border-gray-300 outline-none rounded-md px-3 py-2 "
         required
       />
 
