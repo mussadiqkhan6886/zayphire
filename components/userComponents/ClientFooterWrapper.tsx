@@ -7,7 +7,7 @@ export default function ClientFooterWrapper() {
   const pathname = usePathname();
 
   // Show footer only on non-home pages
-  if (pathname === "/" || pathname === "/admin") return null;
+  if (pathname === "/" || pathname.startsWith("/admin")) return null;
 
   return <Footer />;
 }
