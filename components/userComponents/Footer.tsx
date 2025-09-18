@@ -43,6 +43,7 @@ const Footer = () => {
             <ul className='leading-8'>
               <li><Link href={"/details/#about"}>About Us</Link></li>
               <li><Link href={"/details/#contact"}>Contact Us</Link></li>
+              <li><Link href={"/details/#terms"}>Terms & Conditions</Link></li>
             </ul>
           </motion.div>
       </div>
