@@ -31,3 +31,6 @@ html{
   border-radius: 9999px;    /* 👈 makes it rounded */
 }
 
+.detailsHeading{
+  @apply text-xl font-semibold my-3
+}

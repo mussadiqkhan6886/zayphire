@@ -31,7 +31,7 @@ const ContactUs = () => {
 //   };
   return (
    <section className="pt-30 lg:pt-20 px-4 mb-5 max-w-xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
+        <h2 className="detailsHeading text-center">Contact Us</h2>
 
   <form
     // ref={form}

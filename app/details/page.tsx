@@ -1,15 +1,16 @@
 import ContactUs from '@/components/userComponents/ContactUs'
+import { instrumentSerif } from '@/lib/fonts/font'
 import Link from 'next/link'
 import React from 'react'
-import { FaExchangeAlt,FaPenAlt, FaPeopleCarry, FaPhone, FaQuestion, FaShippingFast } from 'react-icons/fa'
+import { FaAmilia, FaEnvelope, FaExchangeAlt,FaPenAlt, FaPeopleCarry, FaPhone, FaQuestion, FaShippingFast } from 'react-icons/fa'
 
 const page = () => {
   return (
-    <main className=' px-9 md:px-25 pt-10'>
-      <h1>Details About ZAYPHIRE</h1>
-        <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-10 md:gap-15 my-20'>
+    <main className='text-sm md:text-base px-9 md:px-25 pt-26'>
+      <h1 className={`${instrumentSerif.className} text-center text-3xl font-bold`}>Details About Zayphire</h1>
+        <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-10 md:gap-15 mt-10 mb-20'>
             <Link href={"#about"} className='border border-black p-10 px-5 sm:px-9 lg:px-6   flex items-center justify-center flex-col gap-3'>
-                <h2 className='text-lg '>ABOUT US</h2>
+                <h2 className='text-lg '>About us</h2>
                 <FaPeopleCarry />
             </Link>
             <Link href={"#exchangeAndReturns"} className='border border-black p-10 px-5 sm:px-9 lg:px-6  flex items-center justify-center flex-col gap-3'>
@@ -33,9 +34,9 @@ const page = () => {
                 <FaPhone />
             </Link>
         </section>
-      <section className='flex flex-col gap-5' id="about">
-        <h2>About us</h2>
-        <p> Zayphire is more than just a fabric store — it's a celebration of timeless elegance, refined craftsmanship, and modern Pakistani fashion. Born with a passion for unstitched fabrics and style that speaks, Zayphire is your new go-to destination for luxurious textures, statement-worthy colors, and premium-quality materials.
+      <section className="my-5" id="about">
+        <h2 className="detailsHeading">About Us</h2>
+        <p className='leading-9'> Zayphire is more than just a fabric store — it's a celebration of timeless elegance, refined craftsmanship, and modern Pakistani fashion. Born with a passion for unstitched fabrics and style that speaks, Zayphire is your new go-to destination for luxurious textures, statement-worthy colors, and premium-quality materials.
 
             At Zayphire, we believe that fabric is the first step in a story — your story. Whether you're dressing for tradition, making a statement, or simply looking for that perfect daily wear, we offer curated collections that blend sophistication with comfort. Every piece in our store is handpicked for its quality, design, and ability to elevate your wardrobe.
 
@@ -54,10 +55,10 @@ const page = () => {
             Zayphire – Fabric that speaks for you.</p>
       </section>
       <hr />
-      <section id="exchangeAndReturns">
-        <h2>Exchange And Returns</h2>
+      <section className="my-5" id="exchangeAndReturns">
+        <h2 className="detailsHeading">Exchange And Returns</h2>
         <article>
-            <div>
+            <div className='leading-9'>
                 At Zayphire, we prioritize your satisfaction by offering a hassle-free return and exchange policy tailored for your convenience. If you're not fully satisfied with your purchase, or if the size isn’t the right fit, you may request an exchange or return under the conditions below.
 
                 <br /><br />
@@ -80,7 +81,7 @@ const page = () => {
                 <b>Process:</b><br />
                 To initiate the exchange or return:
                 <ul className="list-disc ml-6 my-2 text-left">
-                <li>Contact us at 📧 <a href="mailto:zayphire@gmail.com">zayphire@gmail.com</a></li>
+                <li>Contact us at <a href="mailto:zayphire@gmail.com">zayphire@gmail.com</a></li>
                 <li>Use any courier service of your choice to send the item to our return address:<br />
                 📦 <i>City Filling Station Shamsi Road Mardan.</i></li>
                 <li>Include a handwritten note inside the parcel with order details and exchange request (if applicable).</li>
@@ -114,10 +115,10 @@ const page = () => {
         </article>
       </section>
       <hr />
-      <section className='' id='terms'>
-        <h2>Terms and Conditions</h2>
-        <article>
-            <strong>Welcome to Zayphire<br/> </strong> By placing an order with us or accessing our website, you agree to comply with and be bound by the following terms and conditions. These terms apply to all visitors, users, and customers of Zayphire. We recommend reading them carefully before making any purchase.
+      <section className="my-5"  id='terms'>
+        <h2 className="detailsHeading">Terms and Conditions</h2>
+        <article className='leading-9'>
+            By placing an order with us or accessing our website, you agree to comply with and be bound by the following terms and conditions. These terms apply to all visitors, users, and customers of Zayphire. We recommend reading them carefully before making any purchase.
             <ol className="list-decimal space-y-4 ml-6 text-left">
                 <li>
                   <strong>General</strong><br />
@@ -146,7 +147,7 @@ const page = () => {
             
                 <li>
                   <strong>Returns & Exchanges</strong><br />
-                  Zayphire offers a 7-day exchange policy. Refunds or cancellations are available. To be eligible for an exchange, the product must be returned in its original condition with tags attached. You may return the parcel using any courier service. More details are provided in our <Link  className="underline text-blue-500" href={"#exchangeAndReturn"}>Exchange Policy</Link> section.
+                  Zayphire offers a 7-day exchange policy. Refunds or cancellations are available. To be eligible for an exchange, the product must be returned in its original condition with tags attached. You may return the parcel using any courier service. More details are provided in our <Link  className="underline text-blue-500" href={"#exchangeAndReturns"}>Exchange Policy</Link> section.
                 </li>
             
                 <li>
@@ -172,17 +173,17 @@ const page = () => {
         </article>
       </section>
       <hr />
-      <section className='h-screen bg-orange-400' id="FAQ"></section>
+      <section className="my-5 h-screen bg-orange-400" id="FAQ"></section>
       <hr />
-      <section  id="shippingAndDeliveries">
-        <h1>Shipping & Deliveries</h1>
-        <article>
+      <section className="my-5"  id="shippingAndDeliveries">
+        <h2 className="detailsHeading">Shipping & Deliveries</h2>
+        <article className='leading-9'>
             <p className='mb-6'>At Zayphire, we believe in providing our customers with a smooth and reliable shopping experience from start to finish. Once an order is confirmed, we make it our priority to dispatch it within 24 hours. Our logistics partner, Fastex Courier Service, ensures that your parcel reaches you in a timely manner — typically within 2 to 3 working days. However, in rare cases, such as bad weather conditions, unforeseen law and order situations, or deliveries to interior and remote areas, there might be a slight delay. We continuously monitor all orders and strive to keep our customers updated in case of any disruption.
             One of the core values at Zayphire is transparency — and we proudly offer free delivery across Pakistan, with no additional charges or hidden fees at checkout. Whether you're shopping from a major city or a small town, we ensure fair and equal access to our products. Even during sales and promotions, no extra delivery charges are applied — your satisfaction remains our top priority. <br /> In case your order has not arrived within 7 working days, we encourage you to contact our support team promptly so we can resolve the issue and get your order to you as soon as possible.</p>
             <div>
-                <h2 className='md:text-2xl text-xl mb-3 font-semibold'>Need Help?</h2>
-                <p className='text-[14px] md:text-[16px] mb-3'><i className="fa-solid fa-phone mr-2"></i>+923265753305</p>
-                <p className='text-[14px] md:text-[16px] whitespace-nowrap'><i className="fa-solid fa-envelope mr-2"></i>zayphire@gmail.com</p>
+                <h3 className='md:text-2xl text-xl mb-3 font-semibold'>Need Help?</h3>
+                <p className='text-[14px] md:text-[16px] mb-3'><FaPhone className='inline' /> +923265753305</p>
+                <p className='text-[14px] md:text-[16px] whitespace-nowrap'><FaEnvelope className='inline' /> zayphire@gmail.com</p>
             </div>
         </article>
       </section>
