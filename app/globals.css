@@ -9,8 +9,8 @@ html{
 .swiper-button-prev {
   color: white !important;   /* change arrow color */
   font-weight: thin;
-  height: 10px;
-  width: 10px;
+  height: 16px !important;
+  width: 16px !important;
 }
 
 .swiper-button-next::after,
@@ -35,13 +35,20 @@ html{
   @apply text-xl font-semibold my-3
 }
 
-.swiper-pagination {
-  @apply block md:hidden absolute bottom-10 right-10;
+ .swiper-pagination {
+  display: block !important;
+  position: absolute !important;
+  bottom: 0rem !important; /* bottom-10 */
+}
+@media (min-width: 768px) {
+  .swiper-pagination {
+    display: none !important; /* hide on md+ */
+  }
 }
 .swiper-pagination-bullet {
-  background-color: rgba(255, 255, 255, 0.5); /* inactive = dim white */
-  opacity: 1;
+  background: rgba(255, 255, 255, 0.5) !important; /* inactive */
+  opacity: 1 !important;
 }
 .swiper-pagination-bullet-active {
-  background-color: white; /* active = pure white */
+  background: #ffffff !important; /* active = white */
 }
