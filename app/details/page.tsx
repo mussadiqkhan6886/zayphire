@@ -1,8 +1,9 @@
 import ContactUs from '@/components/userComponents/ContactUs'
+import FaqItem from '@/components/userComponents/FAQItem'
 import { instrumentSerif } from '@/lib/fonts/font'
 import Link from 'next/link'
 import React from 'react'
-import { FaAmilia, FaEnvelope, FaExchangeAlt,FaPenAlt, FaPeopleCarry, FaPhone, FaQuestion, FaShippingFast } from 'react-icons/fa'
+import { FaEnvelope, FaExchangeAlt,FaFileSignature,FaInfoCircle, FaPhone, FaQuestion, FaShippingFast } from 'react-icons/fa'
 
 const page = () => {
   return (
@@ -11,7 +12,7 @@ const page = () => {
         <section className='grid border-b border-dashed border-black pb-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-10 md:gap-15 mt-10 mb-10'>
             <Link href={"#about"} className='border border-black p-10 px-5 sm:px-9 lg:px-6   flex items-center justify-center flex-col gap-3'>
                 <h2>About us</h2>
-                <FaPeopleCarry className="text-4xl" />
+                <FaInfoCircle className="text-4xl" />
             </Link>
             <Link href={"#exchangeAndReturns"} className='border border-black p-10 px-5 sm:px-9 lg:px-6  flex items-center justify-center flex-col gap-3'>
                 <h2>Exchange & Returns</h2>
@@ -19,7 +20,7 @@ const page = () => {
             </Link>
             <Link href={"#terms"} className='border border-black p-10 px-5 sm:px-9 lg:px-6  flex items-center justify-center flex-col gap-3'>
                 <h2>Terms & Conditions</h2>
-                <FaPenAlt className="text-4xl" />
+                <FaFileSignature className="text-4xl" />
             </Link>
             <Link href={"#FAQ"} className='border border-black p-10 px-5 sm:px-9 lg:px-6  flex items-center justify-center flex-col gap-3'>
                 <h2>FAQ</h2>
@@ -173,7 +174,27 @@ const page = () => {
         </article>
       </section>
       <hr />
-      <section className="my-5 h-screen bg-orange-400" id="FAQ"></section>
+       <section className="my-10" id="FAQ">
+        <h2 className="detailsHeading mb-6">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          <FaqItem
+            question="How long does delivery take?"
+            answer="Our standard delivery time is 2-3 working days across Pakistan. Remote areas may take slightly longer."
+          />
+          <FaqItem
+            question="What is your return policy?"
+            answer="We accept exchanges within 7 days of purchase if the product is unused, undamaged, and has tags attached."
+          />
+          <FaqItem
+            question="Do you ship internationally?"
+            answer="Currently, we only deliver within Pakistan. International shipping will be introduced soon."
+          />
+          <FaqItem
+            question="Are your product colors accurate?"
+            answer="We try our best to display colors accurately, but slight variations may occur due to screen brightness and lighting."
+          />
+        </div>
+      </section>
       <hr />
       <section className="my-5"  id="shippingAndDeliveries">
         <h2 className="detailsHeading">Shipping & Deliveries</h2>
