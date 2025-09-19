@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaTrash } from "react-icons/fa";
 
 export default function CartPage() {
@@ -63,12 +64,12 @@ export default function CartPage() {
           <p className="text-lg font-semibold">
             Subtotal: <span>PKR 5490</span>
           </p>
-          <button className="bg-black text-white text-sm  w-full cursor-pointer py-2">
-            Proceed to Checkout
-          </button>
-          <button className="bg-white text-sm border w-full text-black block  cursor-pointer py-2">
+          <Link href="/checkout" className="bg-black block text-center text-white text-sm  w-full cursor-pointer py-2">
+            Checkout
+          </Link>
+          <Link href="/" className="bg-white text-sm border text-center w-full text-black block  cursor-pointer py-2">
             Continue Shopping
-          </button>
+          </Link>
         </div>
       </section>
     </main>
