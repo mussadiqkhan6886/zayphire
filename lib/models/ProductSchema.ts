@@ -1,36 +1,54 @@
 import mongoose, { Schema } from "mongoose";
 
-{img: "/main (1).jpg", id:"11313", price: 5999, color: 4, gender: "men", quantity: 1, category: "men-new", description: " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab corporis recusandae voluptatibus voluptate, laboriosam quibusdam excepturi adipisci corrupti enim similique modi accusamus consectetur sit placeat necessitatibus. Ex exercitationem aspernatur tempora.", name: "New Fabric", sale: true, newPrice: 1000},
-const ProductSchema = new Schema({
-       img: {
-        type: String,
-        require,
-       },
-       price: {
-        type: Number,
-        require,
-       },
-       color: {
-        type: Number,
-        require,
-       },
-       gender: {
-        type: String,
-        require
-       },
-       category: {
-        type: String,
-        require
-       },
-       description: {
-        type: String,
-        require
-       }
-        
-    },
-    {timestamps: true}
-)
+// export interface IProduct extends Document {
+//   name: string;
+//   slug: string; // SEO-friendly URL (e.g., "discovery-box")
+//   description: string;
+//   price: number;
+//   discountPrice?: number; // optional if product has a discount
+//   category: string;
+//   subCategory?: string;
+//   brand?: string;
+//   stock: number;
+//   images: string[]; // multiple product images
+//   thumbnail: string; // main display image
+//   sizes?: string[]; // if applicable (S, M, L, XL)
+//   colors?: string[]; // color options
+//   tags?: string[]; // for search/filter
+//   gender?: "men" | "women" | "unisex"; // clothing/fashion
+//   collection?: string; // e.g., "Summer 2025"
+//   isFeatured: boolean;
+//   isNewArrival: boolean;
+//   ratings: {
+//     average: number;
+//     count: number;
+//   };
+//   reviews: mongoose.Types.ObjectId[]; // ref to Review model
+//   createdAt: Date;
+//   updatedAt: Date;
+// }
 
-const Product = ProductSchema.models("product") || mongoose.model("product", ProductSchema)
+const productSchema = new Schema(
+  {
+    name: { type: String, required: true, trim: true },
+    slug: { type: String, required: true, unique: true, lowercase: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true },
+    discountPrice: { type: Number },
+    category: { type: String, required: true },
+    brand: { type: String },
+    stock: { type: Number, default: 0 },
+    images: [{ type: String, required: true }],
+    thumbnail: { type: String, required: true },
+    color: { type: String, required:  true },
+    gender: { type: String, enum: ["men", "women", "unisex"], required:  true },
+    collection: { type: String, required:  true },
+    isNewArrival: { type: Boolean, default: false },
+  },
+  { timestamps: true }
+);
 
-export default Product
+const Product =
+  mongoose.models.Product || mongoose.model("Product", productSchema);
+
+export default Product;

@@ -1,10 +1,11 @@
 import React from 'react'
+import DataTable from '@/components/adminComponents/ProductTable'
 
 const ProductList = () => {
   return (
-    <div>
-      
-    </div>
+    <main>
+      <DataTable />
+    </main>
   )
 }
 
