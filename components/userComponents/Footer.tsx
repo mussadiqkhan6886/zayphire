@@ -12,8 +12,8 @@ const Footer = () => {
   const {setView} = useView()
 
   return (
-    <footer className='md:h-screen h-full'>
-      <div className='bg-white h-full md:h-[60%] grid place-content-center'>
+    <footer className='md:h-screen flex  flex-col h-full'>
+      <div className='bg-white h-[20%] md:h-[60%] py-10 md:py-0 grid place-content-center'>
         <div className='py-20 md:py-0'>
           <h4 className={`text-center border-b borer-black py-2 my-2 text-[20px] ${instrumentSerif.className}`}>Get the latest trends first</h4>
           <div className='flex flex-wrap'>
@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className='bg-black px-7 text-white gap-10 flex py-7 flex-col md:flex-row justify-between h-[40%]'>
+      <div className='bg-black px-7 text-white gap-5 md:gap-10 flex py-7 flex-col md:flex-row justify-between h-full md:h-[40%]'>
         <div className="flex justify-between gap-10 items-center w-full lg:w-[60%] md:w-[70%] sm:flex-row flex-col-reverse">
           <div>
             <ul className='leading-8'>
@@ -39,7 +39,7 @@ const Footer = () => {
             <p className='text-sm'>&copy; Copyright Reserved by Zayphire 2025</p>
           </div>
         </div>
-          <motion.div onViewportEnter={() => setView(true)} onViewportLeave={() => setView(false)} className='flex items-center justify-center text-right'>
+          <motion.div onViewportEnter={() => setView(true)} onViewportLeave={() => setView(false)} className='flex items-center justify-center text-left md:text-right'>
             <ul className='leading-8'>
               <li><Link href={"/details/#about"}>About Us</Link></li>
               <li><Link href={"/details/#contact"}>Contact Us</Link></li>

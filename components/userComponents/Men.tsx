@@ -15,7 +15,7 @@ const Men = () => {
         direction="vertical" // 👈 Vertical swiper
         modules={[Mousewheel, Keyboard, Pagination]} // add Keyboard
         mousewheel // scroll with mousewheel
-        pagination
+        pagination={{ clickable: true }}
         keyboard={{ enabled: true }} // 👈 enable keyboard navigation
         className="h-screen w-full"
         style={{scrollBehavior: "smooth"}}

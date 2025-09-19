@@ -34,3 +34,14 @@ html{
 .detailsHeading{
   @apply text-xl font-semibold my-3
 }
+
+.swiper-pagination {
+  @apply block md:hidden absolute bottom-10 right-10;
+}
+.swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.5); /* inactive = dim white */
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background-color: white; /* active = pure white */
+}

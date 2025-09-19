@@ -14,12 +14,6 @@ const Categories = () => {
             <Link href={"#fragrances"}>FRAGRANCES</Link>
             <Link href={"#fabrics"}>FABRICS</Link>
         </div>
-     
-        <div className='flex sm:hidden items-end gap-5 flex-col'>
-              <Link href="#main" className='h-2 w-2 bg-gray-200 rounded-full'></Link>
-              <Link href={"#fragrances"} className='h-2 w-2 bg-gray-200 rounded-full'></Link>
-              <Link href={"#fabrics"} className='h-2 w-2 bg-gray-200 rounded-full'></Link>
-        </div>
       </div>
     )
 }
