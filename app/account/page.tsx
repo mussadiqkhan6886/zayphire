@@ -3,7 +3,7 @@ import React from 'react'
 
 const Account = () => {
   return (
-    <main className='pt-25 px-10 flex gap-5'>
+    <main className='pt-25 px-10 flex flex-col md:flex-row gap-5'>
       <section className='flex-2 py-10'>
          <h1 className='font-bold text-5xl'>Account</h1>
           <section className='mt-5'>
