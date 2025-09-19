@@ -11,7 +11,7 @@ await connectDB()
 export const GET = async (req: {req: NextRequest}, params: Props) => {
     const id = (await params).id
 
-    const res = await Product.findOne({id})
+    const res = await Product.findById({id})
 
     return NextResponse.json({success: true, res}, {status: 200})
 }
