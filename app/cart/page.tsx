@@ -56,17 +56,17 @@ export default function CartPage() {
 
       {/* Summary Section */}
       <section className="mt-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <p className="text-gray-600">
+        <p className="text-gray-600 text-sm">
           Shipping and taxes calculated at checkout.
         </p>
-        <div className="space-y-2 text-right">
+        <div className="space-y-2 text-right w-full md:w-[35%]">
           <p className="text-lg font-semibold">
             Subtotal: <span>PKR 5490</span>
           </p>
-          <button className="bg-black text-white px-20 cursor-pointer py-2">
+          <button className="bg-black text-white text-sm  w-full cursor-pointer py-2">
             Proceed to Checkout
           </button>
-          <button className="bg-white border w-full text-black block px-20 cursor-pointer py-2">
+          <button className="bg-white text-sm border w-full text-black block  cursor-pointer py-2">
             Continue Shopping
           </button>
         </div>
