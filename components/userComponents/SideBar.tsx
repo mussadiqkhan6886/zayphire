@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import Dropdown from './ExpandNav';
-import {easeIn, easeInOut, motion} from "framer-motion"
+import {easeIn, easeInOut, motion, Transition} from "framer-motion"
 
 
 const SideBar = ({viewSidebar , setViewSideBar}: { viewSidebar: boolean , setViewSideBar: React.Dispatch<React.SetStateAction<boolean>>}) => {
@@ -20,7 +20,7 @@ const SideBar = ({viewSidebar , setViewSideBar}: { viewSidebar: boolean , setVie
   const transition = {
     type: "tween",
     duration: 0.2
-  }
+  } as Transition
 
   return (
     <motion.aside initial={"close"} transition={transition} animate={'open'} variants={variants}  className='absolute text-black border-r border-black bg-white left-0 top-0 h-screen w-[320px] sm:w-[370px] md:w-[450px]  py-5 px-14 md:px-24'>
