@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 
 const productSchema = new Schema(
   {
-    name: { type: String, required: true, trim: true },
+    name: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
     discountPrice: { type: Number },
@@ -11,9 +11,11 @@ const productSchema = new Schema(
     brand: { type: String },
     inStock: { type: Boolean, default: true },
     images: [{ type: String, required: true }],
-    color: { type: String, required:  true },
+    color: { type: String},
     gender: { type: String, enum: ["men", "women", "unisex"], required:  true },
     isNewArrival: { type: Boolean, default: true },
+    isSale: {type: Boolean, default: false},
+    type: {type: String, default: "Unstitched"}
   },
   { timestamps: true }
 );
