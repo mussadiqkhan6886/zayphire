@@ -68,6 +68,7 @@ const AddProduct = () => {
         <div>
           <label className="block font-semibold mb-1">Product Name</label>
           <input
+            name="name"
             value={data.name}
             onChange={handleChange}
             type="text"
@@ -81,6 +82,7 @@ const AddProduct = () => {
         <div>
           <label className="block font-semibold mb-1">Description</label>
           <textarea
+            name="description"
             value={data.description}
             onChange={handleChange}
             placeholder="Write product details..."
@@ -94,6 +96,7 @@ const AddProduct = () => {
         <div>
           <label className="block font-semibold mb-1">Price ($)</label>
           <input
+            name="price"
             value={data.price}
             onChange={handleChange}
             type="number"
@@ -107,6 +110,7 @@ const AddProduct = () => {
         <div>
           <label className="block font-semibold mb-1">Brand</label>
           <input
+            name="brand"
             value={data.brand}
             onChange={handleChange}
             type="text"
@@ -117,6 +121,7 @@ const AddProduct = () => {
         <div>
           <label className="block font-semibold mb-1">Color</label>
           <input
+            name="color"
             value={data.color}
             onChange={handleChange}
             type="text"
@@ -127,6 +132,7 @@ const AddProduct = () => {
         <div>
           <label className="block font-semibold mb-1">Gender</label>
           <input
+            name="gender"
             value={data.gender}
             onChange={handleChange}
             type="text"
@@ -138,7 +144,7 @@ const AddProduct = () => {
         {/* Category */}
         <div>
           <label className="block font-semibold mb-1">Category</label>
-          <select value={data.category} onChange={handleChange} className="w-full border rounded-lg p-2" required>
+          <select name="category" value={data.category} onChange={handleChange} className="w-full border rounded-lg p-2" required>
             <option value="">-- Select Category --</option>
             {categories.map((cat, idx) => (
               <option key={idx} value={cat}>
