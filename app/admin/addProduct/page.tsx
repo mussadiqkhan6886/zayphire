@@ -15,6 +15,7 @@ const AddProduct = () => {
     brand: "",
     gender: "",
     color: "",
+    length: ""
   });
 
   const categories = ["men-fabric", "men-fragrance", "men-accessories", "men-tshirt"];
@@ -45,6 +46,7 @@ const AddProduct = () => {
     formData.append("category", data.category);
     formData.append("color", data.color);
     formData.append("gender", data.gender);
+    formData.append("length", data.length)
 
     files.forEach((file) => {
       formData.append("images", file); // ✅ send real files
@@ -61,6 +63,7 @@ const AddProduct = () => {
           brand: "",
           gender: "",
           color: "",
+          length: ""
         });
         setFiles([]);
         setPreviews([]);
@@ -128,6 +131,17 @@ const AddProduct = () => {
           <input
             name="brand"
             value={data.brand}
+            onChange={handleChange}
+            type="text"
+            placeholder="e.g. Apple"
+            className="w-full border rounded-lg p-2"
+          />
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Length</label>
+          <input
+            name="length"
+            value={data.length}
             onChange={handleChange}
             type="text"
             placeholder="e.g. Apple"
