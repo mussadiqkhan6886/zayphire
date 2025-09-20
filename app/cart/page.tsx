@@ -1,8 +1,23 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import { FaTrash } from "react-icons/fa";
 
 export default function CartPage() {
+
+  const increment = () => {
+
+  }
+
+  const decrement =  () => {
+
+  }
+
+  const removeItem = () => {
+    
+  } 
+
   return (
     <main className="pt-24 px-6 lg:px-20">
       {/* Page Heading */}
@@ -38,14 +53,14 @@ export default function CartPage() {
 
           {/* Quantity Controls */}
           <div className="flex justify-start gap-3">
-            <button className="w-8 h-8 flex items-center justify-center border rounded hover:bg-gray-100">
+            <button onClick={decrement} className="w-8 h-8 flex items-center justify-center border rounded hover:bg-gray-100">
               -
             </button>
-            <p className="w-8 text-center">3</p>
-            <button className="w-8 h-8 flex items-center justify-center border rounded hover:bg-gray-100">
+            <p  className="w-8 text-center">3</p>
+            <button onClick={increment} className="w-8 h-8 flex items-center justify-center border rounded hover:bg-gray-100">
               +
             </button>
-            <button className="ml-3 flex justify-start items-start pt-2 text-red-500 hover:text-red-700">
+            <button onClick={removeItem} className="ml-3 flex justify-start items-start pt-2 text-red-500 hover:text-red-700">
               <FaTrash />
             </button>
           </div>

@@ -41,14 +41,15 @@ const Men = () => {
           />
         </SwiperSlide>
         <SwiperSlide>
-          <Image
-          id="fabrics"
+          <video
+            id="fabrics"
             className="w-full h-screen object-cover"
             width={1000}
             height={1000}
-            src="/main (1).jpg"
-            alt="main"
+            src="/fabric.mp4"
+            autoPlay
           />
+        
         </SwiperSlide>
         <SwiperSlide>
             <Footer />

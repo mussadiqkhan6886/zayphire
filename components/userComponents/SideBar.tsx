@@ -5,10 +5,10 @@ import Link from 'next/link';
 import React, { useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import Dropdown from './ExpandNav';
-import {easeIn, easeInOut, motion, Transition} from "framer-motion"
+import {motion, Transition} from "framer-motion"
 
 
-const SideBar = ({viewSidebar , setViewSideBar}: { viewSidebar: boolean , setViewSideBar: React.Dispatch<React.SetStateAction<boolean>>}) => {
+const SideBar = ({setViewSideBar}: { setViewSideBar: React.Dispatch<React.SetStateAction<boolean>>}) => {
 
   const [menu, setMenu] = useState("men")
 
@@ -45,7 +45,8 @@ const SideBar = ({viewSidebar , setViewSideBar}: { viewSidebar: boolean , setVie
             <li className='flex justify-between my-2 items-center w-full'>
               <Dropdown menu={menu} setViewSideBar={setViewSideBar} />
             </li>
-            <li onClick={() => setViewSideBar(false)} className='text-sm my-2 mb-15'><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='text-sm my-2 '><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='text-sm my-2 mb-15'><Link href={`/collection/${menu}-accessories`}>ACCESSORIES</Link></li>
             <li onClick={() => setViewSideBar(false)} className='text-sm'><Link href={`/track-order`}>TRACK YOUR ORDER</Link></li>
             </>
           )}

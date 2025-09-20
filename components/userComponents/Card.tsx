@@ -5,7 +5,7 @@ import React from 'react'
 interface Props {
   img: string
   price: number
-  color: number
+  color: string
   gender: string
   category: string
   id: string
@@ -24,7 +24,7 @@ const Card = ({img, price, color, gender, category, id, name, sale, newPrice}: P
         <div className='leading-2'>
           <h4>{name}</h4>
           <div className='text-gray-400  text-sm mb-2'>
-            <span className='border-r border-gray-400 pr-2 mr-2'>{color} colors</span>
+            <span className='border-r border-gray-400 pr-2 mr-2'>{color} color</span>
             <span>{gender} </span>
           </div>
         </div>

@@ -13,5 +13,5 @@ export const GET = async (req: {req: NextRequest}, params: Props) => {
 
     const res = await Product.findById({id})
 
-    return NextResponse.json({success: true, res}, {status: 200})
+    return NextResponse.json({success: true, product:res}, {status: 200})
 }

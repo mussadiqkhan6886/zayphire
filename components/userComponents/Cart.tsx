@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { FaTimes } from 'react-icons/fa'
-import { motion } from "framer-motion"
+import { motion, Transition } from "framer-motion"
 
 const Cart = ({setCart}: {setCart: React.Dispatch<React.SetStateAction<boolean>>}) => {
    const variants = {
@@ -13,7 +13,7 @@ const Cart = ({setCart}: {setCart: React.Dispatch<React.SetStateAction<boolean>>
   const transition = {
     type: "tween",
     duration: 0.2
-  }
+  } as Transition
 
   return (
     <motion.div transition={transition} animate={"open"} initial="close" variants={variants} className='absolute text-black border-l border-black bg-white right-0 top-0 h-screen w-[320px] sm:w-[370px] md:w-[450px]'>
