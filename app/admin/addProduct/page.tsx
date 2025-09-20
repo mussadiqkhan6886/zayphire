@@ -18,7 +18,7 @@ const AddProduct = () => {
     length: ""
   });
 
-  const categories = ["men-fabric", "men-fragrance", "men-accessories", "men-tshirt"];
+  const categories = ["men-fabric", "men-fragrance", "men-accessories", "men-tshirt", "women-accessories", "women-fragrance"];
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -167,6 +167,7 @@ const AddProduct = () => {
             onChange={handleChange}
             type="text"
             placeholder="e.g. women men"
+            required
             className="w-full border rounded-lg p-2"
           />
         </div>
@@ -190,6 +191,7 @@ const AddProduct = () => {
           <input
             type="file"
             multiple
+            required
             accept="image/*"
             onChange={handleImageChange}
             className="w-full border rounded-lg p-2"
