@@ -1,15 +1,31 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
+import axios from "axios"
 
 const AddProduct = () => {
   const [images, setImages] = useState<string[]>([]);
+  const [data, setData] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category: "",
+    brand: "",
+    gender: "",
+    color: "",
+  })
 
   const categories = [
     "men-fabric",
     "men-fragrance",
+    "men-accessories",
+    "men-tshirt"
   ];
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setData({...data, [e.target.name]: e.target.value})
+  }
 
   // Handle image preview
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,17 +35,41 @@ const AddProduct = () => {
     setImages((prev) => [...prev, ...previews]);
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("price", data.price);
+    formData.append("description", data.description);
+    formData.append("brand", data.brand);
+    formData.append("category", data.category);
+    formData.append("color", data.color);
+    formData.append("gender", data.gender);
+
+    if (images) {
+      for (let i = 0; i < images.length; i++) {
+        formData.append("images", images[i]);
+      }
+    }
+
+    const res = await axios.post("/api/admin/addproduct", formData);
+
+    console.log(res);
+  };
+
   return (
     <main className="p-6">
       <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">
         <FaPlusCircle /> Add New Product
       </h1>
 
-      <form className="grid gap-4">
+      <form className="grid gap-4" onSubmit={handleSubmit}>
         {/* Product Name */}
         <div>
           <label className="block font-semibold mb-1">Product Name</label>
           <input
+            value={data.name}
+            onChange={handleChange}
             type="text"
             placeholder="e.g. iPhone 15 Pro"
             className="w-full border rounded-lg p-2"
@@ -41,6 +81,8 @@ const AddProduct = () => {
         <div>
           <label className="block font-semibold mb-1">Description</label>
           <textarea
+            value={data.description}
+            onChange={handleChange}
             placeholder="Write product details..."
             className="w-full border rounded-lg p-2"
             rows={4}
@@ -52,6 +94,8 @@ const AddProduct = () => {
         <div>
           <label className="block font-semibold mb-1">Price ($)</label>
           <input
+            value={data.price}
+            onChange={handleChange}
             type="number"
             placeholder="e.g. 999"
             className="w-full border rounded-lg p-2"
@@ -63,8 +107,30 @@ const AddProduct = () => {
         <div>
           <label className="block font-semibold mb-1">Brand</label>
           <input
+            value={data.brand}
+            onChange={handleChange}
             type="text"
             placeholder="e.g. Apple"
+            className="w-full border rounded-lg p-2"
+          />
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Color</label>
+          <input
+            value={data.color}
+            onChange={handleChange}
+            type="text"
+            placeholder="e.g. black"
+            className="w-full border rounded-lg p-2"
+          />
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Gender</label>
+          <input
+            value={data.gender}
+            onChange={handleChange}
+            type="text"
+            placeholder="e.g. women men"
             className="w-full border rounded-lg p-2"
           />
         </div>
@@ -72,7 +138,7 @@ const AddProduct = () => {
         {/* Category */}
         <div>
           <label className="block font-semibold mb-1">Category</label>
-          <select className="w-full border rounded-lg p-2" required>
+          <select value={data.category} onChange={handleChange} className="w-full border rounded-lg p-2" required>
             <option value="">-- Select Category --</option>
             {categories.map((cat, idx) => (
               <option key={idx} value={cat}>
