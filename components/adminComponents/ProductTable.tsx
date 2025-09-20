@@ -103,9 +103,10 @@ const rows = [
     category: 'Clothing',
     createdAt: '2025-09-08',
   },
+
 ];
 
-const paginationModel = { page: 0, pageSize: 10 };
+const paginationModel = { page: 0, pageSize: 9 };
 
 export default function ProductTable() {
 
@@ -116,11 +117,10 @@ export default function ProductTable() {
         rows={rows}
         columns={columns}
         initialState={{ pagination: { paginationModel } }}
-        pageSizeOptions={[5, 10, 20]}
+        pageSizeOptions={[5, 9]}
         disableRowSelectionOnClick
         showToolbar
         disableColumnSelector
-        
         sx={{ border: 0 }}
       />
     </Paper>

@@ -74,12 +74,12 @@ const AddProduct = () => {
   };
 
   return (
-    <main className="p-6">
+    <main className="p-6 flex flex-col justify-center items-center lg:px-20 md:px-17 px-5">
       <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">
         <FaPlusCircle /> Add New Product
       </h1>
 
-      <form className="grid gap-4" onSubmit={handleSubmit}>
+      <form className="grid gap-4 w-full md:w-[50%]" onSubmit={handleSubmit}>
         {/* Product Name */}
         <div>
           <label className="block font-semibold mb-1">Product Name</label>
