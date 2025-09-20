@@ -3,50 +3,29 @@
 import * as React from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
-import {FaTrash, FaEdit} from "react-icons/fa";
+import { FaTrash, FaEdit } from "react-icons/fa";
 import Link from 'next/link';
-import { randomUUID } from 'crypto';
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 70 },
-
+  { field: '_id', headerName: 'ID', width: 200 },
+  { 
+    field: 'images', 
+    headerName: 'Image', 
+    width: 100,
+    renderCell: (params) => (
+      <img 
+        src={params.value?.[0]} 
+        alt={params.row.name} 
+        className="w-12 h-12 object-cover rounded"
+      />
+    )
+  },
   { field: 'name', headerName: 'Product Name', flex: 1, minWidth: 150 },
-
   { field: 'brand', headerName: 'Brand', width: 130 },
-
-  {
-    field: 'price',
-    headerName: 'Price ($)',
-    type: 'number',
-    width: 120,
-  },
-
-  {
-    field: 'inStock',
-    headerName: 'In Stock',
-    width: 120,
-    type: 'boolean',
-  },
-
-  {
-    field: 'onSale',
-    headerName: 'On Sale',
-    width: 120,
-    type: 'boolean',
-  },
-
-  {
-    field: 'category',
-    headerName: 'Category',
-    width: 150,
-  },
-
-  {
-    field: 'createdAt',
-    headerName: 'Created At',
-    width: 180,
-  },
-
+  { field: 'price', headerName: 'Price ($)', type: 'number', width: 120 },
+  { field: 'inStock', headerName: 'In Stock', width: 120, type: 'boolean' },
+  { field: 'isSale', headerName: 'On Sale', width: 120, type: 'boolean' },
+  { field: 'category', headerName: 'Category', width: 150 },
   {
     field: 'actions',
     headerName: 'Actions',
@@ -54,31 +33,27 @@ const columns: GridColDef[] = [
     width: 120,
     renderCell: (params) => (
       <div className='flex items-center gap-5'>
-        <Link href={"/admin/updateProduct/:id"}>
+        <Link href={`/admin/updateProduct/${params.row._id}`}>
           <FaEdit />
         </Link>
-          <FaTrash />
+        <FaTrash />
       </div>
     ),
   },
 ];
 
-
 const paginationModel = { page: 0, pageSize: 9 };
 
-export default function ProductTable({res}: {res: any}) {
-
-  console.log(res)
+export default function ProductTable({ res }: { res: any }) {
   return (
     <Paper sx={{ height: "100%", width: '100%' }}>
       <DataGrid
-        getRowId={randomUUID}
+        getRowId={(row) => row._id}
         rows={res}
         columns={columns}
         initialState={{ pagination: { paginationModel } }}
         pageSizeOptions={[5, 9]}
         disableRowSelectionOnClick
-        showToolbar
         disableColumnSelector
         sx={{ border: 0 }}
       />
