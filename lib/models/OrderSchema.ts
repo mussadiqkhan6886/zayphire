@@ -17,7 +17,7 @@ export interface IOrder extends Document {
     country: string;
     postalCode: string;
   };
-  paymentMethod: "COD" | "card" | "paypal";
+  paymentMethod: "COD";
   createdAt: Date;
 }
 
@@ -52,7 +52,6 @@ const orderSchema = new Schema<IOrder>(
 
     paymentMethod: {
       type: String,
-      enum: ["COD", "card", "paypal"],
       default: "COD",
     },
   },
