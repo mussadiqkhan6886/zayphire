@@ -1,11 +1,12 @@
-'use client';
-
+"use client";
 import React, { ChangeEvent, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import axios from "axios"
+import axios from "axios";
 
 const AddProduct = () => {
-  const [images, setImages] = useState<string[]>([]);
+  const [files, setFiles] = useState<File[]>([]);       // store real files
+  const [previews, setPreviews] = useState<string[]>([]); // store preview URLs
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
     name: "",
     description: "",
@@ -14,28 +15,27 @@ const AddProduct = () => {
     brand: "",
     gender: "",
     color: "",
-  })
+  });
 
-  const categories = [
-    "men-fabric",
-    "men-fragrance",
-    "men-accessories",
-    "men-tshirt"
-  ];
+  const categories = ["men-fabric", "men-fragrance", "men-accessories", "men-tshirt"];
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setData({...data, [e.target.name]: e.target.value})
-  }
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
 
-  // Handle image preview
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
-    const files = Array.from(e.target.files);
-    const previews = files.map((file) => URL.createObjectURL(file));
-    setImages((prev) => [...prev, ...previews]);
+    const selectedFiles = Array.from(e.target.files);
+    setFiles((prev) => [...prev, ...selectedFiles]);
+
+    const newPreviews = selectedFiles.map((file) => URL.createObjectURL(file));
+    setPreviews((prev) => [...prev, ...newPreviews]);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    setLoading(true)
     e.preventDefault();
     const formData = new FormData();
     formData.append("name", data.name);
@@ -46,15 +46,13 @@ const AddProduct = () => {
     formData.append("color", data.color);
     formData.append("gender", data.gender);
 
-    if (images) {
-      for (let i = 0; i < images.length; i++) {
-        formData.append("images", images[i]);
-      }
-    }
+    files.forEach((file) => {
+      formData.append("images", file); // ✅ send real files
+    });
 
-    try{
+    try {
       const res = await axios.post("/api/admin/addproduct", formData);
-      if(res.status !== 500){
+      if (res.status === 201) {
         setData({
           name: "",
           description: "",
@@ -63,12 +61,16 @@ const AddProduct = () => {
           brand: "",
           gender: "",
           color: "",
-        })
+        });
+        setFiles([]);
+        setPreviews([]);
       }
-    }catch(err: any){
-      console.log(err.message)
+      console.log(res)
+    } catch (err: any) {
+      console.log(err.message);
+    } finally{
+      setLoading(false)
     }
-    
   };
 
   return (
@@ -179,10 +181,9 @@ const AddProduct = () => {
             className="w-full border rounded-lg p-2"
           />
 
-          {/* Preview Images */}
-          {images.length > 0 && (
+          {previews.length > 0 && (
             <div className="flex flex-wrap gap-3 mt-4">
-              {images.map((url, idx) => (
+              {previews.map((url, idx) => (
                 <img
                   key={idx}
                   src={url}
@@ -198,7 +199,7 @@ const AddProduct = () => {
           type="submit"
           className="bg-black cursor-pointer text-white px-4 py-2 mt-4"
         >
-          Add Product
+          {loading ? "Loading..." : 'Add Product'}
         </button>
       </form>
     </main>

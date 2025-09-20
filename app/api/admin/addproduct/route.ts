@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import cloudinary from "@/lib/config/cloudinary";
 import Product from "@/lib/models/ProductSchema";
+import { connectDB } from "@/lib/config/database";
 
 export const runtime = "nodejs"; // Needed for Cloudinary
 
 export async function POST(req: NextRequest) {
+  await connectDB()
   try {
     const formData = await req.formData();
 

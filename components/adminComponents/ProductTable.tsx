@@ -108,6 +108,8 @@ const rows = [
 const paginationModel = { page: 0, pageSize: 10 };
 
 export default function ProductTable() {
+
+ 
   return (
     <Paper sx={{ height: "100%", width: '100%' }}>
       <DataGrid
