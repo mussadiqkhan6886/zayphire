@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/config/database";
-import { NextRequest, NextResponse } from "next/server";
+import {  NextResponse } from "next/server";
 import Product from "@/lib/models/ProductSchema";
 
 
