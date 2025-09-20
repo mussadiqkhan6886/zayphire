@@ -52,9 +52,23 @@ const AddProduct = () => {
       }
     }
 
-    const res = await axios.post("/api/admin/addproduct", formData);
-
-    console.log(res);
+    try{
+      const res = await axios.post("/api/admin/addproduct", formData);
+      if(res.status !== 500){
+        setData({
+          name: "",
+          description: "",
+          price: "",
+          category: "",
+          brand: "",
+          gender: "",
+          color: "",
+        })
+      }
+    }catch(err: any){
+      console.log(err.message)
+    }
+    
   };
 
   return (
@@ -94,7 +108,7 @@ const AddProduct = () => {
 
         {/* Price */}
         <div>
-          <label className="block font-semibold mb-1">Price ($)</label>
+          <label className="block font-semibold mb-1">Price </label>
           <input
             name="price"
             value={data.price}
@@ -182,7 +196,7 @@ const AddProduct = () => {
 
         <button
           type="submit"
-          className="bg-black text-white px-4 py-2 mt-4"
+          className="bg-black cursor-pointer text-white px-4 py-2 mt-4"
         >
           Add Product
         </button>
