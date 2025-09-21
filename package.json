@@ -16,6 +16,7 @@
     "@mui/x-data-grid": "^8.11.3",
     "bcryptjs": "^3.0.2",
     "cloudinary": "^2.7.0",
+    "emailjs": "^4.0.3",
     "framer-motion": "^12.23.12",
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",

@@ -8,7 +8,29 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function OrderTable({ res }: { res: any[] }) {
-  const [rows, setRows] = React.useState(res);
+  const [rows, setRows] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    if (res?.length > 0) {
+      const mappedRows = res.map((order) => ({
+        _id: order._id,
+        orderId: order.orderId,
+        status: order.status,
+        totalPrice: order.totalPrice,
+        // take first item for now
+        name: order.items?.[0]?.name || "N/A",
+        price: order.items?.[0]?.price || 0,
+        quantity: order.items?.[0]?.quantity || 0,
+        images: order.items?.[0]?.images || [],
+        fullName: order.userDetails?.fullName || "",
+        phone: order.userDetails?.phone || "",
+        email: order.userDetails?.email || "",
+        city: order.shippingAddress?.city || "",
+        address: order.shippingAddress?.address || "",
+      }));
+      setRows(mappedRows);
+    }
+  }, [res]);
 
   const columns: GridColDef[] = [
     { field: 'orderId', headerName: 'ID', width: 100 },
@@ -16,37 +38,38 @@ export default function OrderTable({ res }: { res: any[] }) {
       field: 'images',
       headerName: 'Image',
       width: 100,
-      renderCell: (params) => (
-        <Image
-          width={50}
-          height={50}
-          src={params.value?.[0]}
-          alt={params.row.name}
-          className="w-12 h-12 object-cover rounded"
-        />
-      ),
+      renderCell: (params) =>
+        params.value?.length > 0 ? (
+          <Image
+            width={50}
+            height={50}
+            src={params.value[0]}
+            alt={params.row.name}
+            className="w-12 h-12 object-cover rounded"
+          />
+        ) : (
+          <span>No Image</span>
+        ),
     },
     { field: 'name', headerName: 'Product Name', flex: 1, minWidth: 150 },
-    { field: 'status', headerName: 'Status', width: 80 },
-    { field: 'price', headerName: 'Price', type: 'number', width: 80 },
-    { field: 'quantity', headerName: 'Quantity', width: 80, type: 'number' },
-    { field: 'totalPrice', headerName: 'Total Price', width: 80, type: 'number' },
-    { field: 'fullName', headerName: 'Name', width: 110 },
-    { field: 'phone', headerName: 'Phone', width: 110 },
-    { field: 'email', headerName: 'Email', width: 110 },
-    { field: "city", headerName: "City", width: 110},
-    { field: "address", headerName: "Address", width: 110},
+    { field: 'status', headerName: 'Status', width: 100 },
+    { field: 'price', headerName: 'Price', type: 'number', width: 100 },
+    { field: 'quantity', headerName: 'Quantity', type: 'number', width: 100 },
+    { field: 'totalPrice', headerName: 'Total Price', type: 'number', width: 120 },
+    { field: 'fullName', headerName: 'Name', width: 150 },
+    { field: 'phone', headerName: 'Phone', width: 120 },
+    { field: 'email', headerName: 'Email', width: 180 },
+    { field: 'city', headerName: 'City', width: 120 },
+    { field: 'address', headerName: 'Address', width: 180 },
     {
       field: 'actions',
       headerName: 'Actions',
       sortable: false,
       width: 80,
       renderCell: (params) => (
-        <div className="flex items-center gap-5 pt-3">
-          <Link href={`/admin/updateOrderStatus/${params.row._id}`}>
-            <FaEdit />
-          </Link>
-        </div>
+        <Link href={`/admin/updateOrderStatus/${params.row._id}`} className="pt-2">
+          <FaEdit />
+        </Link>
       ),
     },
   ];

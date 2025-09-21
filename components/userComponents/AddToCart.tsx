@@ -6,7 +6,7 @@
 
     const AddToCart = ({ data }: { data: any }) => {
     let { cart, setCart } = useView();
-
+    
   
 
     const addToBasket = () => {
@@ -27,7 +27,9 @@
               name: data.name,
               price: data.price,
               quantity: 1,
-              images: data.images || [],
+              images: data.images,
+              color: data.color,
+              size: data.length
             },
           ];
         }

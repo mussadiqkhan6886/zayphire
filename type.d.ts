@@ -4,6 +4,8 @@ type CartItem = {
   price: number;
   quantity: number;
   images: string[]; // required
+  color?: string
+  size?: string
 };
 
 

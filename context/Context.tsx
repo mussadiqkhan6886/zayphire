@@ -2,14 +2,6 @@
 
 import { createContext, Dispatch, SetStateAction, useEffect, useState } from "react";
 
-export type CartItem = {
-  productId: string;
-  name: string;
-  price: number;
-  quantity: number;
-  images?: string[];
-};
-
 type ViewContextType = {
   view: boolean;
   setView: (newView: boolean) => void;
