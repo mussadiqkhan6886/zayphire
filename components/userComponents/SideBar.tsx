@@ -40,14 +40,14 @@ const SideBar = ({setViewSideBar}: { setViewSideBar: React.Dispatch<React.SetSta
         <ul className='leading-10'>
           {menu !== "men" ? <h2 className='text-4xl text-center font-semibold'>COMING SOON</h2> : (
             <>
-            <li onClick={() => setViewSideBar(false)} className='mb-10 text-sm'><Link href={`/collection/${menu}-new`}>NEW IN</Link></li>
-            <li onClick={() => setViewSideBar(false)} className='mb-10 text-sm'><Link href={`/collection/${menu}-sale`}>SALE</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='mb-10 text-sm hover:font-semibold'><Link href={`/collection/${menu}-new`}>NEW IN</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='mb-10 text-sm hover:font-semibold'><Link href={`/collection/${menu}-sale`}>SALE</Link></li>
             <li className='flex justify-between my-2 items-center w-full'>
               <Dropdown menu={menu} setViewSideBar={setViewSideBar} />
             </li>
-            <li onClick={() => setViewSideBar(false)} className='text-sm my-2 '><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li>
-            <li onClick={() => setViewSideBar(false)} className='text-sm my-2 mb-15'><Link href={`/collection/${menu}-accessories`}>ACCESSORIES</Link></li>
-            <li onClick={() => setViewSideBar(false)} className='text-sm'><Link href={`/track-order`}>TRACK YOUR ORDER</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 mb-15'><Link href={`/collection/${menu}-accessories`}>ACCESSORIES</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold'><Link href={`/track-order`}>TRACK YOUR ORDER</Link></li>
             </>
           )}
           

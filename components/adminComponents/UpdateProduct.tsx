@@ -3,6 +3,7 @@
 import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const categories = [
   "men-fabric",
@@ -18,6 +19,7 @@ const UpdateProduct = ({ data }: {data: any}) => {
   const [previews, setPreviews] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({ ...data });
+  const router = useRouter()
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -58,6 +60,7 @@ const UpdateProduct = ({ data }: {data: any}) => {
 
       if (res.status === 200) {
         toast.success("Product updated successfully!");
+        router.push("/admin/productList")
       }
     } catch (err: any) {
       console.error(err.message);

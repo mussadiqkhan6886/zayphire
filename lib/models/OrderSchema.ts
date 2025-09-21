@@ -1,7 +1,8 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 export interface IOrder extends Document {
-  user: mongoose.Types.ObjectId; // 👈 reference to User
+  orderId: string; 
   items: {
     product: mongoose.Types.ObjectId; // reference to Product
     name: string;
@@ -21,13 +22,14 @@ export interface IOrder extends Document {
   createdAt: Date;
 }
 
-const orderSchema = new Schema<IOrder>(
+const orderSchema = new Schema(
   {
-    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    orderId: { type: String, default: () => uuidv4() },
 
     items: [
       {
-        product: { type: Schema.Types.ObjectId, ref: "Product", required: true },
+        // product: { type: Schema.Types.ObjectId, ref: "Product", required: true },
+        productId: {type:String, required: true},
         name: { type: String, required: true },
         price: { type: Number, required: true },
         quantity: { type: Number, required: true },
@@ -35,7 +37,12 @@ const orderSchema = new Schema<IOrder>(
     ],
 
     totalPrice: { type: Number, required: true },
-
+    userDetails: {
+      fullName: {type: String, required: true},
+      phone: {type: String, required: true},
+      email: {type: String, required: true}
+    },
+    notes: {type: String},
     status: {
       type: String,
       enum: ["pending", "processing", "shipped", "delivered", "cancelled"],
@@ -43,11 +50,9 @@ const orderSchema = new Schema<IOrder>(
     },
 
     shippingAddress: {
-      street: { type: String },
       city: { type: String },
-      state: { type: String },
-      country: { type: String },
       postalCode: { type: String },
+      address: {type: String, required: true}
     },
 
     paymentMethod: {

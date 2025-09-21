@@ -13,6 +13,10 @@ export const GET = async () => {
 
 export const POST = async (req: NextRequest) => {
     const data = await req.json()
-
-    await OrderSchema.create({data})
+    try{
+        const res = await OrderSchema.create({data})
+        return NextResponse.json({success:true, orders:res}, {status: 201})
+    }catch(err: any){
+        return NextResponse.json({success:false, message: err.message}, {status:500})
+    }
 }

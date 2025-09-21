@@ -2,6 +2,9 @@
 import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import CheckoutHeader from "@/components/userComponents/CheckoutHeader";
+import useView from "@/hooks/useView";
+import emailjs from "emailjs"
+import axios from "axios";
 
 const Checkout = () => {
   const router = useRouter()
@@ -15,7 +18,7 @@ const Checkout = () => {
     notes: "",
   });
 
-  // const { cartValue, totalAmount, all_products } = useContext(ShopContext);
+  const {cart} = useView()
   const [status, setStatus] = useState("");
 
   // const cartItems = Object.entries(cartValue)
@@ -33,64 +36,96 @@ const Checkout = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-//   const generateProductList = () => {
-//   return cartItems
-//     .map(
-//       (item) => `Product: ${item.name} | Quantity: ${item.quantity} | Total: ${item.price * item.quantity} PKR`
-//     )
-//     .join("\n");
-// };
+  const generateProductList = () => {
+  return cart
+    .map(
+      (item) => `Product: ${item.name} | Quantity: ${item.quantity} | Total: ${item.price * item.quantity} PKR`
+    )
+    .join("\n");
+};
 
+  const generateTotalAmount = () => {
+    let res;
+    cart.map(item => {
+      res += item.price * item.quantity
+    })
 
-  // const handleSubmit = (e: FormEvent) => {
-  //   e.preventDefault();
-  //   setStatus("Sending...");
+    return res
+  }
 
-  //   const templateParams = {
-  //     fullName: formData.fullName,
-  //     phone: formData.phone,
-  //     email: formData.email,
-  //     address: formData.address,
-  //     city: formData.city,
-  //     postalCode: formData.postalCode || "No Postal Code",
-  //     notes: formData.notes || "No notes",
-  //     cartItems: generateProductList(),
-  //     totalAmount: `${totalAmount()} PKR`,
-  //   };
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("Sending...");
 
-  //   const serviceKey = "service_c8z7cbg"
-  //   const templateKey = "template_xnpp6hi"
-  //   const publicKey  = "PneOTVPQaXcM4CPRd"
+    const data = {
+      items: [{...cart}],
+      totalPrice: generateTotalAmount(),
+      userDetails: {
+        fullName: formData.fullName,
+        phone: formData.phone,
+        email: formData.email, 
+      },
+      note: formData.notes || "No Notes",
+      shippingAddress: {
+        city: formData.city,
+        postalCode: formData.postalCode || "No Postal Code",
+        address: formData.address
+      }
+    }
 
-  //   emailjs
-  //     .send(
-  //       serviceKey,       // replace with your actual service ID
-  //       templateKey,      // replace with your actual template ID
-  //       templateParams,
-  //       publicKey        // replace with your actual public key
-  //     )
-  //     .then(
-  //       () => {
-  //         setStatus("✅ Order placed successfully!");
-  //         setTimeout(() => {
-  //           nav('/')
-  //         }, (2000));
-  //         setFormData({
-  //           fullName: "",
-  //           phone: "",
-  //           email: "",
-  //           address: "",
-  //           city: "",
-  //           postalCode: "",
-  //           notes: "",
-  //         });
-  //       },
-  //       (err) => {
-  //         console.error(err);
-  //         setStatus("❌ Failed to place order. Try again later.");
-  //       }
-  //     );
-  // };
+    
+    const templateParams = {
+      fullName: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      address: formData.address,
+      city: formData.city,
+      postalCode: formData.postalCode || "No Postal Code",
+      notes: formData.notes || "No notes",
+      cartItems: generateProductList(),
+      totalAmount: `${generateTotalAmount()} PKR`,
+    };
+
+    try{
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/order`, data)
+      console.log(res)
+    }catch(err){
+      console.log(err)
+    }
+    
+    const serviceKey = process.env.serviceKey
+    const templateKey = process.env.templateKey
+    const publicKey  = process.env.publicKey
+
+    emailjs
+      .send(
+        serviceKey,       // replace with your actual service ID
+        templateKey,      // replace with your actual template ID
+        templateParams,
+        publicKey        // replace with your actual public key
+      )
+      .then(
+        () => {
+          setStatus("✅ Order placed successfully!");
+          setTimeout(() => {
+            router.push("/")
+          }, (2000));
+          setFormData({
+            fullName: "",
+            phone: "",
+            email: "",
+            address: "",
+            city: "",
+            postalCode: "",
+            notes: "",
+          });
+        },
+        (err) => {
+          console.error(err);
+          setStatus("❌ Failed to place order. Try again later.");
+        }
+      );
+  };
 
 
   return (
@@ -101,7 +136,7 @@ const Checkout = () => {
         <h1 className="text-3xl text-center font-bold mb-6 border-b border-gray-300 pb-2">Checkout</h1>
 
         <form
-          // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-2 gap-6  p-6 "
         >
           <div className="space-y-4">

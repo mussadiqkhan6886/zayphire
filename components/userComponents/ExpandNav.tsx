@@ -23,8 +23,8 @@ const Dropdown = ({menu, setViewSideBar}: {menu: string, setViewSideBar: React.D
       {/* Dropdown links */}
       {open && (
         <div className="my-2 text-sm ml-4 flex flex-col gap-1">
-          <Link onClick={() => setViewSideBar(false)} href={`/collection/${menu}-fabric`}>FABRICS</Link>
-          <Link onClick={() => setViewSideBar(false)} href={``}>T-SHIRTS <span className="text-red-700">coming soon</span></Link>
+          <Link className="hover:font-semibold" onClick={() => setViewSideBar(false)} href={`/collection/${menu}-fabric`}>FABRICS</Link>
+          <Link className="hover:font-semibold" onClick={() => setViewSideBar(false)} href={``}>T-SHIRTS <span className="text-red-700 ">coming soon</span></Link>
         </div>
       )}
     </div>
