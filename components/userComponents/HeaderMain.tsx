@@ -34,9 +34,9 @@ const Header = () => {
         {showSearch && <Search setShowSearch={setShowSearch} />}
         <Link href={"/account"}><FaUser className='cursor-pointer hidden md:block' /></Link>
         <div className='relative'>
-          <div className='absolute bg-red-700 text-white h-[10px] w-[10px]'>{total}</div>
-          <FaShoppingCart onClick={() => setShowCart(true)} className='cursor-pointer' />
-        </div>
+                  <div className='absolute bg-red-700 rounded-full text-center text-[12px] text-white h-[19px] w-[18px] -top-3 -right-2'>{total}</div>
+                  <FaShoppingCart onClick={() => setShowCart(true)} className='cursor-pointer' />
+                </div>
         {showCart && <Cart setShowCart={setShowCart} />}
       </div>
     </header>

@@ -1,5 +1,4 @@
 import AddToCart from '@/components/userComponents/addToCart'
-import MayLike from '@/components/userComponents/MayLike'
 import { instrumentSerif } from '@/lib/fonts/font'
 import axios from 'axios'
 import Image from 'next/image'
@@ -63,12 +62,6 @@ const Product = async ({params}: {params: Promise<{id:string}>}) => {
           {/* Add to Basket Button */}
           <AddToCart data={data} />
         </section>
-      </section>
-
-      {/* May Like Section */}
-      <section className="mt-16">
-        <h2 className="text-xl font-semibold mb-6">You May Also Like</h2>
-        <MayLike />
       </section>
     </main>
   )
