@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import { FaTrash, FaEdit } from "react-icons/fa";
 import Link from 'next/link';
 import axios from 'axios';
+import Image from 'next/image';
 
 export default function ProductTable({ res }: { res: any[] }) {
   const [rows, setRows] = React.useState(res);
@@ -26,7 +27,7 @@ export default function ProductTable({ res }: { res: any[] }) {
       headerName: 'Image',
       width: 100,
       renderCell: (params) => (
-        <img
+        <Image
           width={50}
           height={50}
           src={params.value?.[0]}
