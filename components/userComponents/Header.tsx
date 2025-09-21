@@ -15,8 +15,10 @@ const Header = () => {
 
   const [viewSidebar, setViewSidebar] = useState<boolean>(false)
   const [showSearch, setShowSearch] = useState<boolean>(false)
-  const [cart, setCart] = useState<boolean>(false)
-  const {view} = useView()
+  const {view, cart} = useView()
+  const [showCart, setShowCart] = useState<boolean>(false)
+
+  const total = cart.length
 
   return (
     <header className={`px-5 md:px-8 py-7 flex justify-between w-full fixed z-10 top-0 ${view ? "text-black" : "text-white"}`}>
@@ -31,8 +33,11 @@ const Header = () => {
         <FaSearch onClick={() => setShowSearch(true)} className='cursor-pointer' />
         {showSearch && <Search setShowSearch={setShowSearch} />}
         <Link href="/account"> <FaUser className='cursor-pointer hidden md:block' /></Link>
-        <FaShoppingCart onClick={() => setCart(true)} className='cursor-pointer' />
-        {cart && <Cart setCart={setCart} />}
+        <div className='relative'>
+          <div className='absolute bg-red-700 rounded-full text-center text-[12px] text-white h-[19px] w-[18px] -top-3 -right-2'>{total}</div>
+          <FaShoppingCart onClick={() => setShowCart(true)} className='cursor-pointer' />
+        </div>
+        {showCart && <Cart setShowCart={setShowCart} />}
       </div>
     </header>
   )

@@ -8,19 +8,23 @@ import {FiMenu} from "react-icons/fi"
 import {FaSearch, FaUser, FaShoppingCart} from "react-icons/fa"
 import Search from './Search'
 import Cart from './Cart'
+import useView from '@/hooks/useView';
 
 
 const Header = () => {
 
   const [viewSidebar, setViewSidebar] = useState<boolean>(false)
   const [showSearch, setShowSearch] = useState<boolean>(false)
-  const [cart, setCart] = useState<boolean>(false)
+  const [showCart, setShowCart] = useState<boolean>(false)
+  const {cart} = useView()
+
+  const total = cart.length
 
   return (
     <header className={`px-5 md:px-8 py-7 flex justify-between w-full fixed z-10 top-0 text-black`}>
       <div className='flex gap-10'>
         <FiMenu className='text-xl md:text-lg  cursor-pointer'  onClick={() => setViewSidebar(true)} />
-        {viewSidebar &&  <SideBar viewSidebar={viewSidebar} setViewSideBar={setViewSidebar} />}
+        {viewSidebar &&  <SideBar setViewSideBar={setViewSidebar} />}
         <Link href="/">
         <Image src={"/zayphireBlack.png"} alt="zayphire image logo main hero" width={100} className='w-[120px] md:w-full' height={100} />
         </Link>
@@ -29,8 +33,11 @@ const Header = () => {
         <FaSearch onClick={() => setShowSearch(true)} className='cursor-pointer' />
         {showSearch && <Search setShowSearch={setShowSearch} />}
         <Link href={"/account"}><FaUser className='cursor-pointer hidden md:block' /></Link>
-        <FaShoppingCart onClick={() => setCart(true)} className='cursor-pointer' />
-        {cart && <Cart setCart={setCart} />}
+        <div className='relative'>
+          <div className='absolute bg-red-700 text-white h-[10px] w-[10px]'>{total}</div>
+          <FaShoppingCart onClick={() => setShowCart(true)} className='cursor-pointer' />
+        </div>
+        {showCart && <Cart setShowCart={setShowCart} />}
       </div>
     </header>
   )
