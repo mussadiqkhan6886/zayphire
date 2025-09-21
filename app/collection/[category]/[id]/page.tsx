@@ -1,3 +1,4 @@
+import AddToCart from '@/components/userComponents/addToCart'
 import MayLike from '@/components/userComponents/MayLike'
 import { instrumentSerif } from '@/lib/fonts/font'
 import axios from 'axios'
@@ -60,9 +61,7 @@ const Product = async ({params}: {params: Promise<{id:string}>}) => {
           </div>
 
           {/* Add to Basket Button */}
-          <button className="text-black cursor-pointer bg-white px-6 py-3 text-sm w-full border">
-            Add to Basket
-          </button>
+          <AddToCart data={data} />
         </section>
       </section>
 
