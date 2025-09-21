@@ -1,10 +1,13 @@
 import React from 'react'
-import DataTable from '@/components/adminComponents/ProductTable'
+import axios from 'axios';
+import OrderTable from '@/components/adminComponents/OrderTable';
 
-const Orders = () => {
+const Orders = async () => {
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/order`);
+  console.log(res.data)
   return (
    <main className='h-full'>
-        <DataTable />
+        <OrderTable res={res.data.orders} />
     </main>
   )
 }

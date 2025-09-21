@@ -8,6 +8,7 @@ export interface IOrder extends Document {
     name: string;
     price: number;
     quantity: number;
+    image: string
   }[];
   totalPrice: number;
   status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
@@ -33,6 +34,7 @@ const orderSchema = new Schema(
         name: { type: String, required: true },
         price: { type: Number, required: true },
         quantity: { type: Number, required: true },
+        images: [{type: String}]
       },
     ],
 

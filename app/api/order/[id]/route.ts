@@ -13,9 +13,9 @@ export const GET = async ({params}: {params: Promise<{id: string}>}) => {
 export const PATCH = async ({params}: {params: Promise<{id: string}>}, req: NextRequest) => {
     const id = (await params).id
 
-    const data = await req.json()
+    const {status} = await req.json()
 
-    const update = await OrderSchema.findByIdAndUpdate(id, data)
+    const update = await OrderSchema.findByIdAndUpdate(id, {status}, {new: true})
 
     return NextResponse.json({success: true, order: update}, {status: 200})
 }
