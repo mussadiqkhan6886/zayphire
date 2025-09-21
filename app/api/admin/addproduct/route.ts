@@ -19,6 +19,8 @@ export async function POST(req: NextRequest) {
     const gender = formData.get("gender") as string
     const category = formData.get("category") as string
     const length = formData.get("length") as string
+    const fragranceType = formData.get("fragranceType") as string
+    const material = formData.get("material") as string
 
     // Extract files
     const files = formData.getAll("images") as File[];
@@ -53,6 +55,8 @@ export async function POST(req: NextRequest) {
       category,
       gender,
       length,
+      fragranceType,
+      material,
       images: uploadedImages,
     });
 
