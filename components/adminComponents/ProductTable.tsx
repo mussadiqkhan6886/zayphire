@@ -20,7 +20,7 @@ export default function ProductTable({ res }: { res: any[] }) {
   };
 
   const columns: GridColDef[] = [
-    { field: '_id', headerName: 'ID', width: 200 },
+    { field: 'productId', headerName: 'ID', width: 100 },
     {
       field: 'images',
       headerName: 'Image',
@@ -36,11 +36,11 @@ export default function ProductTable({ res }: { res: any[] }) {
       ),
     },
     { field: 'name', headerName: 'Product Name', flex: 1, minWidth: 150 },
-    { field: 'brand', headerName: 'Brand', width: 130 },
-    { field: 'price', headerName: 'Price ($)', type: 'number', width: 120 },
-    { field: 'inStock', headerName: 'In Stock', width: 120, type: 'boolean' },
-    { field: 'isSale', headerName: 'On Sale', width: 120, type: 'boolean' },
-    { field: 'category', headerName: 'Category', width: 150 },
+    { field: 'brand', headerName: 'Brand', width: 80 },
+    { field: 'price', headerName: 'Price', type: 'number', width: 80 },
+    { field: 'inStock', headerName: 'In Stock', width: 80, type: 'boolean' },
+    { field: 'isSale', headerName: 'On Sale', width: 80, type: 'boolean' },
+    { field: 'category', headerName: 'Category', width: 110 },
     {
       field: 'actions',
       headerName: 'Actions',

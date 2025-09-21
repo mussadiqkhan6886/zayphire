@@ -59,7 +59,7 @@ const AddProduct = () => {
       const res = await axios.post("/api/admin/addproduct", formData);
 
       if (res.status === 201) {
-        toast.success("✅ Product added successfully!");
+        toast.success("Product added successfully!");
         setData({
           name: "",
           description: "",
@@ -77,7 +77,7 @@ const AddProduct = () => {
       }
     } catch (err: any) {
       console.error(err.message);
-      toast.error("❌ Failed to add product. Try again.");
+      toast.error("Failed to add product. Try again.");
     } finally {
       setLoading(false);
     }
