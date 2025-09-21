@@ -5,9 +5,9 @@ import { NextRequest, NextResponse } from "next/server"
 export const GET = async ({params}: {params: Promise<{id: string}>}) => {
     await connectDB()
     const id = (await params).id
-    const res = await OrderSchema.findById({id})
+    const res = await OrderSchema.findOne({orderId: id})
 
-    return NextResponse.json({success:true, data: res}, {status: 201})
+    return NextResponse.json({success:true, order: res}, {status: 201})
 }
 
 export const PATCH = async ({params}: {params: Promise<{id: string}>}, req: NextRequest) => {

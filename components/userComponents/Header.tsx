@@ -26,16 +26,16 @@ const Header = () => {
         <FiMenu className='text-xl md:text-lg  cursor-pointer'  onClick={() => setViewSidebar(true)} />
         {viewSidebar &&  <SideBar setViewSideBar={setViewSidebar} />}
         <Link href="/">
-        <Image src={`${view  ? "/zayphireBlack.png" : "/zayphireGray.png"}`} alt="zayphire image logo main hero" width={200} className='w-[120px] md:w-full' height={100} />
+        <Image priority={true} src={`${view  ? "/zayphireBlack.png" : "/zayphireGray.png"}`} alt="zayphire image logo main hero" width={200} className='w-[120px] md:w-full' height={100} />
         </Link>
       </div>
       <div className='flex gap-4 md:gap-12'>
-        <FaSearch onClick={() => setShowSearch(true)} className='cursor-pointer' />
+        <FaSearch aria-label='search item' onClick={() => setShowSearch(true)} className='cursor-pointer' />
         {showSearch && <Search setShowSearch={setShowSearch} />}
-        <Link href="/account"> <FaUser className='cursor-pointer hidden md:block' /></Link>
+        <Link aria-label='account page icon ' href="/account"> <FaUser aria-label='go to account page' className='cursor-pointer hidden md:block' /></Link>
         <div className='relative'>
           <div className='absolute bg-red-700 rounded-full text-center text-[12px] text-white h-[19px] w-[18px] -top-3 -right-2'>{total}</div>
-          <FaShoppingCart onClick={() => setShowCart(true)} className='cursor-pointer' />
+          <FaShoppingCart aria-label='check shopping cart' onClick={() => setShowCart(true)} className='cursor-pointer' />
         </div>
         {showCart && <Cart setShowCart={setShowCart} />}
       </div>

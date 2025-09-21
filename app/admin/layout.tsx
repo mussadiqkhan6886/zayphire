@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast"
 
 export const metadata : Metadata = {
     title: "Admin panel zayphire",
-    description: "Admin panel of zayphire protected data",
+    description: "Admin panel of zayphire protected data where admin can change data and update it ",
     robots: {
     index: false,
     follow: false,

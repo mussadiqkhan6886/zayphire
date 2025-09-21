@@ -26,7 +26,7 @@ const Header = () => {
         <FiMenu className='text-xl md:text-lg  cursor-pointer'  onClick={() => setViewSidebar(true)} />
         {viewSidebar &&  <SideBar setViewSideBar={setViewSidebar} />}
         <Link href="/">
-        <Image src={"/zayphireBlack.png"} alt="zayphire image logo main hero" width={100} className='w-[120px] md:w-full' height={100} />
+        <Image priority={true} src={"/zayphireBlack.png"} alt="zayphire image logo main hero" width={100} className='w-[120px] md:w-full' height={100} />
         </Link>
       </div>
       <div className='flex gap-4 md:gap-12'>

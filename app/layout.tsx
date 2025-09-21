@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   },
   description:
     "Shop premium perfumes, fashion, and accessories at Zayphire. High-quality products, secure checkout, and fast delivery across Pakistan.",
+
   keywords: [
     "Zayphire",
     "eCommerce",

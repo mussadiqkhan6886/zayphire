@@ -24,11 +24,12 @@ const Men = () => {
           <video
           muted 
           loop
+          
             id="main"
             className="w-full h-screen object-cover"
             width={1000}
             height={1000}
-            src="/fabric.mp4"
+            src="/men.mp4"
             autoPlay
           />
         </SwiperSlide>

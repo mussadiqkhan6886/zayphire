@@ -4,13 +4,10 @@ User-agent: *
 # Allow all crawlers to index site
 Allow: /
 Allow: /collection/
-Allow: /about-us/
-Allow: /contact/
-Allow: /exchange-and-returns/
+Allow: /details/
 Allow: /faq/
 Allow: /login/
 Allow: /signup/
-Allow: /shipping-and-deliveries/
 
 
 # Disallow sensitive/admin routes
