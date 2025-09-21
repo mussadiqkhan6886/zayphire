@@ -1,28 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
-export interface IOrder extends Document {
-  orderId: string; 
-  items: {
-    product: mongoose.Types.ObjectId; // reference to Product
-    name: string;
-    price: number;
-    quantity: number;
-    image: string
-  }[];
-  totalPrice: number;
-  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
-  shippingAddress: {
-    street: string;
-    city: string;
-    state: string;
-    country: string;
-    postalCode: string;
-  };
-  paymentMethod: "COD";
-  createdAt: Date;
-}
-
 const orderSchema = new Schema(
   {
     orderId: { type: String, default: () => uuidv4() },
@@ -66,4 +44,4 @@ const orderSchema = new Schema(
 );
 
 export default mongoose.models.Order ||
-  mongoose.model<IOrder>("Order", orderSchema);
+  mongoose.model("Order", orderSchema);
