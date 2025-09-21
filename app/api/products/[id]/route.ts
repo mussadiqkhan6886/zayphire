@@ -8,7 +8,7 @@ type Props = {
 
 await connectDB()
 
-export const GET = async (req: {req: NextRequest}, params: Props) => {
+export const GET = async (req: NextRequest, params: Props) => {
     const id = (await params).id
 
     const res = await Product.findById({id})
@@ -16,9 +16,9 @@ export const GET = async (req: {req: NextRequest}, params: Props) => {
     return NextResponse.json({success: true, product:res}, {status: 201})
 }
 
-export const PATCH = async (req: {req: NextRequest}, params: Props) => {
+export const PATCH = async (req: NextRequest, params: Props) => {
     const id = (await params).id
-    const data = await res.formData()
+    const data = await req.formData()
 
     try{
         const result = await Product.findByIdAndUpdate({
