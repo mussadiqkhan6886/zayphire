@@ -20,7 +20,7 @@ const Card = ({images, price, color, gender, category, _id, name, sale, newPrice
   return (
     <div className='border border-black flex flex-col'>
       <Link href={`/collection/${category}/${_id}`} className='h-full'>
-        <Image src={images[0]} alt="change" width={200} height={300} className='w-full h-full' />
+        <Image src={images[0]} alt={name} width={200} height={300} className='w-full h-full' />
       </Link>
       <div className='p-3 py-4 border-t border-black'>
         <div className='leading-2'>

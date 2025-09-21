@@ -24,7 +24,7 @@ const Cart = ({setShowCart}: {setShowCart: React.Dispatch<React.SetStateAction<b
       <FaTimes onClick={() => setShowCart(false)} className='absolute cursor-pointer right-3 top-3' />
       <h3 className='mt-5 px-5 text-lg font-semibold' >ADD TO YOUR BASKET</h3>
       <div className='mt-10 text-center text-sm '>
-      {cart.length < 0 ? <h4 className='px-5 py-2'>YOUR BASKET IS CURRENTLY EMPTY</h4> : 
+      {cart.length <= 0 ? <h4 className='px-5 py-2'>YOUR BASKET IS CURRENTLY EMPTY</h4> : 
         <div>
           <h1>cart</h1>
         </div>
