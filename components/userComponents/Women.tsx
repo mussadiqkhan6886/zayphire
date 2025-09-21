@@ -3,6 +3,7 @@ import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Keyboard } from "swiper/modules";
 import Footer from './Footer';
+import { instrumentSerif } from '@/lib/fonts/font';
 
 const Women = () => {
   return (
@@ -15,7 +16,8 @@ const Women = () => {
         className="h-screen w-full"
       >
         <SwiperSlide>
-          <Image className='w-full h-screen sticky top-0'  width={1000} height={1000} src={"/main (2).jpg"} alt='main' />
+          <h1 className={`${instrumentSerif.className} text-[110px] font-bold absolute top-[40%] left-[25%] text-white `}>COMING SOON</h1>
+          <video muted loop autoPlay className='w-full h-screen object-cover'  width={1000} height={1000} src={"/women.mp4"}  />
         </SwiperSlide>
         <SwiperSlide>
           <Footer />

@@ -7,6 +7,7 @@ const Category = async ({params}: {params: Promise<{category: string}>}) => {
   const category = (await params).category
   const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`)
   const data = res.data.products
+  console.log(data)
   return (
     <>
       <main className='pt-32'>

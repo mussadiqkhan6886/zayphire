@@ -21,27 +21,33 @@ const Men = () => {
         style={{scrollBehavior: "smooth"}}
       >
         <SwiperSlide>
-          <Image
-          id="main"
+          <video
+          muted 
+          loop
+            id="main"
             className="w-full h-screen object-cover"
             width={1000}
             height={1000}
-            src="/main (3).jpg"
-            alt="main"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-          id="fragrances"
-            className="w-full h-screen object-cover"
-            width={1000}
-            height={1000}
-            src="/main (2).jpg"
-            alt="main"
+            src="/fabric.mp4"
+            autoPlay
           />
         </SwiperSlide>
         <SwiperSlide>
           <video
+          muted
+          loop
+            id="fragrances"
+            className="w-full h-screen object-cover"
+            width={1000}
+            height={1000}
+            src="/menperfume.mp4"
+            autoPlay
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <video
+          muted
+          loop
             id="fabrics"
             className="w-full h-screen object-cover"
             width={1000}
