@@ -2,6 +2,7 @@ import HomeButton from "@/components/adminComponents/HomeButton";
 import { Metadata } from "next";
 import Link from "next/link";
 import { FaList, FaPlus, FaShoppingBag } from "react-icons/fa";
+import { Toaster } from "react-hot-toast"
 
 export const metadata : Metadata = {
     title: "Admin panel zayphire",
@@ -31,6 +32,7 @@ export default function Layout({children}: {children: React.ReactNode}) {
                     <HomeButton />
                 </div>
             {children}
+            <Toaster position="top-right" reverseOrder={false} />
             </div>
         </>
     )

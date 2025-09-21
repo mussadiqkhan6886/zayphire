@@ -1,12 +1,12 @@
 "use client";
 import React, { ChangeEvent, useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
-  const [files, setFiles] = useState<File[]>([]);       // store real files
-  const [previews, setPreviews] = useState<string[]>([]); // store preview URLs
-  const [loading, setLoading] = useState(false)
+  const [files, setFiles] = useState<File[]>([]);
+  const [previews, setPreviews] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     name: "",
     description: "",
@@ -15,10 +15,19 @@ const AddProduct = () => {
     brand: "",
     gender: "",
     color: "",
-    length: ""
+    length: "",
+    material: "",
+    fragranceType: "",
   });
 
-  const categories = ["men-fabric", "men-fragrance", "men-accessories", "men-tshirt", "women-accessories", "women-fragrance"];
+  const categories = [
+    "men-fabric",
+    "men-fragrance",
+    "men-accessories",
+    "men-tshirt",
+    "women-accessories",
+    "women-fragrance",
+  ];
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -36,25 +45,21 @@ const AddProduct = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    setLoading(true)
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("price", data.price);
-    formData.append("description", data.description);
-    formData.append("brand", data.brand);
-    formData.append("category", data.category);
-    formData.append("color", data.color);
-    formData.append("gender", data.gender);
-    formData.append("length", data.length)
+    setLoading(true);
 
-    files.forEach((file) => {
-      formData.append("images", file); // ✅ send real files
+    const formData = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      if (value) formData.append(key, value);
     });
+
+    files.forEach((file) => formData.append("images", file));
 
     try {
       const res = await axios.post("/api/admin/addproduct", formData);
+
       if (res.status === 201) {
+        toast.success("✅ Product added successfully!");
         setData({
           name: "",
           description: "",
@@ -63,23 +68,25 @@ const AddProduct = () => {
           brand: "",
           gender: "",
           color: "",
-          length: ""
+          length: "",
+          material: "",
+          fragranceType: "",
         });
         setFiles([]);
         setPreviews([]);
       }
-      console.log(res)
     } catch (err: any) {
-      console.log(err.message);
-    } finally{
-      setLoading(false)
+      console.error(err.message);
+      toast.error("❌ Failed to add product. Try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <main className="p-6 flex flex-col justify-center items-center lg:px-20 md:px-17 px-5">
       <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">
-        <FaPlusCircle /> Add New Product
+         Add New Product
       </h1>
 
       <form className="grid gap-4 w-full md:w-[50%]" onSubmit={handleSubmit}>
@@ -91,7 +98,7 @@ const AddProduct = () => {
             value={data.name}
             onChange={handleChange}
             type="text"
-            placeholder="e.g. iPhone 15 Pro"
+            placeholder="e.g. Cotton Kurta"
             className="w-full border rounded-lg p-2"
             required
           />
@@ -113,13 +120,13 @@ const AddProduct = () => {
 
         {/* Price */}
         <div>
-          <label className="block font-semibold mb-1">Price </label>
+          <label className="block font-semibold mb-1">Price</label>
           <input
             name="price"
             value={data.price}
             onChange={handleChange}
             type="number"
-            placeholder="e.g. 999"
+            placeholder="e.g. 2500"
             className="w-full border rounded-lg p-2"
             required
           />
@@ -133,21 +140,12 @@ const AddProduct = () => {
             value={data.brand}
             onChange={handleChange}
             type="text"
-            placeholder="e.g. Apple"
+            placeholder="e.g. J."
             className="w-full border rounded-lg p-2"
           />
         </div>
-        <div>
-          <label className="block font-semibold mb-1">Length</label>
-          <input
-            name="length"
-            value={data.length}
-            onChange={handleChange}
-            type="text"
-            placeholder="e.g. Apple"
-            className="w-full border rounded-lg p-2"
-          />
-        </div>
+
+        {/* Color */}
         <div>
           <label className="block font-semibold mb-1">Color</label>
           <input
@@ -155,27 +153,38 @@ const AddProduct = () => {
             value={data.color}
             onChange={handleChange}
             type="text"
-            placeholder="e.g. black"
+            placeholder="e.g. Black"
             className="w-full border rounded-lg p-2"
           />
         </div>
+
+        {/* Gender */}
         <div>
           <label className="block font-semibold mb-1">Gender</label>
-          <input
+          <select
             name="gender"
             value={data.gender}
             onChange={handleChange}
-            type="text"
-            placeholder="e.g. women men"
-            required
             className="w-full border rounded-lg p-2"
-          />
+            required
+          >
+            <option value="">-- Select Gender --</option>
+            <option value="men">Men</option>
+            <option value="women">Women</option>
+            <option value="unisex">Unisex</option>
+          </select>
         </div>
 
         {/* Category */}
         <div>
           <label className="block font-semibold mb-1">Category</label>
-          <select name="category" value={data.category} onChange={handleChange} className="w-full border rounded-lg p-2" required>
+          <select
+            name="category"
+            value={data.category}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-2"
+            required
+          >
             <option value="">-- Select Category --</option>
             {categories.map((cat, idx) => (
               <option key={idx} value={cat}>
@@ -184,6 +193,49 @@ const AddProduct = () => {
             ))}
           </select>
         </div>
+
+        {/* Conditional: Fabric */}
+        {data.category.includes("fabric") && (
+          <>
+            <div>
+              <label className="block font-semibold mb-1">Length</label>
+              <input
+                name="length"
+                value={data.length}
+                onChange={handleChange}
+                type="text"
+                placeholder="e.g. 3 meters"
+                className="w-full border rounded-lg p-2"
+              />
+            </div>
+            <div>
+              <label className="block font-semibold mb-1">Material</label>
+              <input
+                name="material"
+                value={data.material}
+                onChange={handleChange}
+                type="text"
+                placeholder="e.g. Cotton"
+                className="w-full border rounded-lg p-2"
+              />
+            </div>
+          </>
+        )}
+
+        {/* Conditional: Fragrance */}
+        {data.category.includes("fragrance") && (
+          <div>
+            <label className="block font-semibold mb-1">Fragrance Type</label>
+            <input
+              name="fragranceType"
+              value={data.fragranceType}
+              onChange={handleChange}
+              type="text"
+              placeholder="e.g. Eau de Parfum"
+              className="w-full border rounded-lg p-2"
+            />
+          </div>
+        )}
 
         {/* Images */}
         <div>
@@ -215,7 +267,7 @@ const AddProduct = () => {
           type="submit"
           className="bg-black cursor-pointer text-white px-4 py-2 mt-4"
         >
-          {loading ? "Loading..." : 'Add Product'}
+          {loading ? "Loading..." : "Add Product"}
         </button>
       </form>
     </main>

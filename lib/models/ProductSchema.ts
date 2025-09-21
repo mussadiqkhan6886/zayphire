@@ -18,6 +18,8 @@ const productSchema = new Schema(
     isNewArrival: { type: Boolean, default: true },
     type: { type: String, default: "Unstitched" },
     length: { type: String },
+    fragranceType: { type: String },
+    material: { type: String },
   },
   { timestamps: true }
 );
