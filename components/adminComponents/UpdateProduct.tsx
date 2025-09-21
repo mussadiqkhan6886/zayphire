@@ -30,13 +30,15 @@ const UpdateProduct = ({ data }: {data: any}) => {
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-    const selectedFiles = Array.from(e.target.files);
-    setFiles(selectedFiles);
+  if (!e.target.files) return;
+  const selectedFiles = Array.from(e.target.files);
 
-    const newPreviews = selectedFiles.map((file) => URL.createObjectURL(file));
-    setPreviews(newPreviews);
-  };
+  // append to old files instead of replacing
+  setFiles((prev) => [...prev, ...selectedFiles]);
+
+  const newPreviews = selectedFiles.map((file) => URL.createObjectURL(file));
+  setPreviews((prev) => [...prev, ...newPreviews]);
+};
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -218,11 +220,15 @@ const UpdateProduct = ({ data }: {data: any}) => {
       <div>
         <label className="py-2 font-semibold block">Update Images</label>
         <input type="file" multiple accept="image/*" onChange={handleImageChange} />
-        <div className="flex gap-3 mt-3">
-          {(previews.length > 0 ? previews : formData.images).map((url, idx) => (
-            <img key={idx} src={url} className="w-20 h-20 rounded border object-cover" />
-          ))}
+       <div className="flex gap-3 mt-3 flex-wrap">
+        {formData.images.map((url, idx) => (
+            <img key={`old-${idx}`} src={url} className="w-20 h-20 rounded border object-cover" />
+        ))}
+        {previews.map((url, idx) => (
+            <img key={`new-${idx}`} src={url} className="w-20 h-20 rounded border object-cover" />
+        ))}
         </div>
+
       </div>
 
       <button type="submit" className="bg-black cursor-pointer text-white p-2 rounded">

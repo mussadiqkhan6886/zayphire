@@ -4,16 +4,15 @@ import { NextRequest, NextResponse } from "next/server";
 import cloudinary from "@/lib/config/cloudinary";
 
 type Params = {
-  params: {
-    id: string;
-  };
+  params: Promise<{id:string}>
 };
 
 // ✅ GET single product
 export const GET = async (_req: NextRequest, { params }: Params) => {
   await connectDB();
+  const id = (await params).id
   try {
-    const product = await Product.findById(params.id);
+    const product = await Product.findById(id);
     if (!product) {
       return NextResponse.json(
         { success: false, message: "Product not found" },
@@ -32,6 +31,7 @@ export const GET = async (_req: NextRequest, { params }: Params) => {
 // ✅ PATCH update product
 export const PATCH = async (req: NextRequest, { params }: Params) => {
   await connectDB();
+  const id = (await params).id
   try {
     const formData = await req.formData();
 
@@ -68,14 +68,16 @@ export const PATCH = async (req: NextRequest, { params }: Params) => {
       }
     });
 
-    // If new images uploaded, replace old ones
-    if (uploadedImages.length > 0) {
-      updateFields.images = uploadedImages;
-    }
-
-    const product = await Product.findByIdAndUpdate(params.id, updateFields, {
+    
+    
+    const product = await Product.findByIdAndUpdate(id, updateFields, {
       new: true,
     });
+    if (uploadedImages.length > 0) {
+    updateFields.images = [
+      ...(product?.images || []), // keep existing
+      ...uploadedImages           // add new
+    ];}
 
     if (!product) {
       return NextResponse.json(
@@ -97,8 +99,9 @@ export const PATCH = async (req: NextRequest, { params }: Params) => {
 // ✅ DELETE product
 export const DELETE = async (_req: NextRequest, { params }: Params) => {
   await connectDB();
+  const id = (await params).id
   try {
-    const product = await Product.findByIdAndDelete(params.id);
+    const product = await Product.findByIdAndDelete(id);
     if (!product) {
       return NextResponse.json(
         { success: false, message: "Product not found" },

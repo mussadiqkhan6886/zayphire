@@ -1,11 +1,14 @@
-import Orders from "@/app/admin/orders/page"
 import OrderSchema from "@/lib/models/OrderSchema"
 import { NextRequest, NextResponse } from "next/server"
 
 export const GET = async () => {
-    const res = await OrderSchema.find({})
+    try{
+        const res = await OrderSchema.find({})
+        return NextResponse.json({success:true, orders:res}, {status: 201})
+    }catch(err: any){
+        return NextResponse.json({success:false, message: err.message}, {status:500})
+    }
 
-    return NextResponse.json({success:true, orders:res}, {status: 201})
 }
 
 export const POST = async (req: NextRequest) => {
