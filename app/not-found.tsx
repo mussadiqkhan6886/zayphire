@@ -1,13 +1,14 @@
 'use client';
 
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { usePathname, useRouter } from "next/navigation"
 
 const NotFound = () => {
   const router = useRouter()
-  useEffect(() => {
-    router.push("/")
-  }, [router])
+  const path = usePathname()
+
+  if(!path.includes("/robots.txt")){
+      router.push("/")
+  }
 }
 
 export default NotFound

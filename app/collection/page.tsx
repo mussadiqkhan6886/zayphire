@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 
-const generateMeteData = (): Metadata => {
+const metadata = (): Metadata => {
   return {
     title: "collection zayphire",
     description: "Premium collection page of zayphire with modern and elegant trending collection"

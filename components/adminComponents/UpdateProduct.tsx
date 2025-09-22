@@ -14,7 +14,7 @@ const categories = [
   "women-accessories",
   "women-fragrance",
 ];
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UpdateProduct = ({ data }: {data: any}) => {
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
@@ -25,6 +25,7 @@ const UpdateProduct = ({ data }: {data: any}) => {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { name, type, value, checked } = e.target as any;
     setFormData({
       ...formData,
@@ -50,6 +51,7 @@ const UpdateProduct = ({ data }: {data: any}) => {
     const updateData = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         updateData.append(key, value as any);
       }
     });
@@ -63,6 +65,7 @@ const UpdateProduct = ({ data }: {data: any}) => {
         toast.success("Product updated successfully!");
         router.push("/admin/productList")
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error(err.message);
       toast.error("Failed to update product.");

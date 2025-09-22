@@ -40,6 +40,6 @@ export const POST = async (req: NextRequest) => {
 
     return response
   } catch (err) {
-    return NextResponse.json({ message: "Server error" }, { status: 500 })
+    return NextResponse.json({ message: "Server error" + err }, { status: 500 })
   }
 }

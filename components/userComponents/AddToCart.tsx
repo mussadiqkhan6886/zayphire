@@ -3,7 +3,7 @@
     import useView from '@/hooks/useView';
     import React from 'react';
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
     const AddToCart = ({ data }: { data: any }) => {
     const { cart, setCart } = useView();
     

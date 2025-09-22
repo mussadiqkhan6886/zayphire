@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { connectDB } from "@/lib/config/database";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs"

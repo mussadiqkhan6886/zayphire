@@ -24,7 +24,7 @@ const AdminLogin = () => {
       if (res.data.success) {
         router.replace('/admin')
       }
-
+       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.response?.data?.message || 'Login failed')
     }

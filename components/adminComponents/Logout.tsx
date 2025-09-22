@@ -7,7 +7,7 @@ import React from 'react'
 const Logout = () => {
     const router = useRouter()
     const logout = async () => {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admin/logout`)
+        await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admin/logout`)
         router.push("/admin/login")
     }
     
