@@ -16,7 +16,12 @@ const Kids = () => {
         className="h-screen w-full"
       >
         <SwiperSlide>
-           <h1 className={`${instrumentSerif.className} text-[110px] font-bold absolute top-[40%] left-[25%] text-white `}>COMING SOON</h1>
+          <h1
+            className={`${instrumentSerif.className} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+            text-[60px] md:text-[100px] lg:text-[120px] text-wrap sm:text-nowrap font-bold text-center text-white`}
+          >
+            COMING SOON
+          </h1>
           <video loop muted autoPlay className='w-full h-screen object-cover'  width={1000} height={1000} src={"/kids.mp4"} />
         </SwiperSlide>
         <SwiperSlide>

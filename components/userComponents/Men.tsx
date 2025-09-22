@@ -38,7 +38,7 @@ const Men = () => {
           muted
           loop
             id="fragrances"
-            className="w-full h-screen object-cover object-right"
+            className="w-full h-screen object-cover object-[90%_center]"
             width={1000}
             height={1000}
             src="/menperfume.mp4"
