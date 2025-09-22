@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { NextRequest, NextResponse } from "next/server";
 import cloudinary from "@/lib/config/cloudinary";
 import Product from "@/lib/models/ProductSchema";
@@ -31,7 +33,6 @@ export async function POST(req: NextRequest) {
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
-       // eslint(@typescript-eslint/no-explicit-any):
       const uploadRes = await new Promise<any>((resolve, reject) => {
         cloudinary.uploader
           .upload_stream(
@@ -69,7 +70,6 @@ export async function POST(req: NextRequest) {
       },
       { status: 201 }
     );
-     // eslint(@typescript-eslint/no-explicit-any):
   } catch (err: any) {
     console.error("Upload error:", err);
     return NextResponse.json(

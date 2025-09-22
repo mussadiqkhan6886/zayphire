@@ -4,12 +4,25 @@ import Link from 'next/link'
 import React from 'react'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 
-const metadata = (): Metadata => {
-  return {
-    title: "collection zayphire",
-    description: "Premium collection page of zayphire with modern and elegant trending collection"
-  }
+export const metadata : Metadata = {
+  title: "collection zayphire",
+  description: "Premium collection page of zayphire with modern and elegant trending collection"
+
 }
+
+// export async function generateMetadata({ params }: Props): Promise<Metadata> {
+//   const product = await fetch(`https://api.example.com/products/${params.id}`).then(res => res.json())
+
+//   return {
+//     title: `${product.name} - Zayphire Store`,
+//     description: product.description,
+//     openGraph: {
+//       title: product.name,
+//       description: product.description,
+//       images: product.images?.[0] ? [product.images[0]] : [],
+//     },
+//   }
+// }
 
 
 const Collection = () => {
