@@ -67,7 +67,7 @@ export default function OrderTable({ res }: { res: any[] }) {
       sortable: false,
       width: 80,
       renderCell: (params) => (
-        <Link href={`/admin/updateOrderStatus/${params.row._id}`} className="pt-2">
+        <Link href={`/admin/updateOderStatus/${params.row._id}`} className="pt-2">
           <FaEdit />
         </Link>
       ),
