@@ -193,21 +193,22 @@ const AddProduct = () => {
             ))}
           </select>
         </div>
+        <div>
+          <label className="block font-semibold mb-1">Length</label>
+          <input
+            name="length"
+            value={data.length}
+            onChange={handleChange}
+            type="text"
+            placeholder="e.g. 3 meters or 50"
+            className="w-full border rounded-lg p-2"
+          />
+        </div>
 
         {/* Conditional: Fabric */}
         {data.category.includes("fabric") && (
           <>
-            <div>
-              <label className="block font-semibold mb-1">Length</label>
-              <input
-                name="length"
-                value={data.length}
-                onChange={handleChange}
-                type="text"
-                placeholder="e.g. 3 meters"
-                className="w-full border rounded-lg p-2"
-              />
-            </div>
+            
             <div>
               <label className="block font-semibold mb-1">Material</label>
               <input

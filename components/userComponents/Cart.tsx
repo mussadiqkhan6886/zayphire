@@ -21,10 +21,14 @@ const Cart = ({ setShowCart }: { setShowCart: React.Dispatch<React.SetStateActio
     duration: 0.2,
   } as Transition;
 
-  // ✅ Remove item
   const removeItem = (productId: string) => {
-    setCart((prev) => prev.filter((item) => item.productId !== productId));
-  };
+  setCart((prev) => {
+    const updatedCart = prev.filter((item) => item.productId !== productId)
+    localStorage.setItem("cart", JSON.stringify(updatedCart)) // ✅ save updated
+    return updatedCart
+  })
+}
+
 
   // ✅ Update quantity
   const updateQuantity = (productId: string, type: "inc" | "dec") => {

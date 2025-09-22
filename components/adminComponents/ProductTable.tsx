@@ -39,6 +39,7 @@ export default function ProductTable({ res }: { res: any[] }) {
     { field: 'name', headerName: 'Product Name', flex: 1, minWidth: 150 },
     { field: 'brand', headerName: 'Brand', width: 80 },
     { field: 'price', headerName: 'Price', type: 'number', width: 80 },
+    { field: 'discountPrice', headerName: 'Discount Price', type: 'number', width: 80 },
     { field: 'inStock', headerName: 'In Stock', width: 80, type: 'boolean' },
     { field: 'isSale', headerName: 'On Sale', width: 80, type: 'boolean' },
     { field: 'category', headerName: 'Category', width: 110 },

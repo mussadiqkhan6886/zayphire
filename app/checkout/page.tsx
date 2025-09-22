@@ -72,9 +72,8 @@ const Checkout = () => {
       console.log("Order response:", res);
       setStatus("Order placed successfully!");
 
-      // clear cart (both localStorage and state) before redirect
-      localStorage.removeItem("cart");
-      setCart([]);
+      setCart([]) // clear state
+        localStorage.setItem("cart", JSON.stringify([])) // clear localStorage
 
       // redirect to thank you page
       router.push("/thank-you");
