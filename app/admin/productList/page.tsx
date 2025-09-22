@@ -1,12 +1,16 @@
-'use client';
-
 import React from 'react'
-import DataTable from '@/components/adminComponents/ProductTable'
 import axios from 'axios'
+
+import dynamic from 'next/dynamic'
+ 
+const DataTable = dynamic(
+  () => import('@/components/adminComponents/ProductTable'),
+  { ssr: false }
+)
+
 
 const ProductList = async () => {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
-  console.log(res.data)
   return (
     <main className='h-full'>
       <DataTable res={res.data.products} />
