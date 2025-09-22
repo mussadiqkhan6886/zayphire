@@ -23,7 +23,7 @@ const SideBar = ({setViewSideBar}: { setViewSideBar: React.Dispatch<React.SetSta
   } as Transition
 
   return (
-    <motion.aside initial={"close"} transition={transition} animate={'open'} variants={variants}  className='absolute text-black border-r border-black bg-white left-0 top-0 h-screen w-[320px] sm:w-[370px] md:w-[450px]  py-5 px-14 md:px-24'>
+    <motion.aside initial={"close"} transition={transition} animate={'open'} variants={variants}  className='absolute text-black border-r border-black bg-white left-0 top-0 min-h-screen w-[320px] sm:w-[370px] md:w-[450px]  py-5 px-14 md:px-24'>
       <div className='flex flex-col  justify-between h-[25%] md:h-[30%]'>
         <div>
           <FaTimes onClick={() => setViewSideBar(false)} className='absolute top-7 text-gray-500 left-8 md:left-16 cursor-pointer' />
