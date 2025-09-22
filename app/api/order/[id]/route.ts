@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server"
 export const GET = async ({params}: {params: Promise<{id: string}>}) => {
     await connectDB()
     const id = (await params).id
-    const res = await OrderSchema.findOne({orderId: id})
+    const res = await OrderSchema.findOne({id})
 
     return NextResponse.json({success:true, order: res}, {status: 201})
 }
