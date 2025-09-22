@@ -29,7 +29,7 @@ const UpdateOrderStatus = ({ params }: { params: Promise<{ id: string }> }) => {
           router.push("/admin/orders") // redirect back to orders page
         }, 1500)
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err)
       setError("Failed to update order ❌")
     } finally {

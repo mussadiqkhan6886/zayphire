@@ -2,6 +2,8 @@
 import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Error from "next/error";
+import Image from "next/image";
 
 const AddProduct = () => {
   const [files, setFiles] = useState<File[]>([]);
@@ -75,8 +77,8 @@ const AddProduct = () => {
         setFiles([]);
         setPreviews([]);
       }
-    } catch (err: any) {
-      console.error(err.message);
+    } catch (err: unknown) {
+      console.error(err);
       toast.error("Failed to add product. Try again.");
     } finally {
       setLoading(false);
@@ -253,7 +255,9 @@ const AddProduct = () => {
           {previews.length > 0 && (
             <div className="flex flex-wrap gap-3 mt-4">
               {previews.map((url, idx) => (
-                <img
+                <Image
+                  width={80}
+                  height={80}
                   key={idx}
                   src={url}
                   alt={`Preview ${idx}`}

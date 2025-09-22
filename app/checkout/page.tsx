@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import CheckoutHeader from "@/components/userComponents/CheckoutHeader";
 import useView from "@/hooks/useView";
 import axios from "axios";
+import Image from "next/image";
 
 const Checkout = () => {
   const router = useRouter();
@@ -202,7 +203,9 @@ const Checkout = () => {
                 >
                   <div className="flex gap-5">
                     {item.images && item.images[0] ? (
-                      <img
+                      <Image
+                        width={100}
+                        height={100}
                         className="w-[70px] h-[70px] object-cover rounded"
                         src={item.images[0]}
                         alt={item.name}

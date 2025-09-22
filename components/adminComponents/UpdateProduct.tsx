@@ -4,6 +4,7 @@ import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const categories = [
   "men-fabric",
@@ -224,11 +225,11 @@ const UpdateProduct = ({ data }: {data: any}) => {
         <label className="py-2 font-semibold block">Update Images</label>
         <input type="file" multiple accept="image/*" onChange={handleImageChange} />
        <div className="flex gap-3 mt-3 flex-wrap">
-        {formData.images.map((url, idx) => (
-            <img key={`old-${idx}`} src={url} className="w-20 h-20 rounded border object-cover" />
+        {formData.images.map((url: string, idx: number) => (
+            <Image width={200} height={200} alt="image" key={`old-${idx}`} src={url} className="w-20 h-20 rounded border object-cover" />
         ))}
         {previews.map((url, idx) => (
-            <img key={`new-${idx}`} src={url} className="w-20 h-20 rounded border object-cover" />
+            <Image width={200} height={200} alt="image" key={`new-${idx}`} src={url} className="w-20 h-20 rounded border object-cover" />
         ))}
         </div>
 

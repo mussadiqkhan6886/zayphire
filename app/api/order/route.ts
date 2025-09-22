@@ -5,9 +5,9 @@ export const GET = async () => {
   try {
     const res = await OrderSchema.find({});
     return NextResponse.json({ success: true, orders: res }, { status: 200 });
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
-      { success: false, message: err.message },
+      { success: false, message: err },
       { status: 500 }
     );
   }
@@ -22,9 +22,9 @@ export const POST = async (req: NextRequest) => {
     const res = await OrderSchema.create(data);
 
     return NextResponse.json({ success: true, order: res }, { status: 201 });
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
-      { success: false, message: err.message },
+      { success: false, message: err },
       { status: 500 }
     );
   }

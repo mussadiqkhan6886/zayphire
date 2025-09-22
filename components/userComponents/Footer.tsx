@@ -28,7 +28,7 @@ const Footer = () => {
         <div className="flex justify-between gap-10 items-center w-full lg:w-[60%] md:w-[70%] sm:flex-row flex-col-reverse">
           <div>
             <ul className='leading-8'>
-              <li><Link href="/details/#FAQ">FAQ's</Link></li>
+              <li><Link href="/details/#FAQ">FAQ&apos;s</Link></li>
               <li><Link href={"signup"}>Signup/Login</Link></li>
               <li><Link href={"/details/#shippingAndDeliveries"}>Shipping & Deliveries</Link></li>
               <li><Link href={"/details/#exchangeAndReturns"}>Exchange & Returns</Link></li>

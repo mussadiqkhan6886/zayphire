@@ -5,10 +5,8 @@
 
 
     const AddToCart = ({ data }: { data: any }) => {
-    let { cart, setCart } = useView();
+    const { cart, setCart } = useView();
     
-  
-
     const addToBasket = () => {
         setCart((prevCart) => {
         const existingItem = prevCart.find(item => item.productId === data._id);

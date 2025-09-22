@@ -36,7 +36,7 @@ export const PATCH = async (req: NextRequest, { params }: Params) => {
     const formData = await req.formData();
 
     const files = formData.getAll("images") as File[];
-    let uploadedImages: string[] = [];
+    const uploadedImages: string[] = [];
 
     // If new images are uploaded → upload to Cloudinary
     if (files && files.length > 0 && files[0] instanceof File) {

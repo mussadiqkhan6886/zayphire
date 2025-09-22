@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
 const orderSchema = new Schema(

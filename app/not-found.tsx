@@ -3,11 +3,11 @@
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
-const notFound = () => {
+const NotFound = () => {
   const router = useRouter()
   useEffect(() => {
     router.push("/")
-  }, [])
+  }, [router])
 }
 
-export default notFound
+export default NotFound

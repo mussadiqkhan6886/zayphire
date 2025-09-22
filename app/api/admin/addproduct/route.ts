@@ -25,12 +25,13 @@ export async function POST(req: NextRequest) {
     // Extract files
     const files = formData.getAll("images") as File[];
 
-    let uploadedImages: string[] = [];
+    const uploadedImages: string[] = [];
 
     for (const file of files) {
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
+      
       const uploadRes = await new Promise<any>((resolve, reject) => {
         cloudinary.uploader
           .upload_stream(

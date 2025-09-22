@@ -37,11 +37,11 @@ const page = () => {
         </section>
       <section className="my-5" id="about">
         <h2 className="detailsHeading">About Us</h2>
-        <p className='leading-9'> Zayphire is more than just a fabric store — it's a celebration of timeless elegance, refined craftsmanship, and modern Pakistani fashion. Born with a passion for unstitched fabrics and style that speaks, Zayphire is your new go-to destination for luxurious textures, statement-worthy colors, and premium-quality materials.
+        <p className='leading-9'> Zayphire is more than just a fabric store — it&apos;s a celebration of timeless elegance, refined craftsmanship, and modern Pakistani fashion. Born with a passion for unstitched fabrics and style that speaks, Zayphire is your new go-to destination for luxurious textures, statement-worthy colors, and premium-quality materials.
 
-            At Zayphire, we believe that fabric is the first step in a story — your story. Whether you're dressing for tradition, making a statement, or simply looking for that perfect daily wear, we offer curated collections that blend sophistication with comfort. Every piece in our store is handpicked for its quality, design, and ability to elevate your wardrobe.
+            At Zayphire, we believe that fabric is the first step in a story — your story. Whether you&apos;re dressing for tradition, making a statement, or simply looking for that perfect daily wear, we offer curated collections that blend sophistication with comfort. Every piece in our store is handpicked for its quality, design, and ability to elevate your wardrobe.
 
-            What sets us apart? It’s our dedication to making fashion accessible. We don’t just sell fabric — we bring you affordable luxury, seasonal inspiration, and trend-forward styles. Our goal is to empower you with choices that match your individuality and celebrate your culture — with a modern twist.
+            What sets us apart? It’s our dedication to making fashion accessible. We don&apos;t just sell fabric — we bring you affordable luxury, seasonal inspiration, and trend-forward styles. Our goal is to empower you with choices that match your individuality and celebrate your culture — with a modern twist.
 
             Every thread you touch at Zayphire comes with a promise:
 
@@ -60,7 +60,7 @@ const page = () => {
         <h2 className="detailsHeading">Exchange And Returns</h2>
         <article>
             <div className='leading-9'>
-                At Zayphire, we prioritize your satisfaction by offering a hassle-free return and exchange policy tailored for your convenience. If you're not fully satisfied with your purchase, or if the size isn’t the right fit, you may request an exchange or return under the conditions below.
+                At Zayphire, we prioritize your satisfaction by offering a hassle-free return and exchange policy tailored for your convenience. If you&apos;re not fully satisfied with your purchase, or if the size isn&apos;t the right fit, you may request an exchange or return under the conditions below.
 
                 <br /><br />
                 <b>Eligibility Criteria:</b><br />
@@ -168,7 +168,7 @@ const page = () => {
             
                 <li>
                   <strong>Contact Information</strong><br />
-                  For any questions regarding your order, product details, delivery, or policies, you can contact our <Link href="#contact" className="underline text-blue-500" >customer support</Link> team via the contact page or by reaching out on WhatsApp or email. We're here to assist you with anything you need.
+                  For any questions regarding your order, product details, delivery, or policies, you can contact our <Link href="#contact" className="underline text-blue-500" >customer support</Link> team via the contact page or by reaching out on WhatsApp or email. We&apos;re here to assist you with anything you need.
                 </li>
               </ol>
         </article>
@@ -200,7 +200,7 @@ const page = () => {
         <h2 className="detailsHeading">Shipping & Deliveries</h2>
         <article className='leading-9'>
             <p className='mb-6'>At Zayphire, we believe in providing our customers with a smooth and reliable shopping experience from start to finish. Once an order is confirmed, we make it our priority to dispatch it within 24 hours. Our logistics partner, Fastex Courier Service, ensures that your parcel reaches you in a timely manner — typically within 2 to 3 working days. However, in rare cases, such as bad weather conditions, unforeseen law and order situations, or deliveries to interior and remote areas, there might be a slight delay. We continuously monitor all orders and strive to keep our customers updated in case of any disruption.
-            One of the core values at Zayphire is transparency — and we proudly offer free delivery across Pakistan, with no additional charges or hidden fees at checkout. Whether you're shopping from a major city or a small town, we ensure fair and equal access to our products. Even during sales and promotions, no extra delivery charges are applied — your satisfaction remains our top priority. <br /> In case your order has not arrived within 7 working days, we encourage you to contact our support team promptly so we can resolve the issue and get your order to you as soon as possible.</p>
+            One of the core values at Zayphire is transparency — and we proudly offer free delivery across Pakistan, with no additional charges or hidden fees at checkout. Whether you&apos;re shopping from a major city or a small town, we ensure fair and equal access to our products. Even during sales and promotions, no extra delivery charges are applied — your satisfaction remains our top priority. <br /> In case your order has not arrived within 7 working days, we encourage you to contact our support team promptly so we can resolve the issue and get your order to you as soon as possible.</p>
             <div>
                 <h3 className='text-xl mb-3'>Need Help?</h3>
                 <p className='text-[14px] md:text-[16px] mb-3'><FaPhone className='inline' /> +923265753305</p>
