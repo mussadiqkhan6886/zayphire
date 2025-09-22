@@ -17,7 +17,7 @@ interface Props {
   inStock: boolean
 }
 
-const Card = ({images, price, color, gender, category, _id, name, isSale, discountPrice, type, brand, inStock}: Props) => {
+const Card = ({images, price, color, gender, category, _id, name, isSale, discountPrice, type, brand, inStock}: Product) => {
   return (
     <div className={`border border-black flex flex-col ${inStock ? "" : "opacity-65"}`}>
       {inStock ? <Link href={`/collection/${category}/${_id}`} className={`h-full ${inStock ? "cursor-pointer": "cursor-not-allowed"}`}>
