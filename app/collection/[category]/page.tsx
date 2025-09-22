@@ -13,11 +13,14 @@ const Category = async ({params}: {params: Promise<{category: string}>}) => {
       <main className='pt-32'>
         <FilterationHeader breadcrums={category} />
         <section className='grid grid-cols-2 mt-10 md:grid-cols-3 lg:grid-cols-4 w-full'>
-          {category === "men-sale" ? data.filter(item => item.sale).map((item, i) => (
+          {category === "men-new" ? data.filter(item => item.isNewArrival).map(item => (
+            <Card key={item._id} {...item} />
+          )) : category === "men-sale" ? data.filter(item => item.isSale).map((item, i) => (
             <Card key={i} {...item} />
           )) : data.filter(item => item.category === category && !item.sale).map((item, i) => (
             <Card key={i} {...item} />       
           ))}
+          
         </section>
        
       </main>
