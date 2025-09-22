@@ -48,7 +48,7 @@ const Card = ({
             <span className="border-r border-gray-400 pr-2 mr-2">
               {category.includes('fragrance') ? fragranceType : color}
             </span>
-            <span className="border-r border-gray-400 pr-2 mr-2">{gender}</span>
+            <span className="border-r border-gray-400 pr-2 hidden md:inline-block mr-2">{gender}</span>
             <span className="border-r border-gray-400 pr-2 mr-2">{brand}</span>
             <span>{category.includes('fragrance') ? length + 'ml' : type}</span>
           </div>
