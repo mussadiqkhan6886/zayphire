@@ -1,4 +1,6 @@
-import React from 'react'
+'use client';
+
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import dynamic from 'next/dynamic'
  
@@ -7,11 +9,21 @@ const OrderTable = dynamic(
   { ssr: false }
 )
 
-const Orders = async () => {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/order`);
+const Orders =  () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [data, setData] = useState<any>([])
+  
+    const fetchData = async () => {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/order`);
+      setData(res.data.orders)
+    }
+  
+    useEffect(() => {
+      fetchData()
+    }, [])
   return (
    <main className='h-full'>
-        <OrderTable res={res.data.orders} />
+        <OrderTable res={data} />
     </main>
   )
 }

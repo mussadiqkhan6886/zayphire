@@ -9,7 +9,7 @@ import axios from 'axios';
 import Image from 'next/image';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function ProductTable({ res }: { res: any[] }) {
+export default function ProductTable({ res }: { res: Product[] }) {
   const [rows, setRows] = React.useState(res);
 
   const handleDelete = async (id: string) => {
