@@ -14,7 +14,7 @@ export default function ProductTable({ res }: { res: any[] }) {
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`/api/products/${id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`);
       setRows((prev) => prev.filter((row) => row._id !== id)); // remove deleted product
     } catch (err) {
       console.error(err);

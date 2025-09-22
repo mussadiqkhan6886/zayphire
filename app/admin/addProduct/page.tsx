@@ -58,7 +58,7 @@ const AddProduct = () => {
     files.forEach((file) => formData.append("images", file));
 
     try {
-      const res = await axios.post("/api/admin/addproduct", formData);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admin/addproduct`, formData);
 
       if (res.status === 201) {
         toast.success("Product added successfully!");

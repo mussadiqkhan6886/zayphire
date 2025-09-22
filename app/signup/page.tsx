@@ -21,7 +21,7 @@ const Signup = () => {
     e.preventDefault()
     try{
       setLoading(true)
-      const res = await axios.post("/api/signup", user)
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/signup`, user)
       console.log(res)
       router.push("/login")
     }catch(err: any){

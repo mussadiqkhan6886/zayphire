@@ -59,7 +59,7 @@ const UpdateProduct = ({ data }: {data: any}) => {
     files.forEach((file) => updateData.append("images", file));
 
     try {
-      const res = await axios.patch(`/api/products/${formData._id}`, updateData);
+      const res = await axios.patch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${formData._id}`, updateData);
 
       if (res.status === 200) {
         toast.success("Product updated successfully!");
