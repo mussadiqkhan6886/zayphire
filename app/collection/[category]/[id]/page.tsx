@@ -28,7 +28,7 @@ const Product = async ({params}: {params: Promise<{id:string}>}) => {
         <section className="flex flex-col justify-center gap-6">
           {/* Title + SKU */}
           <div>
-            <h1 className={`uppercase ${instrumentSerif.className} text-3xl font-bold tracking-wide`}>
+            <h1 className={`uppercase ${instrumentSerif.className} text-3xl font-bold tracking-widest`}>
               {data.name}
             </h1>
             <p className="text-gray-400 text-[12px]">{data.productId}</p>

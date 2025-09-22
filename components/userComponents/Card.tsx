@@ -40,10 +40,10 @@ const Card = ({
 
       <div className="p-3 py-4 border-t border-black">
         <div className="leading-2">
-          <h4>
+          <h3>
             {name}{' '}
             <span className="text-red-700">{inStock ? '' : 'Not in stock'}</span>
-          </h4>
+          </h3>
           <div className="text-gray-400 text-sm mb-2">
             <span className="border-r border-gray-400 pr-2 mr-2">
               {category.includes('fragrance') ? fragranceType : color}

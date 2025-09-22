@@ -15,12 +15,12 @@ const Footer = () => {
     <footer className='md:h-screen flex  flex-col h-full'>
       <div className='bg-white h-[20%] md:h-[60%] py-10 md:py-0 grid place-content-center'>
         <div className='py-20 md:py-0'>
-          <p className={`text-center border-b borer-black py-2 my-2 text-[20px] ${instrumentSerif.className}`}>Get the latest trends first</p>
+          <p className={`text-center border-b borer-black py-2 my-2 text-[25px] ${instrumentSerif.className}`}>Get the latest trends first</p>
           <div className='flex flex-wrap'>
-            <Link className='text-sm md:text-base px-2 md:px-4 border-r border-black' href={""}>Facebook</Link>
-            <Link className='text-sm md:text-base px-2 md:px-4 border-r border-black' href={""}>Instagram</Link>
-            <Link className='text-sm md:text-base px-2 md:px-4 border-r border-black' href={""}>Tiktok</Link>
-            <Link className='text-sm md:text-base px-2 md:px-4 ' href={""}>Whatsapp</Link>
+            <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={""}>Facebook</Link>
+            <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={""}>Instagram</Link>
+            <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={""}>Tiktok</Link>
+            <Link className='text-[12px] md:text-base px-2 md:px-4 ' href={""}>Whatsapp</Link>
           </div>
         </div>
       </div>
