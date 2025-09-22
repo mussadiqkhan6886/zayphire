@@ -1,8 +1,16 @@
 "use client";
 
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Account = () => {
+const router = useRouter()
+
+  const logout = async () => {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/logout`)
+    router.push("/")
+  }
 
   return (
     <main className="pt-25 px-10 flex flex-col md:flex-row gap-5">
@@ -13,20 +21,15 @@ const Account = () => {
       <aside className="flex items-center justify-center flex-col h-full px-5">
         <h2 className="text-xl font-semibold">Account Details</h2>
 
-          <>
-            {/* show username from session */}
-            <p className="text-gray-800">
-              mussadiq
-            </p>
 
-            {/* logout */}
+         
             <button
-              
-              className="underline text-red-600"
+              onClick={logout}
+              className="underline text-red-600 cursor-pointer"
             >
               Logout
             </button>
-          </>
+         
   
       </aside>
     </main>
