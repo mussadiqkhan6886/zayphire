@@ -17,10 +17,10 @@ const Footer = () => {
         <div className='py-20 md:py-0'>
           <p className={`text-center border-b borer-black py-2 my-2 text-[25px] ${instrumentSerif.className}`}>Get the latest trends first</p>
           <div className='flex flex-wrap'>
-            <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={""}>Facebook</Link>
-            <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={""}>Instagram</Link>
+            <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={"https://www.facebook.com/profile.php?id=61576012477951"}>Facebook</Link>
+            <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={"https://www.instagram.com/zayphire_/?__pwa=1"}>Instagram</Link>
             <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={""}>Tiktok</Link>
-            <Link className='text-[12px] md:text-base px-2 md:px-4 ' href={""}>Whatsapp</Link>
+            <Link className='text-[12px] md:text-base px-2 md:px-4 ' href={"https://api.whatsapp.com/send/?phone=923265753305&text&type=phone_number&app_absent=0"}>Whatsapp</Link>
           </div>
         </div>
       </div>

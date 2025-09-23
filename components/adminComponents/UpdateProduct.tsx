@@ -225,18 +225,59 @@ const UpdateProduct = ({ data }: {data: any}) => {
 
       {/* Images */}
       <div>
-        <label className="py-2 font-semibold block">Update Images</label>
-        <input type="file" multiple accept="image/*" onChange={handleImageChange} />
-       <div className="flex gap-3 mt-3 flex-wrap">
-        {formData.images.map((url: string, idx: number) => (
-            <Image width={200} height={200} alt="image" key={`old-${idx}`} src={url} className="w-20 h-20 rounded border object-cover" />
-        ))}
-        {previews.map((url, idx) => (
-            <Image width={200} height={200} alt="image" key={`new-${idx}`} src={url} className="w-20 h-20 rounded border object-cover" />
-        ))}
-        </div>
+  <label className="py-2 font-semibold block">Update Images</label>
+  <input type="file" multiple accept="image/*" onChange={handleImageChange} />
 
+  <div className="flex gap-3 mt-3 flex-wrap">
+    {/* Old Images (already uploaded) */}
+    {formData.images.map((url: string, idx: number) => (
+      <div key={`old-${idx}`} className="relative">
+        <Image
+          width={200}
+          height={200}
+          alt="image"
+          src={url}
+          className="w-20 h-20 rounded border object-cover"
+        />
+        <button
+          type="button"
+          onClick={() => {
+            setFormData({
+              ...formData,
+              images: formData.images.filter((_: string, i: number) => i !== idx),
+            });
+          }}
+          className="absolute top-0 right-0 bg-red-500 text-white text-xs px-1 rounded"
+        >
+          ✕
+        </button>
       </div>
+    ))}
+
+    {/* New Images (just selected, preview only) */}
+    {previews.map((url, idx) => (
+      <div key={`new-${idx}`} className="relative">
+        <Image
+          width={200}
+          height={200}
+          alt="preview"
+          src={url}
+          className="w-20 h-20 rounded border object-cover"
+        />
+        <button
+          type="button"
+          onClick={() => {
+            setPreviews(previews.filter((_, i) => i !== idx));
+            setFiles(files.filter((_, i) => i !== idx));
+          }}
+          className="absolute top-0 right-0 bg-red-500 text-white text-xs px-1 rounded"
+        >
+          ✕
+        </button>
+      </div>
+    ))}
+  </div>
+</div>
 
       <button type="submit" className="bg-black cursor-pointer text-white p-2 rounded">
         {loading ? "Updating..." : "Update Product"}
