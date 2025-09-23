@@ -70,7 +70,6 @@ const Checkout = () => {
         data
       );
 
-      console.log("Order response:", res);
       setStatus("Order placed successfully!");
 
       setCart([]) // clear state

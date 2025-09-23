@@ -1,9 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import { FaCheckCircle } from "react-icons/fa";
 
-const ThankYouPage = () => {
+const ThankYouPage = async ({params}: {params: Promise<{id:string}>}) => {
+
+  const id = (await params).id
+
   return (
     <main className="flex flex-col justify-center items-center h-screen bg-gray-50 px-5">
       <div className="bg-white shadow-md rounded-lg p-10 text-center max-w-md w-full">
@@ -11,11 +12,13 @@ const ThankYouPage = () => {
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
           Thank You for Your Order!
         </h1>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 mb-2">
           Your order has been placed successfully.  
           We will contact you shortly to confirm your details.
         </p>
-
+        
+        <p>Your Order id: <span className="text-lg font-semibold">{id}</span> </p>
+        <p className="mb-5">Use your Order id to <Link href={"/track-order"}>track order</Link> </p>
         <div className="space-y-3">
           <Link
             href="/"
