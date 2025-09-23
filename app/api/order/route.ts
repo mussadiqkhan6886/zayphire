@@ -1,5 +1,9 @@
+import { connectDB } from "@/lib/config/database";
 import OrderSchema from "@/lib/models/OrderSchema"
 import { NextRequest, NextResponse } from "next/server"
+
+
+await connectDB()
 
 export const GET = async () => {
   try {

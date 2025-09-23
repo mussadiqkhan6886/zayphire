@@ -76,7 +76,7 @@ const Checkout = () => {
         localStorage.setItem("cart", JSON.stringify([])) // clear localStorage
 
       // redirect to thank you page
-      router.push("/thank-you");
+      router.push(`/thank-you/${res.data.order.orderId}`);
     } catch (err) {
       console.error(err);
       setStatus("Something went wrong. Please try again.");
