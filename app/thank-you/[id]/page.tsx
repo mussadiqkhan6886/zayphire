@@ -18,7 +18,7 @@ const ThankYouPage = async ({params}: {params: Promise<{id:string}>}) => {
         </p>
         
         <p>Your Order id: <span className="text-lg font-semibold">{id}</span> </p>
-        <p className="mb-5">Use your Order id to <Link href={"/track-order"}>track order</Link> </p>
+        <p className="mb-5">Use your Order id to <Link className="text-blue-600 underline" href={"/track-order"}>track order</Link> </p>
         <div className="space-y-3">
           <Link
             href="/"
