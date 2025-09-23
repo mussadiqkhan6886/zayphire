@@ -35,7 +35,7 @@ const Card = ({
         </Link>
       ) : (
         <div className="h-full">
-          <Image priority={true} src={images[0]} alt={name} width={200} height={300} className="w-full h-full" />
+          <Image priority={true} src={images[0]} alt={name} width={200} height={210} className="w-full h-full" />
         </div>
       )}
 
