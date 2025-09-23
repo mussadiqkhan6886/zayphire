@@ -8,6 +8,7 @@ Allow: /details/
 Allow: /faq/
 Allow: /login/
 Allow: /signup/
+Allow: /track-order
 
 
 # Disallow sensitive/admin routes

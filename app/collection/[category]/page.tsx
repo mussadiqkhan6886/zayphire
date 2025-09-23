@@ -14,7 +14,6 @@ export async function generateStaticParams() {
 }
 
 
-
 const Category = async ({params}: {params: Promise<{category: string}>}) => {
   
   const category = (await params).category

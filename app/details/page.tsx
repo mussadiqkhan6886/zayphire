@@ -1,9 +1,18 @@
 import ContactUs from '@/components/userComponents/ContactUs'
 import FaqItem from '@/components/userComponents/FAQItem'
 import { instrumentSerif } from '@/lib/fonts/font'
+import { Metadata } from 'next'
 import Link from 'next/link'
 import React from 'react'
 import { FaEnvelope, FaExchangeAlt,FaFileSignature,FaInfoCircle, FaPhone, FaQuestion, FaShippingFast } from 'react-icons/fa'
+
+
+export const metadata : Metadata = {
+  title: "Details",
+  description: "Check details about zayphire | about us | exchange and returns | terms and conditions | FAQ | shipping and deliveries and contact us section"
+
+}
+
 
 const page = () => {
   return (

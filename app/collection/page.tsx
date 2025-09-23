@@ -10,20 +10,6 @@ export const metadata : Metadata = {
 
 }
 
-// export async function generateMetadata({ params }: Props): Promise<Metadata> {
-//   const product = await fetch(`https://api.example.com/products/${params.id}`).then(res => res.json())
-
-//   return {
-//     title: `${product.name} - Zayphire Store`,
-//     description: product.description,
-//     openGraph: {
-//       title: product.name,
-//       description: product.description,
-//       images: product.images?.[0] ? [product.images[0]] : [],
-//     },
-//   }
-// }
-
 
 const Collection = () => {
   return (
