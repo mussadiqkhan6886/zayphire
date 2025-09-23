@@ -30,7 +30,7 @@ const Men = () => {
             className="w-full h-screen object-cover"
             width={1000}
             height={1000}
-            src="/men.mp4"
+            src="/men.webm"
             autoPlay
           />
         </SwiperSlide>
@@ -44,7 +44,7 @@ const Men = () => {
             className="w-full h-screen object-cover object-[90%_center]"
             width={1000}
             height={1000}
-            src="/menperfume.mp4"
+            src="/menperfume.webm"
             autoPlay
           />
         </SwiperSlide>
