@@ -1,14 +1,22 @@
 import { instrumentSerif } from '@/lib/fonts/font'
-import axios from 'axios'
 import Image from 'next/image'
 import React from 'react'
 import AddToCart from '@/components/userComponents/AddToCart'
 
+export async function generateStaticParams() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+  const data = await res.json();
+
+  return data.products.map((p: Product) => ({
+    id: p._id,
+  }));
+}
+
 const Product = async ({params}: {params: Promise<{id:string}>}) => {
 
   const id = (await params).id
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`)
-  const data = res.data.product
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`, {next: {revalidate: 60}})
+  const {product: data} = await res.json()
   return (
     <main className="flex flex-col pt-24 px-6 lg:px-20">
       {/* Product Section */}
@@ -16,6 +24,7 @@ const Product = async ({params}: {params: Promise<{id:string}>}) => {
         {/* Left: Product Image */}
         <div className="flex-shrink-0 flex items-center md:border-r md:border-gray-700 justify-center w-full md:w-[50%] md:pr-8 ">
           <Image
+            priority={true}
             src={data.images[0]}
             alt={data.name}
             width={400}

@@ -2,13 +2,25 @@ import Card from '@/components/userComponents/Card'
 import FilterationHeader from '@/components/userComponents/FilterationHeader'
 import { categoryDescriptions } from '@/lib/constants'
 import { instrumentSerif } from '@/lib/fonts/font'
-import axios from 'axios'
+
+
+export async function generateStaticParams() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+  const data = await res.json();
+
+  return data.products.map((p: Product) => ({
+    category: p.category,
+  }));
+}
+
+
 
 const Category = async ({params}: {params: Promise<{category: string}>}) => {
   
   const category = (await params).category
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`)
-  const data = res.data.products
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, {next: { revalidate: 60 }})
+  const { products: data } = await res.json();
+  console.log(data)
   const heading = categoryDescriptions.find(item => item.key === category)
   return (
     <>

@@ -29,6 +29,7 @@ export default function ProductTable({ res }: { res: Product[] }) {
       width: 100,
       renderCell: (params) => (
         <Image
+        priority={true}
           width={50}
           height={50}
           src={params.value?.[0]}

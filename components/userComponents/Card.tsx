@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import SwiperImages from './SwiperImages'
 
 const Card = ({
   images,
@@ -30,11 +31,11 @@ const Card = ({
           href={`/collection/${category}/${_id}`}
           className={`h-full ${inStock ? 'cursor-pointer' : 'cursor-not-allowed'}`}
         >
-          <Image src={images[0]} alt={name} width={200} height={300} className="w-full h-full" />
+          <SwiperImages images={images} />
         </Link>
       ) : (
         <div className="h-full">
-          <Image src={images[0]} alt={name} width={200} height={300} className="w-full h-full" />
+          <Image priority={true} src={images[0]} alt={name} width={200} height={300} className="w-full h-full" />
         </div>
       )}
 

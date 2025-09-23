@@ -43,6 +43,7 @@ export default function OrderTable({ res }: { res: any[] }) {
       renderCell: (params) =>
         params.value?.length > 0 ? (
           <Image
+          priority={true}
             width={50}
             height={50}
             src={params.value[0]}
