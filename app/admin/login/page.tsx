@@ -20,7 +20,6 @@ const AdminLogin = () => {
         { email, password },
         { withCredentials: true } // ✅ needed so cookie gets stored
       )
-      console.log(res.data)
       if (res.data.success) {
         router.replace('/admin')
       }

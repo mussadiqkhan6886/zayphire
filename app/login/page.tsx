@@ -25,7 +25,6 @@ const Login = () => {
      try{
        setLoading(true)
        const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, user)
-       console.log(res)
        router.push("/account")
      }catch(err: any){
        console.log(err)

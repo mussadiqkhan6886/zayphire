@@ -2,17 +2,17 @@ import { instrumentSerif } from '@/lib/fonts/font'
 import Image from 'next/image'
 import React from 'react'
 import AddToCart from '@/components/userComponents/AddToCart'
+import { connectDB } from '@/lib/config/database'
+import Product from '@/lib/models/ProductSchema'
 
 export async function generateStaticParams() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
-  const data = await res.json();
+  await connectDB()
+  const products = await Product.find({})
 
-  return data.products.map((p: Product) => ({
-    id: p._id,
-  }));
+  return products.map((p) => ({ id: p._id }));
 }
 
-const Product = async ({params}: {params: Promise<{id:string}>}) => {
+const ProductItem = async ({params}: {params: Promise<{id:string}>}) => {
 
   const id = (await params).id
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`, {next: {revalidate: 60}})
@@ -75,4 +75,4 @@ const Product = async ({params}: {params: Promise<{id:string}>}) => {
   )
 }
 
-export default Product
+export default ProductItem

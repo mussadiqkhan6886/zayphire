@@ -23,7 +23,9 @@ const Men = () => {
           <video
           muted 
           loop
-          
+          preload="metadata"
+          playsInline
+  controls={false}
             id="main"
             className="w-full h-screen object-cover"
             width={1000}
@@ -34,6 +36,8 @@ const Men = () => {
         </SwiperSlide>
         <SwiperSlide>
           <video
+          playsInline
+  controls={false}
           muted
           loop
             id="fragrances"
@@ -46,6 +50,8 @@ const Men = () => {
         </SwiperSlide>
         <SwiperSlide>
           <video
+          playsInline
+  controls={false}
           muted
           loop
             id="fabrics"

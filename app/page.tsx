@@ -2,14 +2,17 @@
 
 import Categories from '@/components/userComponents/Categories'
 import Header from '@/components/userComponents/Header'
-import Kids from '@/components/userComponents/Kids'
-import Men from '@/components/userComponents/Men'
-import Women from '@/components/userComponents/Women'
 import React from 'react'
 import {Swiper, SwiperSlide} from "swiper/react"
 import "swiper/css"
 import "swiper/css/navigation"
 import { Navigation } from "swiper/modules";
+
+import { Suspense, lazy } from 'react'
+
+const Men = lazy(() => import('@/components/userComponents/Men'))
+const Women = lazy(() => import('@/components/userComponents/Women'))
+const Kids = lazy(() => import('@/components/userComponents/Kids'))
 
 const Home = () => {
   return (
@@ -18,14 +21,20 @@ const Home = () => {
       <main className='h-screen'>
         <Swiper modules={[Navigation]} navigation={true} slidesPerView={1} pagination={{clickable:true}}>
           <SwiperSlide>
-            <Men />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Men />
+            </Suspense>
             <Categories />
           </SwiperSlide>
           <SwiperSlide>
-            <Women />
+             <Suspense fallback={<div>Loading...</div>}>
+              <Women />
+            </Suspense>
           </SwiperSlide>
           <SwiperSlide>
-            <Kids />
+             <Suspense fallback={<div>Loading...</div>}>
+              <Kids />
+            </Suspense>
           </SwiperSlide>
        
         </Swiper>

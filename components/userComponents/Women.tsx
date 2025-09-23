@@ -21,7 +21,7 @@ const Women = () => {
           >
             COMING SOON
           </h1>
-          <video muted loop autoPlay className='w-full h-screen object-cover'  width={1000} height={1000} src={"/women.mp4"}  />
+          <video playsInline controls={false} muted loop autoPlay className='w-full h-screen object-cover'  width={1000} height={1000} src={"/women.mp4"}  />
         </SwiperSlide>
         <SwiperSlide>
           <Footer />

@@ -1,16 +1,16 @@
 import Card from '@/components/userComponents/Card'
 import FilterationHeader from '@/components/userComponents/FilterationHeader'
+import { connectDB } from '@/lib/config/database'
 import { categoryDescriptions } from '@/lib/constants'
 import { instrumentSerif } from '@/lib/fonts/font'
+import Product from '@/lib/models/ProductSchema'
 
 
 export async function generateStaticParams() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
-  const data = await res.json();
+  await connectDB()
+  const products = await Product.find({})
 
-  return data.products.map((p: Product) => ({
-    category: p.category,
-  }));
+  return products.map((p) => ({ category: p.category }));
 }
 
 
@@ -20,7 +20,6 @@ const Category = async ({params}: {params: Promise<{category: string}>}) => {
   const category = (await params).category
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, {next: { revalidate: 60 }})
   const { products: data } = await res.json();
-  console.log(data)
   const heading = categoryDescriptions.find(item => item.key === category)
   return (
     <>

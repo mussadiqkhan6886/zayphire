@@ -5,7 +5,6 @@ import React from 'react'
 const Update = async ({params}: {params: Promise<{id:string}>}) => {
   const id = (await params).id
   const data = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`)
-  console.log(data)
   const product = data.data.product
   return (
     <main className='flex flex-col items-center '>

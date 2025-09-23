@@ -25,7 +25,6 @@ const Tracking = () => {
     const orders = res.data.orders // expect { success: true, order: {...} }
     const order = orders.find((item: Order) => item.orderId == query)
     setData(order)
-    console.log(data)
   } catch (err: any) {
     console.log(err.message)
     setError("Order not found!")

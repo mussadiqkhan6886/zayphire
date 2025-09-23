@@ -21,7 +21,7 @@ const Kids = () => {
           >
             COMING SOON
           </h1>
-          <video loop muted autoPlay className='w-full h-screen object-cover'  width={1000} height={1000} src={"/kids.mp4"} />
+          <video playsInline controls={false} loop muted autoPlay className='w-full h-screen object-cover'  width={1000} height={1000} src={"/kids.mp4"} />
         </SwiperSlide>
         <SwiperSlide>
           <Footer />

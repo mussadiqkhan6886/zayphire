@@ -9,7 +9,6 @@ import Link from "next/link";
 
 const Cart = ({ setShowCart }: { setShowCart: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const { cart, setCart } = useView();
-  console.log(cart)
 
   const variants = {
     open: { x: 0 },
