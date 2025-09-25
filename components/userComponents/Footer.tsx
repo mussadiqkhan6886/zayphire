@@ -19,7 +19,7 @@ const Footer = () => {
           <div className='flex flex-wrap'>
             <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={"https://www.facebook.com/profile.php?id=61576012477951"}>Facebook</Link>
             <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={"https://www.instagram.com/zayphire_/?__pwa=1"}>Instagram</Link>
-            <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={""}>Tiktok</Link>
+            <Link className='text-[12px] md:text-base px-2 md:px-4 border-r border-black' href={"https://www.tiktok.com/@zayphire_?_t=ZS-8zxxFtzxQ9d&_r=1"}>Tiktok</Link>
             <Link className='text-[12px] md:text-base px-2 md:px-4 ' href={"https://api.whatsapp.com/send/?phone=923265753305&text&type=phone_number&app_absent=0"}>Whatsapp</Link>
           </div>
         </div>
