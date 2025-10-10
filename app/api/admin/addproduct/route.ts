@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
         cloudinary.uploader
           .upload_stream(
             {
-              folder: "zayphire/products",
+              folder: "zayphire",
               resource_type: "image",
             },
             (error, result) => {

@@ -56,6 +56,16 @@ const AddProduct = () => {
     files.forEach((file) => formData.append("images", file));
 
     try {
+      const formDataBlob = new Blob([...formData.entries()].map(([key, value]) => {
+        if (value instanceof File) {
+          return value;
+        }
+        return new Blob([value], { type: "text/plain" });
+      }));
+
+      const totalSizeMB = (formDataBlob.size / (1024 * 1024)).toFixed(2);
+      console.log(`📦 Total Request Size (after formData ready): ${totalSizeMB} MB`);
+
       const res = await axios.post("/api/admin/addproduct", formData);
       if (res.status === 201) {
         toast.success("Product added successfully!");
