@@ -3,6 +3,7 @@ import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Image from "next/image";
+import imageCompression from "browser-image-compression"; // ✅ Added
 
 const AddProduct = () => {
   const [files, setFiles] = useState<File[]>([]);
@@ -48,25 +49,41 @@ const AddProduct = () => {
     e.preventDefault();
     setLoading(true);
 
-    const formData = new FormData();
-    Object.entries(data).forEach(([key, value]) => {
-      if (value) formData.append(key, value);
-    });
-
-    files.forEach((file) => formData.append("images", file));
-
     try {
-      const formDataBlob = new Blob([...formData.entries()].map(([key, value]) => {
-        if (value instanceof File) {
-          return value;
-        }
-        return new Blob([value], { type: "text/plain" });
-      }));
+      const formData = new FormData();
 
-      const totalSizeMB = (formDataBlob.size / (1024 * 1024)).toFixed(2);
-      console.log(`📦 Total Request Size (after formData ready): ${totalSizeMB} MB`);
+      // Add text fields
+      Object.entries(data).forEach(([key, value]) => {
+        if (value) formData.append(key, value);
+      });
 
+      // ✅ Compress each image before appending
+      for (const file of files) {
+        console.log(`📸 Original: ${(file.size / 1024 / 1024).toFixed(2)} MB — ${file.name}`);
+
+        const compressedFile = await imageCompression(file, {
+          maxSizeMB: 1, // target max 1MB per image
+          maxWidthOrHeight: 1200,
+          useWebWorker: true,
+        });
+
+        console.log(
+          `✅ Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB — ${compressedFile.name}`
+        );
+
+        formData.append("images", compressedFile);
+      }
+
+      // ✅ Calculate total size of request
+      const totalSize = Array.from(formData.values()).reduce((acc, val) => {
+        if (val instanceof File) return acc + val.size;
+        return acc;
+      }, 0);
+      console.log(`📦 Total FormData size: ${(totalSize / 1024 / 1024).toFixed(2)} MB`);
+
+      // Send to backend
       const res = await axios.post("/api/admin/addproduct", formData);
+
       if (res.status === 201) {
         toast.success("Product added successfully!");
         setData({
@@ -85,7 +102,7 @@ const AddProduct = () => {
         setPreviews([]);
       }
     } catch (err) {
-      console.error(err);
+      console.error("❌ Upload failed:", err);
       toast.error("Failed to add product. Try again.");
     } finally {
       setLoading(false);
