@@ -46,53 +46,51 @@ const UpdateProduct = ({ data }: { data: any }) => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    const updateData = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (value !== undefined && value !== null) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        updateData.append(key, value as any);
-      }
-    });
+  const updateData = new FormData();
 
-    try {
-      // ✅ Compress each selected image before upload
-      for (const file of files) {
-        console.log(
-          `📸 Original: ${(file.size / 1024 / 1024).toFixed(2)} MB — ${file.name}`
-        );
-
-        const compressedFile = await imageCompression(file, {
-          maxSizeMB: 1,
-          maxWidthOrHeight: 1200,
-          useWebWorker: true,
-        });
-
-        console.log(
-          `✅ Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB — ${compressedFile.name}`
-        );
-
-        updateData.append("images", compressedFile);
-      }
-
-      const res = await axios.patch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${formData._id}`,
-        updateData
-      );
-
-      if (res.status === 200) {
-        toast.success("✅ Product updated successfully!");
-        router.push("/admin/productList");
-      }
-    } catch (err) {
-      console.error("❌ Update failed:", err);
-      toast.error("Failed to update product.");
-    } finally {
-      setLoading(false);
+  // Append normal text fields
+  Object.entries(formData).forEach(([key, value]) => {
+    if (key !== "images") {
+      updateData.append(key, value as any);
     }
-  };
+  });
+
+  // ✅ Send existing (kept) image URLs
+  formData.images.forEach((url: string) => {
+    updateData.append("existingImages", url);
+  });
+
+  try {
+    // ✅ Compress and append new images
+    for (const file of files) {
+      const compressedFile = await imageCompression(file, {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1200,
+        useWebWorker: true,
+      });
+      updateData.append("newImages", compressedFile);
+    }
+
+    const res = await axios.patch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${formData._id}`,
+      updateData
+    );
+
+    if (res.status === 200) {
+      toast.success("✅ Product updated successfully!");
+      router.push("/admin/productList");
+    }
+  } catch (err) {
+    console.error("❌ Update failed:", err);
+    toast.error("Failed to update product.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <form className="grid gap-4 w-full md:w-[50%]" onSubmit={handleSubmit}>

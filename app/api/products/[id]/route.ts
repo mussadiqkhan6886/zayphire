@@ -33,16 +33,19 @@ export const GET = async (_req: NextRequest, { params }: Params) => {
 // ✅ PATCH update product
 export const PATCH = async (req: NextRequest, { params }: Params) => {
   await connectDB();
-  const id = (await params).id
+  const id = (await params).id;
+
   try {
     const formData = await req.formData();
 
-    const files = formData.getAll("images") as File[];
+    // ✅ Get both arrays from FormData
+    const existingImages = formData.getAll("existingImages") as string[];
+    const newFiles = formData.getAll("newImages") as File[];
     const uploadedImages: string[] = [];
 
-    // If new images are uploaded → upload to Cloudinary
-    if (files && files.length > 0 && files[0] instanceof File) {
-      for (const file of files) {
+    // ✅ Upload new images to Cloudinary
+    if (newFiles && newFiles.length > 0 && newFiles[0] instanceof File) {
+      for (const file of newFiles) {
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
@@ -59,27 +62,31 @@ export const PATCH = async (req: NextRequest, { params }: Params) => {
       }
     }
 
-    // Convert FormData → plain object
+    // ✅ Combine remaining + newly uploaded images
+    const finalImages = [...existingImages, ...uploadedImages];
+
+    // ✅ Convert FormData → object for updating other fields
     const updateFields: any = {};
     formData.forEach((value, key) => {
-      if (key !== "images") {
-        if (key === "price") updateFields[key] = Number(value);
-        else if (key === "isSale" || key === "inStock")
+      if (key !== "existingImages" && key !== "newImages") {
+        if (key === "price" || key === "discountPrice") updateFields[key] = Number(value);
+        else if (
+          key === "isSale" ||
+          key === "inStock" ||
+          key === "isNewArrival"
+        )
           updateFields[key] = value === "true";
         else updateFields[key] = value;
       }
     });
 
-    
-    
+    // ✅ Add final images array to update
+    updateFields.images = finalImages;
+
+    // ✅ Update product in MongoDB
     const product = await Product.findByIdAndUpdate(id, updateFields, {
       new: true,
     });
-    if (uploadedImages.length > 0) {
-    updateFields.images = [
-      ...(product?.images || []), // keep existing
-      ...uploadedImages           // add new
-    ];}
 
     if (!product) {
       return NextResponse.json(
@@ -97,6 +104,7 @@ export const PATCH = async (req: NextRequest, { params }: Params) => {
     );
   }
 };
+
 
 // ✅ DELETE product
 export const DELETE = async (_req: NextRequest, { params }: Params) => {
