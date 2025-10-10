@@ -54,6 +54,8 @@ const UpdateProduct = ({ data }: { data: any }) => {
   // Append normal text fields
   Object.entries(formData).forEach(([key, value]) => {
     if (key !== "images") {
+      
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
       updateData.append(key, value as any);
     }
   });
