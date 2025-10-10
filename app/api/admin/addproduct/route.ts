@@ -1,42 +1,45 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { NextRequest, NextResponse } from "next/server";
 import cloudinary from "@/lib/config/cloudinary";
 import Product from "@/lib/models/ProductSchema";
 import { connectDB } from "@/lib/config/database";
 
-export const runtime = "nodejs"; // Needed for Cloudinary
+export const runtime = "nodejs"; // Required for Cloudinary uploads
 
 export async function POST(req: NextRequest) {
-  await connectDB()
+  await connectDB();
+
   try {
     const formData = await req.formData();
 
-    // Extract text fields
+    // Extract product fields
     const name = formData.get("name") as string;
     const price = formData.get("price") as string;
     const description = formData.get("description") as string;
-    const brand = formData.get("brand") as string
-    const color = formData.get("color") as string
-    const gender = formData.get("gender") as string
-    const category = formData.get("category") as string
-    const length = formData.get("length") as string
-    const fragranceType = formData.get("fragranceType") as string
-    const material = formData.get("material") as string
+    const brand = formData.get("brand") as string;
+    const color = formData.get("color") as string;
+    const gender = formData.get("gender") as string;
+    const category = formData.get("category") as string;
+    const length = formData.get("length") as string;
+    const fragranceType = formData.get("fragranceType") as string;
+    const material = formData.get("material") as string;
 
-    // Extract files
+    // Extract image files
     const files = formData.getAll("images") as File[];
 
     const uploadedImages: string[] = [];
 
     for (const file of files) {
-      const bytes = await file.arrayBuffer();
-      const buffer = Buffer.from(bytes);
+      const arrayBuffer = await file.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
 
-      const uploadRes = await new Promise<any>((resolve, reject) => {
+      const uploadResult = await new Promise<any>((resolve, reject) => {
         cloudinary.uploader
           .upload_stream(
-            { folder: "zayphire" },
+            {
+              folder: "zayphire/products",
+              resource_type: "image",
+            },
             (error, result) => {
               if (error) reject(error);
               else resolve(result);
@@ -45,17 +48,18 @@ export async function POST(req: NextRequest) {
           .end(buffer);
       });
 
-      uploadedImages.push(uploadRes.secure_url);
+      uploadedImages.push(uploadResult.secure_url);
     }
 
+    // Create product in MongoDB
     const newProduct = await Product.create({
       name,
       price,
       description,
-      color,
       brand,
-      category,
+      color,
       gender,
+      category,
       length,
       fragranceType,
       material,
@@ -63,17 +67,13 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(
-      {
-        success: true,
-        message: "Product uploaded successfully",
-        data: newProduct
-      },
+      { success: true, message: "Product uploaded successfully!", data: newProduct },
       { status: 201 }
     );
-  } catch (err: any) {
-    console.error("Upload error:", err);
+  } catch (error: any) {
+    console.error("Cloudinary upload error:", error);
     return NextResponse.json(
-      { success: false, error: err.message },
+      { success: false, message: error.message || "Upload failed" },
       { status: 500 }
     );
   }

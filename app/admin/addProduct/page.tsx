@@ -1,4 +1,3 @@
-
 "use client";
 import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
@@ -37,13 +36,12 @@ const AddProduct = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     const selectedFiles = Array.from(e.target.files);
     setFiles((prev) => [...prev, ...selectedFiles]);
-
-    const newPreviews = selectedFiles.map((file) => URL.createObjectURL(file));
-    setPreviews((prev) => [...prev, ...newPreviews]);
+    const previews = selectedFiles.map((file) => URL.createObjectURL(file));
+    setPreviews((prev) => [...prev, ...previews]);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -58,8 +56,7 @@ const AddProduct = () => {
     files.forEach((file) => formData.append("images", file));
 
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admin/addproduct`, formData);
-
+      const res = await axios.post("/api/admin/addproduct", formData);
       if (res.status === 201) {
         toast.success("Product added successfully!");
         setData({
@@ -77,7 +74,7 @@ const AddProduct = () => {
         setFiles([]);
         setPreviews([]);
       }
-    } catch (err: unknown) {
+    } catch (err) {
       console.error(err);
       toast.error("Failed to add product. Try again.");
     } finally {
@@ -87,12 +84,10 @@ const AddProduct = () => {
 
   return (
     <main className="p-6 flex flex-col justify-center items-center lg:px-20 md:px-17 px-5">
-      <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">
-         Add New Product
-      </h1>
+      <h1 className="text-2xl font-bold mb-6">Add New Product</h1>
 
       <form className="grid gap-4 w-full md:w-[50%]" onSubmit={handleSubmit}>
-        {/* Product Name */}
+        {/* Name */}
         <div>
           <label className="block font-semibold mb-1">Product Name</label>
           <input
@@ -142,7 +137,7 @@ const AddProduct = () => {
             value={data.brand}
             onChange={handleChange}
             type="text"
-            placeholder="e.g. J."
+            placeholder="e.g. Zayphire"
             className="w-full border rounded-lg p-2"
           />
         </div>
@@ -155,7 +150,7 @@ const AddProduct = () => {
             value={data.color}
             onChange={handleChange}
             type="text"
-            placeholder="e.g. Black"
+            placeholder="e.g. White"
             className="w-full border rounded-lg p-2"
           />
         </div>
@@ -188,44 +183,29 @@ const AddProduct = () => {
             required
           >
             <option value="">-- Select Category --</option>
-            {categories.map((cat, idx) => (
-              <option key={idx} value={cat}>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
                 {cat}
               </option>
             ))}
           </select>
         </div>
-        <div>
-          <label className="block font-semibold mb-1">Length</label>
-          <input
-            name="length"
-            value={data.length}
-            onChange={handleChange}
-            type="text"
-            placeholder="e.g. 3 meters or 50"
-            className="w-full border rounded-lg p-2"
-          />
-        </div>
 
-        {/* Conditional: Fabric */}
+        {/* Conditional Inputs */}
         {data.category.includes("fabric") && (
-          <>
-            
-            <div>
-              <label className="block font-semibold mb-1">Material</label>
-              <input
-                name="material"
-                value={data.material}
-                onChange={handleChange}
-                type="text"
-                placeholder="e.g. Cotton"
-                className="w-full border rounded-lg p-2"
-              />
-            </div>
-          </>
+          <div>
+            <label className="block font-semibold mb-1">Material</label>
+            <input
+              name="material"
+              value={data.material}
+              onChange={handleChange}
+              type="text"
+              placeholder="e.g. Cotton"
+              className="w-full border rounded-lg p-2"
+            />
+          </div>
         )}
 
-        {/* Conditional: Fragrance */}
         {data.category.includes("fragrance") && (
           <div>
             <label className="block font-semibold mb-1">Fragrance Type</label>
@@ -246,20 +226,19 @@ const AddProduct = () => {
           <input
             type="file"
             multiple
-            required
             accept="image/*"
+            required
             onChange={handleImageChange}
             className="w-full border rounded-lg p-2"
           />
-
           {previews.length > 0 && (
             <div className="flex flex-wrap gap-3 mt-4">
               {previews.map((url, idx) => (
                 <Image
-                  width={80}
-                  height={80}
                   key={idx}
                   src={url}
+                  width={80}
+                  height={80}
                   alt={`Preview ${idx}`}
                   className="w-28 h-28 object-cover rounded-lg border"
                 />
@@ -268,11 +247,13 @@ const AddProduct = () => {
           )}
         </div>
 
+        {/* Submit */}
         <button
           type="submit"
-          className="bg-black cursor-pointer text-white px-4 py-2 mt-4"
+          disabled={loading}
+          className="bg-black text-white px-4 py-2 mt-4 rounded"
         >
-          {loading ? "Loading..." : "Add Product"}
+          {loading ? "Uploading..." : "Add Product"}
         </button>
       </form>
     </main>
