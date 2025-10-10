@@ -5,6 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import imageCompression from "browser-image-compression"; // ✅ Added compression
 
 const categories = [
   "men-fabric",
@@ -14,13 +15,14 @@ const categories = [
   "women-accessories",
   "women-fragrance",
 ];
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const UpdateProduct = ({ data }: {data: any}) => {
+const UpdateProduct = ({ data }: { data: any }) => {
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({ ...data });
-  const router = useRouter()
+  const router = useRouter();
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -34,15 +36,14 @@ const UpdateProduct = ({ data }: {data: any}) => {
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  if (!e.target.files) return;
-  const selectedFiles = Array.from(e.target.files);
+    if (!e.target.files) return;
+    const selectedFiles = Array.from(e.target.files);
 
-  // append to old files instead of replacing
-  setFiles((prev) => [...prev, ...selectedFiles]);
-
-  const newPreviews = selectedFiles.map((file) => URL.createObjectURL(file));
-  setPreviews((prev) => [...prev, ...newPreviews]);
-};
+    // append new files
+    setFiles((prev) => [...prev, ...selectedFiles]);
+    const newPreviews = selectedFiles.map((file) => URL.createObjectURL(file));
+    setPreviews((prev) => [...prev, ...newPreviews]);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,18 +57,37 @@ const UpdateProduct = ({ data }: {data: any}) => {
       }
     });
 
-    files.forEach((file) => updateData.append("images", file));
-
     try {
-      const res = await axios.patch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${formData._id}`, updateData);
+      // ✅ Compress each selected image before upload
+      for (const file of files) {
+        console.log(
+          `📸 Original: ${(file.size / 1024 / 1024).toFixed(2)} MB — ${file.name}`
+        );
+
+        const compressedFile = await imageCompression(file, {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1200,
+          useWebWorker: true,
+        });
+
+        console.log(
+          `✅ Compressed: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB — ${compressedFile.name}`
+        );
+
+        updateData.append("images", compressedFile);
+      }
+
+      const res = await axios.patch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${formData._id}`,
+        updateData
+      );
 
       if (res.status === 200) {
-        toast.success("Product updated successfully!");
-        router.push("/admin/productList")
+        toast.success("✅ Product updated successfully!");
+        router.push("/admin/productList");
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (err: any) {
-      console.error(err.message);
+    } catch (err) {
+      console.error("❌ Update failed:", err);
       toast.error("Failed to update product.");
     } finally {
       setLoading(false);
@@ -115,16 +135,16 @@ const UpdateProduct = ({ data }: {data: any}) => {
         />
         <label>On Sale</label>
         {formData.isSale && (
-            <>
-              <label className="block font-semibold">DiscountPrice</label>
-                <input
-                    name="discountPrice"
-                    type="number"
-                    value={formData.discountPrice || ""}
-                    onChange={handleChange}
-                    className="border rounded p-2"
-                    placeholder="Discount Price"
-                />
+          <>
+            <label className="block font-semibold">Discount Price</label>
+            <input
+              name="discountPrice"
+              type="number"
+              value={formData.discountPrice || ""}
+              onChange={handleChange}
+              className="border rounded p-2"
+              placeholder="Discount Price"
+            />
           </>
         )}
       </div>
@@ -151,7 +171,12 @@ const UpdateProduct = ({ data }: {data: any}) => {
 
       {/* Gender */}
       <label className="block font-semibold">Gender</label>
-      <select name="gender" value={formData.gender} onChange={handleChange} className="border rounded p-2">
+      <select
+        name="gender"
+        value={formData.gender}
+        onChange={handleChange}
+        className="border rounded p-2"
+      >
         <option value="">-- Select Gender --</option>
         <option value="men">Men</option>
         <option value="women">Women</option>
@@ -160,16 +185,23 @@ const UpdateProduct = ({ data }: {data: any}) => {
 
       {/* Category */}
       <label className="block font-semibold">Category</label>
-      <select name="category" value={formData.category} onChange={handleChange} className="border rounded p-2">
+      <select
+        name="category"
+        value={formData.category}
+        onChange={handleChange}
+        className="border rounded p-2"
+      >
         {categories.map((cat) => (
-          <option key={cat} value={cat}>{cat}</option>
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
         ))}
       </select>
 
       {/* Conditional fields */}
       {formData.category.includes("fabric") && (
         <>
-        <label className="block font-semibold">Length</label>
+          <label className="block font-semibold">Length</label>
           <input
             name="length"
             value={formData.length || ""}
@@ -190,14 +222,14 @@ const UpdateProduct = ({ data }: {data: any}) => {
 
       {formData.category.includes("fragrance") && (
         <>
-            <label className="block font-semibold">Fragrance Type</label>
-            <input
+          <label className="block font-semibold">Fragrance Type</label>
+          <input
             name="fragranceType"
             value={formData.fragranceType || ""}
             onChange={handleChange}
             placeholder="Fragrance Type"
             className="border rounded p-2"
-            />
+          />
         </>
       )}
 
@@ -225,61 +257,67 @@ const UpdateProduct = ({ data }: {data: any}) => {
 
       {/* Images */}
       <div>
-  <label className="py-2 font-semibold block">Update Images</label>
-  <input type="file" multiple accept="image/*" onChange={handleImageChange} />
+        <label className="py-2 font-semibold block">Update Images</label>
+        <input type="file" multiple accept="image/*" onChange={handleImageChange} />
 
-  <div className="flex gap-3 mt-3 flex-wrap">
-    {/* Old Images (already uploaded) */}
-    {formData.images.map((url: string, idx: number) => (
-      <div key={`old-${idx}`} className="relative">
-        <Image
-          width={200}
-          height={200}
-          alt="image"
-          src={url}
-          className="w-20 h-20 rounded border object-cover"
-        />
-        <button
-          type="button"
-          onClick={() => {
-            setFormData({
-              ...formData,
-              images: formData.images.filter((_: string, i: number) => i !== idx),
-            });
-          }}
-          className="absolute top-0 right-0 bg-red-500 text-white text-xs px-1 rounded"
-        >
-          ✕
-        </button>
+        <div className="flex gap-3 mt-3 flex-wrap">
+          {/* Old Images */}
+          {formData.images.map((url: string, idx: number) => (
+            <div key={`old-${idx}`} className="relative">
+              <Image
+                width={200}
+                height={200}
+                alt="image"
+                src={url}
+                className="w-20 h-20 rounded border object-cover"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  setFormData({
+                    ...formData,
+                    images: formData.images.filter(
+                      (_: string, i: number) => i !== idx
+                    ),
+                  });
+                }}
+                className="absolute top-0 right-0 bg-red-500 text-white text-xs px-1 rounded"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+
+          {/* New Image Previews */}
+          {previews.map((url, idx) => (
+            <div key={`new-${idx}`} className="relative">
+              <Image
+                width={200}
+                height={200}
+                alt="preview"
+                src={url}
+                className="w-20 h-20 rounded border object-cover"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  setPreviews(previews.filter((_, i) => i !== idx));
+                  setFiles(files.filter((_, i) => i !== idx));
+                }}
+                className="absolute top-0 right-0 bg-red-500 text-white text-xs px-1 rounded"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
 
-    {/* New Images (just selected, preview only) */}
-    {previews.map((url, idx) => (
-      <div key={`new-${idx}`} className="relative">
-        <Image
-          width={200}
-          height={200}
-          alt="preview"
-          src={url}
-          className="w-20 h-20 rounded border object-cover"
-        />
-        <button
-          type="button"
-          onClick={() => {
-            setPreviews(previews.filter((_, i) => i !== idx));
-            setFiles(files.filter((_, i) => i !== idx));
-          }}
-          className="absolute top-0 right-0 bg-red-500 text-white text-xs px-1 rounded"
-        >
-          ✕
-        </button>
-      </div>
-    ))}
-  </div>
-</div>
-
-      <button type="submit" className="bg-black cursor-pointer text-white p-2 rounded">
+      <button
+        type="submit"
+        disabled={loading}
+        className="bg-black text-white p-2 rounded"
+      >
         {loading ? "Updating..." : "Update Product"}
       </button>
     </form>
