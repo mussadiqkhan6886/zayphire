@@ -27,16 +27,17 @@ const SwiperImages = ({ images }: { images: string[] }) => {
   }, [images]);
 
   return (
-    <Swiper className="md:h-[90vh] h-screen w-full">
+    <Swiper className="md:h-[70vh] h-[80vh] w-full">
       {validImages.map((image, i) => (
         <SwiperSlide key={i}>
           <Image
             src={image}
             alt="image of clothes"
-            width={240}
-            height={210}
+            width={200}
+            height={170}
             className="w-full h-full object-cover"
             priority
+            quality={90}
           />
         </SwiperSlide>
       ))}

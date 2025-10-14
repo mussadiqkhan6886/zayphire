@@ -25,11 +25,11 @@ const Card = ({
   }
 
   return (
-    <div className={`border border-black flex flex-col ${inStock ? '' : 'opacity-65'}`}>
+    <div className={`border border-black w-full sm:max-w-[370px] md:mx-2 flex flex-col ${inStock ? '' : 'opacity-65'}`}>
       {inStock ? (
         <Link
           href={`/collection/${category}/${_id}`}
-          className={`h-full ${inStock ? 'cursor-pointer' : 'cursor-not-allowed'}`}
+          className={`h-full w-full ${inStock ? 'cursor-pointer' : 'cursor-not-allowed'}`}
         >
           <SwiperImages images={images} />
         </Link>
@@ -40,7 +40,7 @@ const Card = ({
       )}
 
       <div className="p-3 py-4 border-t border-black">
-        <div className="leading-2">
+        <div className="leading-5">
           <h3>
             {name}{' '}
             <span className="text-red-700">{inStock ? '' : 'Not in stock'}</span>

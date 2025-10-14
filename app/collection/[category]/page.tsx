@@ -29,7 +29,7 @@ const Category = async ({params}: {params: Promise<{category: string}>}) => {
         </section>
         
         <FilterationHeader breadcrums={category} />
-        <section className='grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3  w-full'>
+        <section className='grid grid-cols-1 sm:grid-cols-2 mt-10 lg:grid-cols-3  w-full'>
           {category === "men-new" ? data.filter((item: Product) => item.isNewArrival).map((item: Product) => (
             <Card key={item._id} {...item} />
           )) : category === "men-sale" ? data.filter((item: Product) => item.isSale).map((item: Product) => (
