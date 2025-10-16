@@ -12,6 +12,7 @@ const categories = [
   "men-fragrance",
   "men-accessories",
   "men-tshirt",
+  "men-watches",
   "women-accessories",
   "women-fragrance",
 ];
@@ -199,7 +200,7 @@ const UpdateProduct = ({ data }: { data: any }) => {
       </select>
 
       {/* Conditional fields */}
-      {formData.category.includes("fabric") && (
+      {!formData.category.includes("fragrance")  && (
         <>
           <label className="block font-semibold">Length</label>
           <input
