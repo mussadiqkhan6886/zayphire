@@ -24,4 +24,10 @@ export const categoryDescriptions = [
     content:
       "Stay comfortable and stylish with our men’s t-shirts. Made from breathable fabrics and available in a variety of fits and colors, these shirts are perfect for casual wear and layering.",
   },
+  {
+    key: "men-watches",
+    title: "Men's Watches",
+    content:
+      "Discover our elegant range of men’s watches that combine precision, craftsmanship, and timeless style. Whether you prefer classic leather straps or modern metal designs, our watches complement every occasion.",
+  }
 ];

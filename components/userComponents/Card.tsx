@@ -18,11 +18,14 @@ const Card = ({
   inStock,
   fragranceType,
   length,
+  material
 }: Product) => {
   // If no product data, show fallback
   if (!name || !price) {
     return <div>NO {category} yet.</div>
   }
+
+  console.log(category, material)
 
   return (
     <div className={`border border-black w-full sm:max-w-[370px] md:mx-2 flex flex-col ${inStock ? '' : 'opacity-65'}`}>
@@ -51,7 +54,9 @@ const Card = ({
             </span>
             <span className="border-r border-gray-400 pr-2 hidden md:inline-block mr-2">{gender}</span>
             <span className="border-r border-gray-400 pr-2 mr-2">{brand}</span>
-            <span>{category.includes('fragrance') ? length + 'ml' : type}</span>
+            <span>{category.includes('fragrance') && length + 'ml'}</span>
+            <span>{category.includes("fabrics") && type}</span>
+            <span>{category.includes("watches") && material}</span>
           </div>
         </div>
         <div className="flex gap-2">
@@ -71,3 +76,4 @@ const Card = ({
 }
 
 export default Card
+  

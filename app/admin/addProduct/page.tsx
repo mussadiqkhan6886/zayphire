@@ -20,6 +20,7 @@ const AddProduct = () => {
     length: "",
     material: "",
     fragranceType: "",
+    watchType: ""
   });
 
   const categories = [
@@ -27,6 +28,7 @@ const AddProduct = () => {
     "men-fragrance",
     "men-accessories",
     "men-tshirt",
+    "men-watches",
     "women-accessories",
     "women-fragrance",
   ];
@@ -97,6 +99,7 @@ const AddProduct = () => {
           length: "",
           material: "",
           fragranceType: "",
+          watchType: ""
         });
         setFiles([]);
         setPreviews([]);
@@ -244,6 +247,13 @@ const AddProduct = () => {
               placeholder="e.g. Eau de Parfum"
               className="w-full border rounded-lg p-2"
             />
+          </div>
+        )}
+
+        {data.category.includes("watches") && (
+          <div>
+            <label className="block font-semibold mb-1">Watch Type: </label>
+            <input name="watchType" value={data.watchType} onChange={handleChange} type="text" placeholder="leather, stainless steel" className="w-full border rounded-lg p-2" />
           </div>
         )}
 

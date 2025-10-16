@@ -9,7 +9,7 @@ import Footer from "./Footer";
 
 const Men = () => {
   return (
-    <div className="h-screen w-full">
+    <div key={"men"} className="h-screen w-full">
       <Swiper
         direction="vertical" // 👈 Vertical swiper
         modules={[Mousewheel, Keyboard, Pagination]} // add Keyboard

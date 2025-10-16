@@ -46,6 +46,7 @@ const SideBar = ({setViewSideBar}: { setViewSideBar: React.Dispatch<React.SetSta
               <Dropdown menu={menu} setViewSideBar={setViewSideBar} />
             </li>
             <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li>
+            <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/${menu}-watches`}>WATCHES</Link></li>
             <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 mb-15'><Link href={`/collection/${menu}-accessories`}>ACCESSORIES</Link></li>
             <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold'><Link href={`/track-order`}>TRACK YOUR ORDER</Link></li>
             </>
