@@ -20,7 +20,7 @@ const Card = ({
   length,
   material
 }: Product) => {
-  // If no product data, show fallback
+ // Fallback if product data is missing
   if (!name || !price) {
     return <div>NO {category} yet.</div>
   }
@@ -48,15 +48,33 @@ const Card = ({
             {name}{' '}
             <span className="text-red-700">{inStock ? '' : 'Not in stock'}</span>
           </h3>
-          <div className="text-gray-400 text-sm mb-2">
+
+          <div className="text-gray-400 text-[13px] mb-2">
+            {/* Fragrance or color */}
             <span className="border-r border-gray-400 pr-2 mr-2">
               {category.includes('fragrance') ? fragranceType : color}
             </span>
+
+            {/* Gender (only on medium+) */}
             <span className="border-r border-gray-400 pr-2 hidden md:inline-block mr-2">{gender}</span>
+
+            {/* Brand */}
             <span className="border-r border-gray-400 pr-2 mr-2">{brand}</span>
-            <span>{category.includes('fragrance') && length + 'ml'}</span>
-            <span>{category.includes("fabrics") && type}</span>
-            <span>{category.includes("watches") && material}</span>
+
+            {/* Fragrance type: add ml properly */}
+            {category.includes('fragrance') && (
+              <span className="border-r border-gray-400 pr-2 mr-2">{length}ml</span>
+            )}
+
+            {/* Fabric type */}
+            {category.includes('fabric') && (
+              <span className="border-r border-gray-400 pr-2 mr-2">{type}</span>
+            )}
+
+            {/* Material — fixed logical condition */}
+            {(category.includes('watches') || category.includes('fabric')) && (
+              <span className="border-r border-gray-400 pr-2 mr-2">{material}</span>
+            )}
           </div>
         </div>
         <div className="flex gap-2">
@@ -76,4 +94,3 @@ const Card = ({
 }
 
 export default Card
-  

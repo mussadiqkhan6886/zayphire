@@ -20,6 +20,7 @@ const Category = async ({params}: {params: Promise<{category: string}>}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, {next: { revalidate: 60 }})
   const { products: data } = await res.json();
   const heading = categoryDescriptions.find(item => item.key === category)
+  console.log(data)
   return (
     <>
       <main className='flex flex-col pt-24'>

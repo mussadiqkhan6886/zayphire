@@ -20,7 +20,6 @@ const AddProduct = () => {
     length: "",
     material: "",
     fragranceType: "",
-    watchType: ""
   });
 
   const categories = [
@@ -99,7 +98,6 @@ const AddProduct = () => {
           length: "",
           material: "",
           fragranceType: "",
-          watchType: ""
         });
         setFiles([]);
         setPreviews([]);
@@ -222,7 +220,7 @@ const AddProduct = () => {
         </div>
 
         {/* Conditional Inputs */}
-        {data.category.includes("fabric") && (
+        {!data.category.includes("fragrance") && (
           <div>
             <label className="block font-semibold mb-1">Material</label>
             <input
@@ -247,13 +245,6 @@ const AddProduct = () => {
               placeholder="e.g. Eau de Parfum"
               className="w-full border rounded-lg p-2"
             />
-          </div>
-        )}
-
-        {data.category.includes("watches") && (
-          <div>
-            <label className="block font-semibold mb-1">Watch Type: </label>
-            <input name="watchType" value={data.watchType} onChange={handleChange} type="text" placeholder="leather, stainless steel" className="w-full border rounded-lg p-2" />
           </div>
         )}
 

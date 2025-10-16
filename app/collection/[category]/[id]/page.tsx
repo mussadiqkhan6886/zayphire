@@ -54,17 +54,76 @@ const ProductItem = async ({params}: {params: Promise<{id:string}>}) => {
             </p>
           </div>
 
-          {/* Product Details */}
+          {/* Product Details (Conditionally Rendered) */}
           <div className="flex flex-col gap-2 text-sm text-gray-700">
             <h4>
-              <span className='font-semibold'>COLLECTION:</span> <span className='text-sm'>{data.category}</span>
+              <span className="font-semibold">COLLECTION:</span>{' '}
+              <span className="text-sm capitalize">{data.category}</span>
             </h4>
-            <h4>
-              <span className='font-semibold'>Type:</span> <span className='text-sm'>{data.type}</span>
-            </h4>
-            <h4>
-              <span className='font-semibold'>GENDER:</span> <span className='text-sm'>{data.gender}</span>
-            </h4>
+
+            {/* TYPE (for fabrics or general) */}
+            {(data.category?.includes('fabric')) &&  (
+              <h4>
+                <span className="font-semibold">Type:</span> <span>{data.type}</span>
+              </h4>
+            )}
+
+            {/* FRAGRANCE DETAILS */}
+            {data.category?.includes('fragrance') && (
+              <>
+                {data.fragranceType && (
+                  <h4>
+                    <span className="font-semibold">Fragrance Type:</span> <span>{data.fragranceType}</span>
+                  </h4>
+                )}
+                {data.length && (
+                  <h4>
+                    <span className="font-semibold">Volume:</span> <span>{data.length}ml</span>
+                  </h4>
+                )}
+              </>
+            )}
+
+            {/* FABRIC DETAILS */}
+            {data.category?.includes('fabric') && (
+              <>
+                {data.material && (
+                  <h4>
+                    <span className="font-semibold">Material:</span> <span>{data.material}</span>
+                  </h4>
+                )}
+              </>
+            )}
+
+            {/* WATCH DETAILS */}
+            {data.category?.includes('watches') && (
+              <>
+                {data.material && (
+                  <h4>
+                    <span className="font-semibold">Material:</span> <span>{data.material}</span>
+                  </h4>
+                )}
+                {data.color && (
+                  <h4>
+                    <span className="font-semibold">Color:</span> <span>{data.color}</span>
+                  </h4>
+                )}
+              </>
+            )}
+
+            {/* GENDER */}
+            {data.gender && (
+              <h4>
+                <span className="font-semibold">Gender:</span> <span>{data.gender}</span>
+              </h4>
+            )}
+
+            {/* BRAND */}
+            {data.brand && (
+              <h4>
+                <span className="font-semibold">Brand:</span> <span>{data.brand}</span>
+              </h4>
+            )}
           </div>
 
           {/* Add to Basket Button */}
