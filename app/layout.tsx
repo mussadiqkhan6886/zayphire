@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     title: "Zayphire",
     description:
       "Discover luxury perfumes, fashion, and accessories at Zayphire. Shop online with secure payments and fast delivery.",
-    url: "https://zayphire.com", // replace with your domain
+    url: "https://www.zayphire.store", // replace with your domain
     siteName: "Zayphire",
     images: [
       {
-        url: "https://zayphire.com/zayphireBlack.png", // add a real image path
+        url: "https://www.zayphire.store/zayphireBlack.png", // add a real image path
         width: 1200,
         height: 630,
         alt: "Zayphire E-Commerce Store",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
       "Shop perfumes, fashion, and luxury accessories at Zayphire. Fast shipping and trusted quality.",
     site: "@zayphire", // your Twitter handle if available
     creator: "@zayphire",
-    images: ["https://zayphire.com/zayphireBlack.png"],
+    images: ["https://www.zayphire.store/zayphireBlack.png"],
   },
 
   // Icons
@@ -80,8 +80,9 @@ export const metadata: Metadata = {
 
   // Other SEO extras
   alternates: {
-    canonical: "https://zayphire.com",
-  },
+  canonical: "https://www.zayphire.store",
+}
+
 };
 
 export default function RootLayout({
