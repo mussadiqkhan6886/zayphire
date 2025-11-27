@@ -91,6 +91,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+    <head>
+      <meta name="google-site-verification" content="JBjxxW0Z64mT-Z2u-aG0dwZ3qrLsIkUkZSJi7e0LYjs" />
+    </head>
       <body
         className={` ${interTight.className} antialiased`}
       >
