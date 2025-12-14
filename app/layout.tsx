@@ -4,6 +4,8 @@ import { interTight } from "@/lib/fonts/font";
 import { ViewProvider } from "@/context/Context";
 import ClientFooterWrapper from "@/components/userComponents/ClientFooterWrapper";
 import HeaderWrapper from "@/components/userComponents/HeaderWrapper";
+import dynamic from "next/dynamic";
+const MetaPixel = dynamic(() => import("@/components/adminComponents/MetaPixel"))
 
 export const metadata: Metadata = {
   title: {
@@ -99,6 +101,7 @@ export default function RootLayout({
         className={` ${interTight.className} antialiased`}
       >
         <ViewProvider>
+          <MetaPixel />
           <HeaderWrapper />
           {children}
           <ClientFooterWrapper />
