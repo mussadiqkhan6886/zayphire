@@ -6,6 +6,7 @@ import { Mousewheel, Keyboard, Pagination } from "swiper/modules";
 import "swiper/css/pagination"
 import "swiper/css";
 import Footer from "./Footer";
+import Link from "next/link";
 
 const Men = () => {
   return (
@@ -20,12 +21,14 @@ const Men = () => {
         style={{scrollBehavior: "smooth"}}
       >
         <SwiperSlide>
-          <video
-          muted 
-          loop
-          preload="metadata"
-          playsInline
-  controls={false}
+         
+          <Link draggable={false} href="collections/men-fabric">
+           <video
+            muted 
+            loop
+            preload="metadata"
+            playsInline
+          controls={false}
             id="main"
             className="w-full h-screen object-cover"
             width={1000}
@@ -33,11 +36,13 @@ const Men = () => {
             src="/men.webm"
             autoPlay
           />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
+          <Link draggable={false} href={"collections/men-fragrance"}>
           <video
           playsInline
-  controls={false}
+          controls={false}
           muted
           loop
             id="fragrances"
@@ -47,8 +52,10 @@ const Men = () => {
             src="/menperfume.webm"
             autoPlay
           />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
+          <Link draggable={false} href="collections/men-fabric">
           <video
           playsInline
   controls={false}
@@ -61,7 +68,7 @@ const Men = () => {
             src="/fabric.mp4"
             autoPlay
           />
-        
+        </Link>
         </SwiperSlide>
         <SwiperSlide>
             <Footer />

@@ -29,10 +29,10 @@ const SideBar = ({setViewSideBar}: { setViewSideBar: React.Dispatch<React.SetSta
           <FaTimes onClick={() => setViewSideBar(false)} className='absolute top-7 text-gray-500 left-8 md:left-16 cursor-pointer' />
           <Image src={"/zayphireBlack.png"} alt='zayphire logo menu' width={150} height={100} />
         </div>
-        <div className='flex justify-between w-full'>
+        <div className='flex mt-10 items-center justify-center w-full'>
           <h3 className={` ${menu === "men" ? "text-black font-semibold" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("men")}>MEN</h3>
-          <h3 className={` ${menu === "women" ? "text-black font-semibold" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("women")}>WOMEN</h3>
-          <h3 className={` ${menu === "kids" ? "text-black font-semibold" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("kids")}>KIDS</h3>
+          {/* <h3 className={` ${menu === "women" ? "text-black font-semibold" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("women")}>WOMEN</h3>
+          <h3 className={` ${menu === "kids" ? "text-black font-semibold" : "text-gray-700"} hover:text-black cursor-pointer`} onClick={() => setMenu("kids")}>KIDS</h3> */}
         </div>
       </div>
       <hr className='absolute w-full left-0 mt-3 opacity-30' />
@@ -46,8 +46,8 @@ const SideBar = ({setViewSideBar}: { setViewSideBar: React.Dispatch<React.SetSta
               <Dropdown menu={menu} setViewSideBar={setViewSideBar} />
             </li>
             <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li>
-            <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/${menu}-watches`}>WATCHES</Link></li>
-            <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 mb-15'><Link href={`/collection/${menu}-accessories`}>ACCESSORIES</Link></li>
+            {/* <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/${menu}-watches`}>WATCHES</Link></li> */}
+            {/* <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 mb-15'><Link href={`/collection/${menu}-accessories`}>ACCESSORIES</Link></li> */}
             <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold'><Link href={`/track-order`}>TRACK YOUR ORDER</Link></li>
             </>
           )}
