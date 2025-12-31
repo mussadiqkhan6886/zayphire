@@ -22,7 +22,7 @@ const Men = () => {
       >
         <SwiperSlide>
          
-          <Link draggable={false} href="collections/men-fabric">
+          <Link draggable={false} href="collection/men-fabric">
            <video
             muted 
             loop
@@ -39,7 +39,7 @@ const Men = () => {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link draggable={false} href={"collections/men-fragrance"}>
+          <Link draggable={false} href={"collection/men-fragrance"}>
           <video
           playsInline
           controls={false}
@@ -55,7 +55,7 @@ const Men = () => {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link draggable={false} href="collections/men-fabric">
+          <Link draggable={false} href="collection/men-fabric">
           <video
           playsInline
   controls={false}

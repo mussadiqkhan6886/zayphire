@@ -26,7 +26,7 @@ const Home = () => {
             </Suspense>
             <Categories />
           </SwiperSlide>
-          <SwiperSlide>
+          {/* <SwiperSlide>
              <Suspense fallback={<div>Loading...</div>}>
               <Women />
             </Suspense>
@@ -35,7 +35,7 @@ const Home = () => {
              <Suspense fallback={<div>Loading...</div>}>
               <Kids />
             </Suspense>
-          </SwiperSlide>
+          </SwiperSlide> */}
        
         </Swiper>
       </main>
