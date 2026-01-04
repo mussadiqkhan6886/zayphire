@@ -21,7 +21,6 @@ const Men = () => {
         style={{scrollBehavior: "smooth"}}
       >
         <SwiperSlide>
-         
           <Link draggable={false} href="collection/men-fabric">
            <video
             muted 
@@ -53,22 +52,6 @@ const Men = () => {
             autoPlay
           />
           </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link draggable={false} href="collection/men-fabric">
-          <video
-          playsInline
-  controls={false}
-          muted
-          loop
-            id="fabrics"
-            className="w-full h-screen object-cover"
-            width={1000}
-            height={1000}
-            src="/fabric.mp4"
-            autoPlay
-          />
-        </Link>
         </SwiperSlide>
         <SwiperSlide>
             <Footer />
