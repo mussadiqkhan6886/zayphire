@@ -12,8 +12,8 @@ import { Suspense, lazy } from 'react'
 import Whatsapp from '@/components/userComponents/Whatsapp';
 
 const Men = lazy(() => import('@/components/userComponents/Men'))
-const Women = lazy(() => import('@/components/userComponents/Women'))
-const Kids = lazy(() => import('@/components/userComponents/Kids'))
+// const Women = lazy(() => import('@/components/userComponents/Women'))
+// const Kids = lazy(() => import('@/components/userComponents/Kids'))
 
 const Home = () => {
   return (
