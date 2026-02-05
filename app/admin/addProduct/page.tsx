@@ -30,6 +30,7 @@ const AddProduct = () => {
     "men-watches",
     "women-accessories",
     "women-fragrance",
+    "unisex-fragrance"
   ];
 
   const handleChange = (
@@ -235,6 +236,7 @@ const AddProduct = () => {
         )}
 
         {data.category.includes("fragrance") && (
+          <>
           <div>
             <label className="block font-semibold mb-1">Fragrance Type</label>
             <input
@@ -246,6 +248,18 @@ const AddProduct = () => {
               className="w-full border rounded-lg p-2"
             />
           </div>
+          <div>
+            <label className="block font-semibold mb-1">Size: </label>
+            <input
+              name="length"
+              value={data.length}
+              onChange={handleChange}
+              type="text"
+              placeholder="e.g. 50 ml"
+              className="w-full border rounded-lg p-2"
+            />
+          </div>
+          </>
         )}
 
         {/* Images */}

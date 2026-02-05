@@ -19,6 +19,12 @@ export const categoryDescriptions = [
       "Elevate your presence with our collection of men’s perfumes and colognes. Featuring long-lasting and captivating scents, each fragrance is carefully crafted to reflect sophistication and confidence.",
   },
   {
+    key: "unisex-fragrance",
+    title: "Unisex Fragrance",
+    content:
+      "Elevate your presence with our collection of unisex perfumes and colognes. Featuring long-lasting and captivating scents, each fragrance is carefully crafted to reflect sophistication and confidence.",
+  },
+  {
     key: "men-tshirt",
     title: "Men’s T-Shirts",
     content:
