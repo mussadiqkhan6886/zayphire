@@ -25,7 +25,6 @@ const Card = ({
     return <div>NO {category} yet.</div>
   }
 
-  console.log(category, material)
 
   return (
     <div className={`border border-black w-full sm:max-w-[370px] md:mx-2 flex flex-col ${inStock ? '' : 'opacity-65'}`}>

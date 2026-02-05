@@ -5,7 +5,7 @@ import React from 'react'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 
 export const metadata : Metadata = {
-  title: "collection zayphire",
+  title: "collection Zayphire",
   description: "Premium collection page of zayphire with modern and elegant trending collection"
 
 }
@@ -24,13 +24,6 @@ const Collection = () => {
             <FaLongArrowAltRight />
           </div>
         </section>
-        {/* <section className='flex flex-col gap-3  max-w-[400px] p-2 '>
-          <Image src={"/main (2).jpg"} alt='change later' width={100} height={100} className='w-full' />
-          <div  className='flex items-center gap-2 py-2' >
-            <Link href={"/collection/men-fragrance"}>MEN PERFUMES COLLECTION </Link>
-            <FaLongArrowAltRight />
-          </div>
-        </section> */}
         </div>
       </main>
     </>

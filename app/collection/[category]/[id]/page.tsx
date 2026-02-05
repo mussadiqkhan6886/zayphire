@@ -12,6 +12,46 @@ export async function generateStaticParams() {
   return products.map((p) => ({ id: p._id }));
 }
 
+import type { Metadata } from 'next'
+
+export const generateMetadata = async (
+  { params }: { params: Promise<{ id: string }> }
+): Promise<Metadata> => {
+  const { id } = await params
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`,
+    { next: { revalidate: 60 } }
+  )
+
+  if (!res.ok) {
+    return {
+      title: 'Product not found',
+      description: 'This product does not exist.',
+    }
+  }
+
+  const { product } = await res.json()
+
+  return {
+    title: product.name,
+    description: product.description,
+    openGraph: {
+      title: product.name,
+      description: product.description,
+      images: product.images?.length
+        ? [
+            {
+              url: product.images[0],
+              alt: product.name,
+            },
+          ]
+        : [],
+    },
+  }
+}
+
+
 const ProductItem = async ({params}: {params: Promise<{id:string}>}) => {
 
   const id = (await params).id
