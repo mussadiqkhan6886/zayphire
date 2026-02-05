@@ -8,10 +8,8 @@ import "swiper/css"
 import "swiper/css/navigation"
 import { Navigation } from "swiper/modules";
 
-import { Suspense, lazy } from 'react'
 import Whatsapp from '@/components/userComponents/Whatsapp';
-
-const Men = lazy(() => import('@/components/userComponents/Men'))
+import Men from '@/components/userComponents/Men';
 
 const Home = () => {
   return (
@@ -21,9 +19,7 @@ const Home = () => {
       <main className='h-screen'>
         <Swiper modules={[Navigation]} navigation={true} slidesPerView={1} pagination={{clickable:true}}>
           <SwiperSlide>
-            <Suspense fallback={<div>Loading...</div>}>
               <Men />
-            </Suspense>
             <Categories />
           </SwiperSlide>
         </Swiper>
