@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
           <div className='flex md:items-center justify-between h-full flex-col items-end scale-75 md:scale-100'>
             <Image src="/zayphireGray.png" alt='zayphire footer logo image' width={250} height={100}  />
-            <p className='text-sm'>&copy; Copyright Reserved by Zayphire 2025</p>
+            <p className='text-sm'>&copy; Copyright Reserved by Zayphire {new Date().getFullYear()}</p>
           </div>
         </div>
           <motion.div onViewportEnter={() => setView(true)} onViewportLeave={() => setView(false)} className='md:flex items-center justify-center text-left md:text-right text-sm hidden '>

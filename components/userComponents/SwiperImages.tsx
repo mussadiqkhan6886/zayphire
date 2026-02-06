@@ -37,7 +37,6 @@ const SwiperImages = ({ images }: { images: string[] }) => {
             height={170}
             className="w-full h-full object-cover"
             priority
-            quality={90}
           />
         </SwiperSlide>
       ))}

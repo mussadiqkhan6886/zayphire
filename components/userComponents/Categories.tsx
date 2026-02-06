@@ -9,9 +9,9 @@ const Categories = () => {
   
     return (
       <div className={`absolute z-50  bottom-10 left-0 px-10 md:px-0 md:left-[22%] text-white w-full md:w-[60%] ${view ? "hidden" : "block"} `}>
-        <div className='hidden md:flex  justify-between items-center'>
-            <Link href="#main">FABRICS</Link>
-            <Link href={"#fragrances"}>FRAGRANCES</Link>
+        <div className='flex  justify-center gap-35 items-center'>
+            <Link className=' text-lg tracking-wider' href="/collections/men-fabric">FABRICS</Link>
+            <Link className=' text-lg tracking-wider' href={"/collections/men-fragrance"}>FRAGRANCES</Link>
         </div>
       </div>
     )

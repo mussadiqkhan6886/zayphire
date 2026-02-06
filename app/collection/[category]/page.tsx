@@ -54,7 +54,7 @@ const Category = async ({params}: {params: Promise<{category: string}>}) => {
             <Card key={item._id} {...item} />
           )) : category === "men-sale" ? data.filter((item: Product) => item.isSale).map((item: Product) => (
             <Card key={item._id} {...item} />
-          )) : data.filter((item: Product) => item.category === category && !item.isSale).map((item: Product) => (
+          )) : data.filter((item: Product) => item.category.includes(category) && !item.isSale).map((item: Product) => (
             <Card key={item._id} {...item} />       
           ))}
           
