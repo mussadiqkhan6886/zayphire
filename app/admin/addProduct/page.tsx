@@ -30,7 +30,6 @@ const AddProduct = () => {
     "men-watches",
     "women-accessories",
     "women-fragrance",
-    "unisex-fragrance"
   ];
 
   const handleChange = (
