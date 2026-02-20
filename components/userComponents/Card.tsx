@@ -18,7 +18,8 @@ const Card = ({
   inStock,
   fragranceType,
   length,
-  material
+  material,
+  season
 }: Product) => {
 
   if (!name || !price) {
@@ -68,6 +69,7 @@ const Card = ({
             <span>{brand}</span>
 
             {category.includes('fragrance') && <span>{length}ml</span>}
+            {category.includes('fragrance') && <span>{season}</span>}
             {category.includes('fabric') && <span>{type}</span>}
             {(category.includes('watches') || category.includes('fabric')) && (
               <span>{material} </span>
