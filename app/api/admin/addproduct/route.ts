@@ -19,6 +19,7 @@ export async function POST(req: NextRequest) {
     const brand = formData.get("brand") as string;
     const color = formData.get("color") as string;
     const gender = formData.get("gender") as string;
+    const season = formData.get("season") as string;
     const category = formData.get("category") as string;
     const length = formData.get("length") as string;
     const fragranceType = formData.get("fragranceType") as string;
@@ -59,6 +60,7 @@ export async function POST(req: NextRequest) {
       brand,
       color,
       gender,
+      season,
       category,
       length,
       fragranceType,

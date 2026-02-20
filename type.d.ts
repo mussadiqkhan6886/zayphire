@@ -23,6 +23,7 @@ type CartItem = {
   brand?: string;
   inStock: boolean;
   images: string[];
+  season?: string;
   color?: string;
   gender: Gender;
   isNewArrival: boolean;

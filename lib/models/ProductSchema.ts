@@ -14,6 +14,7 @@ const productSchema = new Schema(
     inStock: { type: Boolean, default: true },
     images: [{ type: String, required: true }],
     color: { type: String },
+    season: { type: String },
     gender: { type: String, enum: ["men", "women", "unisex"], required: true },
     isNewArrival: { type: Boolean, default: true },
     type: { type: String, default: "Unstitched" },

@@ -14,6 +14,7 @@ const AddProduct = () => {
     description: "",
     price: "",
     category: "",
+    season: "",
     brand: "",
     gender: "",
     color: "",
@@ -92,6 +93,7 @@ const AddProduct = () => {
           description: "",
           price: "",
           category: "",
+          season: "",
           brand: "",
           gender: "",
           color: "",
@@ -221,6 +223,7 @@ const AddProduct = () => {
 
         {/* Conditional Inputs */}
         {!data.category.includes("fragrance") && (
+          <>
           <div>
             <label className="block font-semibold mb-1">Material</label>
             <input
@@ -232,6 +235,18 @@ const AddProduct = () => {
               className="w-full border rounded-lg p-2"
             />
           </div>
+          <div>
+            <label className="block font-semibold mb-1">Season</label>
+            <input
+              name="season"
+              value={data.season}
+              onChange={handleChange}
+              type="text"
+              placeholder="e.g. winter"
+              className="w-full border rounded-lg p-2"
+            />
+          </div>
+          </>
         )}
 
         {data.category.includes("fragrance") && (

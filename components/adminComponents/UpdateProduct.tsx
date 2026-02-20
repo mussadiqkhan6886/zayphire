@@ -218,6 +218,14 @@ const UpdateProduct = ({ data }: { data: any }) => {
             placeholder="Material (e.g. Cotton)"
             className="border rounded p-2"
           />
+          <label className="block font-semibold">Season</label>
+          <input
+            name="season"
+            value={formData.season || ""}
+            onChange={handleChange}
+            placeholder="Season (e.g. Winter)"
+            className="border rounded p-2"
+          />
         </>
       )}
 
