@@ -58,7 +58,7 @@ const ProductItem = async ({params}: {params: Promise<{id:string}>}) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`, {next: {revalidate: 60}})
   const {product: data} = await res.json()
   return (
-    <main className="flex flex-col pt-24 px-6 lg:px-20">
+    <main className="flex flex-col pt-2 px-6 lg:px-20">
       {/* Product Section */}
       <section className="flex flex-col md:flex-row gap-12">
         {/* Left: Product Image */}

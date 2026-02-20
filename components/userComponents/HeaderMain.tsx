@@ -21,7 +21,7 @@ const Header = () => {
   const total = cart.length
 
   return (
-    <header className={`px-5 md:px-8 py-7 flex justify-between w-full fixed z-10 top-0 text-black`}>
+    <header className={`px-5 md:px-8 py-7 flex justify-between w-full  z-10 top-0 text-black`}>
       <div className='flex gap-10'>
         <FiMenu className='text-xl md:text-lg  cursor-pointer'  onClick={() => setViewSidebar(true)} />
         {viewSidebar &&  <SideBar setViewSideBar={setViewSidebar} />}

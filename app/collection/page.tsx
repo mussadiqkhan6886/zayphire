@@ -14,7 +14,7 @@ export const metadata : Metadata = {
 const Collection = () => {
   return (
      <>
-      <main className='pt-30 flex flex-col items-center justify-between'>
+      <main className='pt-3 flex flex-col items-center justify-between'>
         <h1 className='text-3xl font-semibold text-center mb-5'>Collections</h1>
         <div className=' grid grid-cols-2'>
         <section className='flex flex-col gap-3  max-w-[400px] p-2 '>

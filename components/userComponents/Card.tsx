@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import SwiperImages from './SwiperImages'
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import SwiperImages from './SwiperImages';
 
 const Card = ({
   images,
@@ -20,76 +20,79 @@ const Card = ({
   length,
   material
 }: Product) => {
- // Fallback if product data is missing
+
   if (!name || !price) {
-    return <div>NO {category} yet.</div>
+    return <div>No {category} yet.</div>;
   }
 
-
   return (
-    <div className={`border border-black w-full sm:max-w-[370px] md:mx-2 flex flex-col ${inStock ? '' : 'opacity-65'}`}>
-      {inStock ? (
-        <Link
-          href={`/collection/${category}/${_id}`}
-          className={`h-full w-full ${inStock ? 'cursor-pointer' : 'cursor-not-allowed'}`}
-        >
-          <SwiperImages images={images} />
-        </Link>
-      ) : (
-        <div className="h-full">
-          <Image priority={true} src={images[0]} alt={name} width={200} height={210} className="w-full h-full" />
-        </div>
-      )}
+    <div className={`border border-black w-full max-w-[370px] flex flex-col 
+      ${inStock ? '' : 'opacity-60'} hover:shadow-lg transition duration-300`}>
 
-      <div className="p-3 py-4 border-t border-black">
-        <div className="leading-5">
-          <h3>
-            {name}{' '}
-            <span className="text-red-700">{inStock ? '' : 'Not in stock'}</span>
+      {/* IMAGE SECTION */}
+      <div className="relative w-full h-[320px] overflow-hidden">
+        {inStock ? (
+          <Link href={`/collection/${category}/${_id}`} className="block h-full">
+            <SwiperImages images={images} />
+          </Link>
+        ) : (
+          <Image
+            src={images?.[0] || '/placeholder.png'}
+            alt={name}
+            fill
+            className="object-cover"
+          />
+        )}
+
+        {isSale && (
+          <span className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1">
+            SALE
+          </span>
+        )}
+      </div>
+
+      {/* CONTENT */}
+      <div className="p-4 flex h-[100px] flex-col justify-between flex-1 border-t border-black">
+
+        <div>
+          <h3 className="font-medium text-[15px] leading-5 mb-2">
+            {name}
+            {!inStock && (
+              <span className="text-red-600 text-sm ml-2">Out of stock</span>
+            )}
           </h3>
 
-          <div className="text-gray-400 text-[13px] mb-2">
-            {/* Fragrance or color */}
-            <span className="border-r border-gray-400 pr-2 mr-2">
-              {category.includes('fragrance') ? fragranceType : color}
-            </span>
+          <div className="text-gray-500 text-xs flex flex-wrap gap-x-2 gap-y-1 mb-3">
+            <span>{category.includes('fragrance') ? fragranceType : color}</span>
+            <span className="hidden md:inline">{gender}</span>
+            <span>{brand}</span>
 
-            {/* Gender (only on medium+) */}
-            <span className="border-r border-gray-400 pr-2 hidden md:inline-block mr-2">{gender}</span>
-
-            {/* Brand */}
-            <span className="border-r border-gray-400 pr-2 mr-2">{brand}</span>
-
-            {/* Fragrance type: add ml properly */}
-            {category.includes('fragrance') && (
-              <span className="border-r border-gray-400 pr-2 mr-2">{length}ml</span>
-            )}
-
-            {/* Fabric type */}
-            {category.includes('fabric') && (
-              <span className="border-r border-gray-400 pr-2 mr-2">{type}</span>
-            )}
-
-            {/* Material — fixed logical condition */}
+            {category.includes('fragrance') && <span>{length}ml</span>}
+            {category.includes('fabric') && <span>{type}</span>}
             {(category.includes('watches') || category.includes('fabric')) && (
-              <span className="border-r border-gray-400 pr-2 mr-2">{material}</span>
+              <span>{material} </span>
             )}
           </div>
         </div>
-        <div className="flex gap-2">
+
+        {/* PRICE */}
+        <div className="text-[15px] font-semibold">
           PKR{' '}
           {isSale ? (
-            <p className="font-semibold">
-              {discountPrice}{' '}
-              <span className="text-gray-500 font-thin line-through">{price}</span>
-            </p>
+            <>
+              {discountPrice}
+              <span className="text-gray-400 line-through font-normal ml-2">
+                {price}
+              </span>
+            </>
           ) : (
             price
           )}
         </div>
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

@@ -1,46 +1,41 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 const SwiperImages = ({ images }: { images: string[] }) => {
-  const [validImages, setValidImages] = useState<string[]>([]);
-
-  useEffect(() => {
-    const checkImages = async () => {
-      const checks = await Promise.all(
-        images.map(async (url) => {
-          try {
-            const res = await fetch(url, { method: 'HEAD' });
-            return res.ok ? url : null;
-          } catch {
-            return null;
-          }
-        })
-      );
-      setValidImages(checks.filter((url): url is string => Boolean(url)));
-    };
-
-    checkImages();
-  }, [images]);
+  if (!images || images.length === 0) {
+    return (
+      <div className="relative w-full h-[320px] bg-gray-100">
+        <Image
+          src="/placeholder.png"
+          alt="No image"
+          fill
+          className="object-cover"
+        />
+      </div>
+    );
+  }
 
   return (
-    <Swiper className="md:h-[70vh] h-[80vh] w-full">
-      {validImages.map((image, i) => (
-        <SwiperSlide key={i}>
-          <Image
-            src={image}
-            alt="image of clothes"
-            width={200}
-            height={170}
-            className="w-full h-full object-cover"
-            priority
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="relative w-full h-[320px]">
+      <Swiper className="h-full w-full">
+        {images.map((image, i) => (
+          <SwiperSlide key={i}>
+            <div className="relative w-full h-[320px]">
+              <Image
+                src={image}
+                alt="product image"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 
