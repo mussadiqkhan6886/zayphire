@@ -12,18 +12,18 @@ export const categoryDescriptions = [
     content:
       "Complete your look with our curated range of men’s accessories. From stylish belts and wallets to elegant cufflinks and watches, these essentials add the finishing touch to every outfit.",
   },
-  {
-    key: "men-fragrance",
-    title: "Men’s Fragrance",
-    content:
-      "Elevate your presence with our collection of men’s perfumes and colognes. Featuring long-lasting and captivating scents, each fragrance is carefully crafted to reflect sophistication and confidence.",
-  },
-  {
-    key: "unisex-fragrance",
-    title: "Unisex Fragrance",
-    content:
-      "Elevate your presence with our collection of unisex perfumes and colognes. Featuring long-lasting and captivating scents, each fragrance is carefully crafted to reflect sophistication and confidence.",
-  },
+  // {
+  //   key: "men-fragrance",
+  //   title: "Men’s Fragrance",
+  //   content:
+  //     "Elevate your presence with our collection of men’s perfumes and colognes. Featuring long-lasting and captivating scents, each fragrance is carefully crafted to reflect sophistication and confidence.",
+  // },
+  // {
+  //   key: "unisex-fragrance",
+  //   title: "Unisex Fragrance",
+  //   content:
+  //     "Elevate your presence with our collection of unisex perfumes and colognes. Featuring long-lasting and captivating scents, each fragrance is carefully crafted to reflect sophistication and confidence.",
+  // },
   {
     key: "men-tshirt",
     title: "Men’s T-Shirts",

@@ -23,7 +23,7 @@ const SideBar = ({setViewSideBar}: { setViewSideBar: React.Dispatch<React.SetSta
   } as Transition
 
   return (
-    <motion.aside initial={"close"} transition={transition} animate={'open'} variants={variants}  className='absolute text-black border-r border-black bg-white left-0 top-0 min-h-screen w-[320px] sm:w-[370px] md:w-[450px]  py-5 px-14 md:px-24'>
+    <motion.aside initial={"close"} transition={transition} animate={'open'} variants={variants}  className='absolute text-black border-r border-black bg-white left-0 top-0 min-h-screen w-[320px] sm:w-[370px] md:w-[450px]  py-5 px-14 md:px-24 z-100'>
       <div className='flex flex-col  justify-between h-[25%] md:h-[30%]'>
         <div>
           <FaTimes onClick={() => setViewSideBar(false)} className='absolute top-7 text-gray-500 left-8 md:left-16 cursor-pointer' />
@@ -45,7 +45,7 @@ const SideBar = ({setViewSideBar}: { setViewSideBar: React.Dispatch<React.SetSta
             <li className='flex justify-between my-2 items-center w-full'>
               <Dropdown menu={menu} setViewSideBar={setViewSideBar} />
             </li>
-            <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li>
+            {/* <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/${menu}-fragrance`}>FRAGRANCES</Link></li> */}
             {/* <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/unisex-fragrance`}>UNISEX FRAGRANCES</Link></li> */}
             {/* <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 '><Link href={`/collection/${menu}-watches`}>WATCHES</Link></li> */}
             {/* <li onClick={() => setViewSideBar(false)} className='text-sm hover:font-semibold my-2 mb-15'><Link href={`/collection/${menu}-accessories`}>ACCESSORIES</Link></li> */}

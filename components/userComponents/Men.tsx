@@ -37,7 +37,7 @@ const Men = () => {
           />
           </Link>
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <Link draggable={false} href={"collection/men-fragrance"}>
           <video
           playsInline
@@ -52,7 +52,7 @@ const Men = () => {
             autoPlay
           />
           </Link>
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
             <Footer />
         </SwiperSlide>

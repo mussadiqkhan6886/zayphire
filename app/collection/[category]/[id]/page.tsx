@@ -80,7 +80,7 @@ const ProductItem = async ({params}: {params: Promise<{id:string}>}) => {
             <h1 className={`uppercase ${instrumentSerif.className} text-3xl font-bold tracking-widest`}>
               {data.name}
             </h1>
-            <p className="text-gray-400 text-[12px]">{data.productId}</p>
+            <p className="text-gray-400 uppercase text-[11px]">{data.productId.slice(0,6)}</p>
           </div>
 
           {/* Price */}

@@ -15,7 +15,7 @@ export default function OrderTable({ res }: { res: any[] }) {
   React.useEffect(() => {
     if (res?.length > 0) {
       const mappedRows = res.map((order) => ({
-        _id: order._id,
+        _id: order._id.slice(0,8),
         orderId: order.orderId,
         status: order.status,
         totalPrice: order.totalPrice,

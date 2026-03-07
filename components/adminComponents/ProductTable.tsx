@@ -17,7 +17,7 @@ export default function ProductTable({ res }: { res: any[] }) {
   React.useEffect(() => {
     if (res?.length > 0) {
       const mappedRows = res.map((product) => ({
-        _id: product._id,
+        _id: product._id.slice(0,8),
         productId: product.productId,
         name: product.name,
         brand: product.brand,

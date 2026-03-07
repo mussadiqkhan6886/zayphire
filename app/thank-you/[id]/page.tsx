@@ -17,7 +17,7 @@ const ThankYouPage = async ({params}: {params: Promise<{id:string}>}) => {
           We will contact you shortly to confirm your details.
         </p>
         
-        <p>Your Order id: <span className="text-lg font-semibold">{id}</span> </p>
+        <p>Your Order id: <span className="text-lg font-semibold">{id.slice(0,8)}</span> </p>
         <p className="mb-5">Use your Order id to <Link className="text-blue-600 underline" href={"/track-order"}>track order</Link> </p>
         <div className="space-y-3">
           <Link
