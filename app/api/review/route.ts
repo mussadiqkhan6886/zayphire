@@ -1,12 +1,12 @@
 import { connectDB } from "@/lib/config/database";
-import { ReviewSchema } from "@/lib/models/ReviewSchema";
+import { Review } from "@/lib/models/ReviewSchema";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async () => {
   await connectDB();
 
   try {
-    const reviews = await ReviewSchema.find({}).sort({ createdAt: -1 });
+    const reviews = await Review.find({}).sort({ createdAt: -1 });
 
     return NextResponse.json(
       {
@@ -42,7 +42,7 @@ export const POST = async (req: NextRequest) => {
       );
     }
 
-    const review = await ReviewSchema.create({
+    const review = await Review.create({
       name,
       message,
     });

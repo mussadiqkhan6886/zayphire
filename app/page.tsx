@@ -10,7 +10,7 @@ import { Navigation } from "swiper/modules";
 
 import Whatsapp from '@/components/userComponents/Whatsapp';
 import Men from '@/components/userComponents/Men';
-import Review from '@/components/userComponents/Review';
+import ReviewSection from '@/components/userComponents/Review';
 
 const Home = () => {
   return (
@@ -24,7 +24,7 @@ const Home = () => {
             <Categories />
           </SwiperSlide>
           <SwiperSlide>
-              <Review />
+              <ReviewSection />
           </SwiperSlide>
         </Swiper>
       </main>
