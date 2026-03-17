@@ -7,6 +7,7 @@ import "swiper/css/pagination"
 import "swiper/css";
 import Footer from "./Footer";
 import Link from "next/link";
+import ReviewSection from "./Review";
 
 const Men = () => {
   return (
@@ -37,22 +38,9 @@ const Men = () => {
           />
           </Link>
         </SwiperSlide>
-        {/* <SwiperSlide>
-          <Link draggable={false} href={"collection/men-fragrance"}>
-          <video
-          playsInline
-          controls={false}
-          muted
-          loop
-            id="fragrances"
-            className="w-full h-screen object-cover object-[90%_center]"
-            width={1000}
-            height={1000}
-            src="/menperfume.webm"
-            autoPlay
-          />
-          </Link>
-        </SwiperSlide> */}
+        <SwiperSlide>
+          <ReviewSection />
+        </SwiperSlide>
         <SwiperSlide>
             <Footer />
         </SwiperSlide>

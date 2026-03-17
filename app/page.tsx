@@ -23,9 +23,6 @@ const Home = () => {
               <Men />
             <Categories />
           </SwiperSlide>
-          <SwiperSlide>
-              <ReviewSection />
-          </SwiperSlide>
         </Swiper>
       </main>
     </div>  
