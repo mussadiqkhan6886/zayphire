@@ -74,15 +74,15 @@ export const POST = async (req: NextRequest) => {
 
     // 1. Send to Admin
     await transporter.sendMail({
-      from: `"Store Admin" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER, 
+      from: `"Store Admin" <zayphire@gmail.com>`,
+      to: "zayphire@gmail.com", 
       subject: `🚨 New Order #${res.orderId.slice(0,6)}`,
       html: emailTemplate(true),
     });
 
     // 2. Send to Customer
     await transporter.sendMail({
-      from: `"Our Store" <${process.env.EMAIL_USER}>`,
+      from: `"Zayphire Order" <zayphire@gmail.com>`,
       to: data.userDetails.email,
       subject: `Order Confirmed - #${res.orderId.slice(0,6)}`,
       html: emailTemplate(false),
