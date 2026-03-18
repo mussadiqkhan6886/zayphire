@@ -52,7 +52,7 @@ const Cart = ({ setShowCart }: { setShowCart: React.Dispatch<React.SetStateActio
       animate={"open"}
       initial="close"
       variants={variants}
-      className="absolute text-black border-l border-black bg-white right-0 top-0 h-screen w-[320px] sm:w-[370px] md:w-[450px] flex flex-col"
+      className="absolute text-black z-50 border-l border-black bg-white right-0 top-0 h-screen w-[320px] sm:w-[370px] md:w-[450px] flex flex-col"
     >
       <FaTimes onClick={() => setShowCart(false)} className="absolute cursor-pointer right-3 top-3" />
       <h3 className="mt-5 px-5 text-lg font-semibold">ADD TO YOUR BASKET</h3>
