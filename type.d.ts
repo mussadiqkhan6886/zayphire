@@ -72,3 +72,9 @@ type CartItem = {
   updatedAt?: string;
 };
 
+
+type ReviewType = {
+  _id: string
+  name : string
+  message: string
+}

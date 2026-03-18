@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/config/database";
-import { ReviewSchema } from "@/lib/models/ReviewSchema";
+import { Review } from "@/lib/models/ReviewSchema";
 import { NextRequest, NextResponse } from "next/server";
 
 export const DELETE = async (
@@ -11,7 +11,7 @@ export const DELETE = async (
   try {
     const { id } = await params;
 
-    const deletedReview = await ReviewSchema.findByIdAndDelete(id);
+    const deletedReview = await Review.findByIdAndDelete(id);
 
     if (!deletedReview) {
       return NextResponse.json(

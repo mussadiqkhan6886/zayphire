@@ -1,6 +1,5 @@
 'use client';
 
-import { ReviewType } from '@/type';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
@@ -45,33 +44,25 @@ const Page = () => {
         <p>No reviews found.</p>
       ) : (
         <div className="grid gap-4">
-          {reviews.map(review => (
-            <div
-              key={review._id}
-              className="bg-white p-4 rounded shadow"
+          {reviews.map(rev => (
+             <div 
+              key={rev._id} 
+              className="border border-light/20 p-6 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
             >
-              <div className="mb-2">
-                <p className="font-semibold">
-                  EN: {review.name.en}
-                </p>
-                <p className="font-semibold text-right" dir="rtl">
-                  AR: {review.name.ar}
-                </p>
-              </div>
-
-              <div className="mb-3">
-                <p>{review.message.en}</p>
-                <p className="text-right mt-2" dir="rtl">
-                  {review.message.ar}
+              <p className="italic text-lg mb-4">"{rev.message}"</p>
+              <div className="flex items-center gap-2">
+                <span className="h-[1px] w-4 bg-light/50"></span>
+                <p className="font-bold uppercase tracking-wider text-sm">
+                  {rev.name}
                 </p>
               </div>
-
-              <button
-                onClick={() => deleteReview(review._id)}
+            <button
+                onClick={() => deleteReview(rev._id)}
                 className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
               >
                 Delete
               </button>
+              
             </div>
           ))}
         </div>

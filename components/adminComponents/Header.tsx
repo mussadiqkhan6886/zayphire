@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import HomeButton from './HomeButton'
-import { FaList, FaPlus, FaShoppingBag } from "react-icons/fa";
+import { FaList, FaPlus, FaShoppingBag, FaStar } from "react-icons/fa";
 import Logout from './Logout';
 
 const Header = () => {
@@ -12,9 +12,12 @@ const Header = () => {
             <Link aria-label="add new product" href={"/admin/addProduct"}><FaPlus /></Link>
             <Link aria-label="show product list" href={"/admin/productList"}><FaList /></Link>
             <Link aria-label="show all orders   " href={"/admin/orders"}><FaShoppingBag /></Link>
+            <Link aria-label="Reviews" href={"/admin/reviews"}><FaStar /></Link>
         </div>
+        <div className='flex gap-7'>
         <Logout />
         <HomeButton />
+        </div>
     </div>
   )
 }
