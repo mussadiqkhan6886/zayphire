@@ -8,7 +8,7 @@ const Categories = () => {
   const {view} = useView()
   
     return (
-      <div className={`absolute z-50  bottom-10 left-0 px-10 md:px-0 md:left-[22%] text-white w-full md:w-[60%] ${view ? "hidden" : "block"} `}>
+      <div className={`absolute z-50 bottom-18 md:bottom-10 left-0 px-10 md:px-0 md:left-[22%] text-white w-full md:w-[60%] ${view ? "hidden" : "block"} `}>
         <div className='flex  justify-center gap-35 items-center'>
             <Link className=' text-lg tracking-wider' href="/collection/men-fabric">FABRICS</Link>
             {/* <Link className=' text-lg tracking-wider' href={"/collection/men-fragrance"}>FRAGRANCES</Link> */}
